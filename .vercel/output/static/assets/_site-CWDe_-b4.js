@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-BkSabwWG.js";import{i as t,n,r}from"./index-__IsASGL.js";var i=e();function a(){return(0,i.jsxs)(`div`,{className:`site-wrap`,children:[(0,i.jsx)(r,{}),(0,i.jsx)(`main`,{id:`main`,children:(0,i.jsx)(t,{})}),(0,i.jsx)(n,{})]})}export{a as component};

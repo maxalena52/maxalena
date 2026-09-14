@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/admin/login",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Author sign in | Maxalena L.",
+      "hasCanvas": false,
+      "bodyTextLen": 141,
+      "bodyTextHash": "143f423e8ca99733204ff7240fdf8c4182a7bf9b4623a4c4d276f719fa7af445",
+      "bodyTextPrefix": "Skip to content PRIVATE DESK Author sign in Only the authorised ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/admin-login.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Author sign in | Maxalena L.",
+      "hasCanvas": false,
+      "bodyTextLen": 141,
+      "bodyTextHash": "143f423e8ca99733204ff7240fdf8c4182a7bf9b4623a4c4d276f719fa7af445",
+      "bodyTextPrefix": "Skip to content PRIVATE DESK Author sign in Only the authorised ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/admin-login-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/admin-login.json"
+}

@@ -1,0 +1,58 @@
+import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
+import { AuthProvider } from "@/lib/auth/provider";
+import { PreviewHostBridge } from "@/components/preview-host-bridge";
+import { QueryProvider } from "@/lib/query-provider";
+import appCss from "../styles.css?url";
+
+const APP_NAME = "Maxalena L.";
+const DESCRIPTION =
+  "Official site of Maxalena L., author of dark romance, romantasy, gothic fiction, and emotionally intense serialised stories.";
+
+export const Route = createRootRoute({
+  head: () => ({
+    meta: [
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "Maxalena L. | Dark Romance & Romantasy Author" },
+      { name: "description", content: DESCRIPTION },
+      { name: "theme-color", content: "#080808" },
+      { name: "application-name", content: APP_NAME },
+      { name: "author", content: APP_NAME },
+    ],
+    links: [
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32.png" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      { rel: "stylesheet", href: appCss },
+      { rel: "manifest", href: "/__grok/manifest.webmanifest" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap",
+      },
+      { rel: "canonical", href: "https://maxalena.com/" },
+    ],
+  }),
+  component: RootDocument,
+});
+
+function RootDocument() {
+  return (
+    <html lang="en-GB" className="antialiased" suppressHydrationWarning>
+      <head>
+        <HeadContent />
+      </head>
+      <body className="site-bg min-h-screen bg-obsidian text-ivory">
+        <PreviewHostBridge />
+        <AuthProvider>
+          <QueryProvider>
+            <a href="#main" className="skip-link">
+              Skip to content
+            </a>
+            <Outlet />
+          </QueryProvider>
+        </AuthProvider>
+        <Scripts />
+      </body>
+    </html>
+  );
+}

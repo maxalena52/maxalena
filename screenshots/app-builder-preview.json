@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Maxalena L. | Dark Romance & Romantasy Author",
+      "hasCanvas": false,
+      "bodyTextLen": 1135,
+      "bodyTextHash": "110274da2c0d7bd45578c2e796cae5a4b6e5131e4a00fc0a669f42982973c58f",
+      "bodyTextPrefix": "Skip to content Maxalena L. HOME BOOKS CHARACTERS ABOUT CONTACT ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Maxalena L. | Dark Romance & Romantasy Author",
+      "hasCanvas": false,
+      "bodyTextLen": 1871,
+      "bodyTextHash": "6328d9df7252a42c8e0b1fc33be7ab8cf848661713fa3a783b8a77b7c0599699",
+      "bodyTextPrefix": "Skip to content Maxalena L. MENU MAXALENA L. Stories That Consum",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

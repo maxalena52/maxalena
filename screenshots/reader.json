@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/books/the-dragon-commanders-captive/preview",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Sample · the-dragon-commanders-captive | Maxalena L.",
+      "hasCanvas": false,
+      "bodyTextLen": 394,
+      "bodyTextHash": "6980d9f765d8fe8b98303544fdfa279496ecf0c3dcaed5943e7d4eeb27c38b32",
+      "bodyTextPrefix": "Skip to content Maxalena L. HOME BOOKS CHARACTERS ABOUT CONTACT ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/reader.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Sample · the-dragon-commanders-captive | Maxalena L.",
+      "hasCanvas": false,
+      "bodyTextLen": 349,
+      "bodyTextHash": "2add70880b735041a43b80a414e9e42a2bb574666a667989bb584e94145a5134",
+      "bodyTextPrefix": "Skip to content Maxalena L. MENU CLOSE SAMPLE READER SAMPLE · TH",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/reader-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/reader.json"
+}

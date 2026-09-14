@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/books",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Books by Maxalena L. | Dark Romance, Fantasy & Romantasy",
+      "hasCanvas": false,
+      "bodyTextLen": 593,
+      "bodyTextHash": "557d8934c0d88cb1da6fa105d6fce0fc38212721fee226a6e7c0c1ac85a17601",
+      "bodyTextPrefix": "Skip to content Maxalena L. HOME BOOKS CHARACTERS ABOUT CONTACT ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/books.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Books by Maxalena L. | Dark Romance, Fantasy & Romantasy",
+      "hasCanvas": false,
+      "bodyTextLen": 548,
+      "bodyTextHash": "0b4f9ff34f357e05a18b05b64fc192bfbb4a62f090b441c736dec4eca2d85312",
+      "bodyTextPrefix": "Skip to content Maxalena L. MENU THE LIBRARY Books Dark romance,",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/books-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/books.json"
+}

@@ -48,7 +48,10 @@ import {
 } from "./preview";
 
 // Kick (and share) PGLite bootstrap as soon as the auth server module loads.
-void ensureDbReady();
+// Skip on Vercel without DATABASE_URL — WASM PGLite cannot boot in the function.
+if (!process.env.VERCEL || process.env.DATABASE_URL) {
+  void ensureDbReady();
+}
 
 /**
  * Preview secret must outlive module reloads: PGLite (and its session rows) is

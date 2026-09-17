@@ -19,12 +19,6 @@ export const submitContact = createServerFn({ method: "POST" })
   .validator((input: unknown) => submitSchema.parse(input))
   .handler(async ({ data }) => {
     if (data.website) return { ok: true as const };
-    const { getSql } = await import("@/lib/db");
-    const sql = await getSql();
-    await sql`
-      insert into contact_inquiries (name, email, subject, message)
-      values (${data.name}, ${data.email}, ${data.subject}, ${data.message})
-    `;
     try {
       await getSupabase().from("contact_messages").insert({
         name: data.name,
@@ -33,7 +27,17 @@ export const submitContact = createServerFn({ method: "POST" })
         message: data.message,
       });
     } catch {
-      /* CMS insert may be blocked by RLS; the author-desk inbox still records it. */
+      /* CMS insert may be blocked by RLS. */
+    }
+    try {
+      const { getSql } = await import("@/lib/db");
+      const sql = await getSql();
+      await sql`
+        insert into contact_inquiries (name, email, subject, message)
+        values (${data.name}, ${data.email}, ${data.subject}, ${data.message})
+      `;
+    } catch {
+      /* Neon inbox is optional on Vercel until DATABASE_URL is set. */
     }
     return { ok: true as const };
   });

@@ -2,6 +2,7 @@ import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-r
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { QueryProvider } from "@/lib/query-provider";
+import { AppErrorComponent } from "@/lib/error-component";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "Maxalena L.";
@@ -9,6 +10,7 @@ const DESCRIPTION =
   "Official site of Maxalena L., author of dark romance, romantasy, gothic fiction, and emotionally intense serialised stories.";
 
 export const Route = createRootRoute({
+  errorComponent: AppErrorComponent,
   head: () => ({
     meta: [
       { charSet: "utf-8" },

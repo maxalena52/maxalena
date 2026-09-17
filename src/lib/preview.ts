@@ -104,9 +104,12 @@ export const getBookPreview = createServerFn({ method: "POST" })
         : pickLink(links, /read|wattpad|kindle|serial/i);
 
     let chapters: PreviewChapter[] = [];
-    try {
-      const { getSql } = await import("@/lib/db");
-      const sql = await getSql();
+    if (process.env.VERCEL && !process.env.DATABASE_URL) {
+      chapters = takeTwoFromManuscript(sample);
+    } else {
+      try {
+        const { getSql } = await import("@/lib/db");
+        const sql = await getSql();
       const rows = await sql<{
         chapter_one_title: string;
         chapter_one_body: string;
@@ -126,8 +129,9 @@ export const getBookPreview = createServerFn({ method: "POST" })
           rows[0].chapter_two_body,
         );
       }
-    } catch {
-      chapters = [];
+      } catch {
+        chapters = [];
+      }
     }
 
     if (!chapters.length) chapters = takeTwoFromManuscript(sample);

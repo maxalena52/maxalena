@@ -15,7 +15,6 @@ export const Route = createFileRoute("/admin/login")({
 
 function AdminLoginPage() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState(AUTHOR_EMAIL);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
@@ -31,7 +30,7 @@ function AdminLoginPage() {
         await navigate({ to: "/admin" });
       } catch {
         await sb.auth.signOut();
-        setError("This desk is restricted to the authorised author account.");
+        setError("This desk is restricted to magdalenashade@gmail.com.");
       }
     });
     return () => sub.subscription.unsubscribe();
@@ -44,16 +43,17 @@ function AdminLoginPage() {
     setNotice("");
     const sb = getSupabase();
     try {
-      if (!isAuthorEmail(email)) {
-        setError("This desk is restricted to the authorised author account.");
-        return;
-      }
       const { data, error: err } = await sb.auth.signInWithPassword({
-        email: email.trim(),
+        email: AUTHOR_EMAIL,
         password,
       });
       if (err || !data.session) {
         setError("Sign-in failed. Use the email link if you do not have a password yet.");
+        return;
+      }
+      if (!isAuthorEmail(data.session.user.email)) {
+        await sb.auth.signOut();
+        setError("This desk is restricted to magdalenashade@gmail.com.");
         return;
       }
       await verifyAuthorSession({ data: { accessToken: data.session.access_token } });
@@ -69,15 +69,9 @@ function AdminLoginPage() {
     setBusy(true);
     setError("");
     setNotice("");
-    const address = email.trim();
-    if (!isAuthorEmail(address)) {
-      setError("This desk is restricted to the authorised author account.");
-      setBusy(false);
-      return;
-    }
     const sb = getSupabase();
     const { error: err } = await sb.auth.signInWithOtp({
-      email: address,
+      email: AUTHOR_EMAIL,
       options: {
         shouldCreateUser: true,
         emailRedirectTo: `${window.location.origin}/admin/login`,
@@ -96,17 +90,16 @@ function AdminLoginPage() {
       <p className="ornament mb-4">Private desk</p>
       <h1 className="font-display text-4xl">Author sign in</h1>
       <p className="mt-3 text-sm leading-6 text-taupe">
-        Sign in to add books, sample chapters, and characters. Only {AUTHOR_EMAIL} can enter.
+        This desk belongs to one account only: {AUTHOR_EMAIL}. Any other address is refused.
       </p>
       <form onSubmit={(e) => void enterWithPassword(e)} className="mt-8 space-y-4">
         <label className="font-ui block text-xs uppercase tracking-widest text-taupe">
           Email
           <input
             type="email"
-            required
+            readOnly
             autoComplete="username"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={AUTHOR_EMAIL}
             className="mt-1 w-full border border-gold/30 bg-charcoal px-3 py-2 text-sm text-ivory"
           />
         </label>

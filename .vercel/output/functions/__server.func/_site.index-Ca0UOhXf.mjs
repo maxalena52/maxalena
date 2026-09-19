@@ -1,9 +1,9 @@
 import { r as statusLabel } from "./_ssr/urls-BA2l0Qq9.mjs";
 import { r as require_jsx_runtime } from "./_libs/react+tanstack__react-query.mjs";
 import { v as Link } from "./_libs/@tanstack/react-router+[...].mjs";
-import { a as useLibrary, c as featuredBook, d as parseReviews, o as amazonUrl, p as tropesList, s as authorCopy, u as groupBooks, v as inferGenre } from "./_ssr/router-BNnudyjE.mjs";
-import { n as BookGridSkeleton, t as BookCard } from "./_ssr/book-skeleton-DZyfH3_r.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_site.index-PhiDNjt5.js
+import { a as useLibrary, c as featuredBook, d as parseReviews, o as amazonUrl, p as tropesList, s as authorCopy, u as groupBooks, v as inferGenre } from "./_ssr/router-DFnBLKVI.mjs";
+import { n as BookGridSkeleton, t as BookCard } from "./_ssr/book-skeleton-Bs9eQxel.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/_site.index-Ca0UOhXf.js
 var import_jsx_runtime = require_jsx_runtime();
 function HomePage() {
 	const { books, characters, settings, loading, error, refetch } = useLibrary();

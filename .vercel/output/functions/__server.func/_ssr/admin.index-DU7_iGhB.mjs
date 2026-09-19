@@ -3,7 +3,7 @@ import { t as getSupabase } from "./supabase-BbIcayfE.mjs";
 import { t as isValidHttpUrl } from "./urls-BA2l0Qq9.mjs";
 import { i as require_react, r as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { y as useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { b as getBookPreviewForAdmin, x as saveBookPreview } from "./router-BNnudyjE.mjs";
+import { b as getBookPreviewForAdmin, x as saveBookPreview } from "./router-DFnBLKVI.mjs";
 import { t as listContactInbox } from "./contact-DLdk46mN.mjs";
 import { i as verifyAuthorSession } from "./admin-auth-BDRixHf6.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/admin.index-DU7_iGhB.js

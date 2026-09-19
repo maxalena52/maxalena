@@ -3,12 +3,11 @@ import { t as getSupabase } from "./supabase-BbIcayfE.mjs";
 import { i as require_react, r as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { v as Link, y as useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
 import { i as verifyAuthorSession, n as isAuthorEmail, t as AUTHOR_EMAIL } from "./admin-auth-BDRixHf6.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/admin.login-bcMraFed.js
+//#region node_modules/.nitro/vite/services/ssr/assets/admin.login-Nr12cXb0.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function AdminLoginPage() {
 	const navigate = useNavigate();
-	const [email, setEmail] = (0, import_react.useState)(AUTHOR_EMAIL);
 	const [password, setPassword] = (0, import_react.useState)("");
 	const [error, setError] = (0, import_react.useState)("");
 	const [notice, setNotice] = (0, import_react.useState)("");
@@ -23,7 +22,7 @@ function AdminLoginPage() {
 				await navigate({ to: "/admin" });
 			} catch {
 				await sb.auth.signOut();
-				setError("This desk is restricted to the authorised author account.");
+				setError("This desk is restricted to magdalenashade@gmail.com.");
 			}
 		});
 		return () => sub.subscription.unsubscribe();
@@ -35,16 +34,17 @@ function AdminLoginPage() {
 		setNotice("");
 		const sb = getSupabase();
 		try {
-			if (!isAuthorEmail(email)) {
-				setError("This desk is restricted to the authorised author account.");
-				return;
-			}
 			const { data, error: err } = await sb.auth.signInWithPassword({
-				email: email.trim(),
+				email: AUTHOR_EMAIL,
 				password
 			});
 			if (err || !data.session) {
 				setError("Sign-in failed. Use the email link if you do not have a password yet.");
+				return;
+			}
+			if (!isAuthorEmail(data.session.user.email)) {
+				await sb.auth.signOut();
+				setError("This desk is restricted to magdalenashade@gmail.com.");
 				return;
 			}
 			await verifyAuthorSession({ data: { accessToken: data.session.access_token } });
@@ -59,14 +59,8 @@ function AdminLoginPage() {
 		setBusy(true);
 		setError("");
 		setNotice("");
-		const address = email.trim();
-		if (!isAuthorEmail(address)) {
-			setError("This desk is restricted to the authorised author account.");
-			setBusy(false);
-			return;
-		}
 		const { error: err } = await getSupabase().auth.signInWithOtp({
-			email: address,
+			email: AUTHOR_EMAIL,
 			options: {
 				shouldCreateUser: true,
 				emailRedirectTo: `${window.location.origin}/admin/login`
@@ -94,9 +88,9 @@ function AdminLoginPage() {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 				className: "mt-3 text-sm leading-6 text-taupe",
 				children: [
-					"Sign in to add books, sample chapters, and characters. Only ",
+					"This desk belongs to one account only: ",
 					AUTHOR_EMAIL,
-					" can enter."
+					". Any other address is refused."
 				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
@@ -107,10 +101,9 @@ function AdminLoginPage() {
 						className: "font-ui block text-xs uppercase tracking-widest text-taupe",
 						children: ["Email", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
 							type: "email",
-							required: true,
+							readOnly: true,
 							autoComplete: "username",
-							value: email,
-							onChange: (e) => setEmail(e.target.value),
+							value: AUTHOR_EMAIL,
 							className: "mt-1 w-full border border-gold/30 bg-charcoal px-3 py-2 text-sm text-ivory"
 						})]
 					}),

@@ -1,5 +1,6 @@
-import { readdirSync } from "node:fs";
-import { join } from "node:path";
+import { readdirSync, cpSync, existsSync, mkdirSync } from "node:fs";
+import { createRequire } from "node:module";
+import { dirname, join } from "node:path";
 import type { Plugin } from "vite";
 import { defineConfig } from "vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
@@ -11,6 +12,24 @@ import { grokPwaPlugin } from "./scripts/grok-pwa-plugin.mjs";
 // @ts-expect-error JS plugin alongside the TS vite config
 import { appEnvPlugin } from "./scripts/app-env-plugin.mjs";
 import { isMigrationFile } from "./scripts/migration-plan.mjs";
+
+const require = createRequire(import.meta.url);
+const tslibEntry = require.resolve("tslib/tslib.es6.mjs");
+
+function copyTslibIntoVercelFn(): Plugin {
+  return {
+    name: "copy-tslib-into-vercel-fn",
+    apply: "build",
+    enforce: "post",
+    closeBundle() {
+      const destDir = join(process.cwd(), ".vercel/output/functions/__server.func/node_modules/tslib");
+      const srcDir = dirname(require.resolve("tslib/package.json"));
+      if (!existsSync(srcDir)) return;
+      mkdirSync(destDir, { recursive: true });
+      cpSync(srcDir, destDir, { recursive: true });
+    },
+  };
+}
 
 /** The files `src/lib/db.ts` globs — same directory, same non-recursive scope. */
 function hasGlobbedMigrations(root: string): boolean {
@@ -156,7 +175,15 @@ export default defineConfig(({ command, isPreview }) => ({
     port: 8081,
     strictPort: true,
   },
-  resolve: { tsconfigPaths: true },
+  resolve: {
+    tsconfigPaths: true,
+    alias: {
+      tslib: tslibEntry,
+    },
+  },
+  ssr: {
+    noExternal: ["tslib"],
+  },
   plugins: [
     pgliteBootstrapPlugin(),
     // Before tanstackStart so /auth/popup never falls through to the SPA.
@@ -171,11 +198,21 @@ export default defineConfig(({ command, isPreview }) => ({
       ? [
           nitro({
             preset: "vercel",
-            // Auto-registers server/middleware/* (the PWA install page +
-            // manifest + head-tag middleware). Nitro v3 defaults serverDir to
-            // false, so removing this silently unwires /?install=1 on deploys.
             serverDir: "./server",
+            hooks: {
+              compiled() {
+                const destDir = join(
+                  process.cwd(),
+                  ".vercel/output/functions/__server.func/node_modules/tslib",
+                );
+                const srcDir = dirname(require.resolve("tslib/package.json"));
+                if (!existsSync(srcDir)) return;
+                mkdirSync(destDir, { recursive: true });
+                cpSync(srcDir, destDir, { recursive: true });
+              },
+            },
           }),
+          copyTslibIntoVercelFn(),
         ]
       : []),
     viteReact(),

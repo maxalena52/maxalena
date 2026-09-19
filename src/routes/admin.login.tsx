@@ -1,7 +1,6 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { verifyAuthorSession } from "@/lib/admin-auth";
-import { getSupabase } from "@/lib/supabase";
+import { startGoogleLogin, verifyAuthorSession } from "@/lib/admin-auth";
 
 export const Route = createFileRoute("/admin/login")({
   head: () => ({
@@ -13,43 +12,27 @@ export const Route = createFileRoute("/admin/login")({
   component: AdminLoginPage,
 });
 
-const PRIVATE_DESK = "This desk is private.";
-
 function AdminLoginPage() {
-  const navigate = useNavigate();
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    const sb = getSupabase();
-    const { data: sub } = sb.auth.onAuthStateChange(async (event, session) => {
-      if (!session) return;
-      if (event !== "INITIAL_SESSION" && event !== "SIGNED_IN") return;
-      try {
-        await verifyAuthorSession({ data: { accessToken: session.access_token } });
-        await navigate({ to: "/admin" });
-      } catch {
-        await sb.auth.signOut();
-        setError(PRIVATE_DESK);
-      }
+    void verifyAuthorSession().then(() => {
+      window.location.replace("/admin");
+    }).catch(() => {
+      /* stay on login */
     });
-    return () => sub.subscription.unsubscribe();
-  }, [navigate]);
+  }, []);
 
   async function signInWithGoogle() {
     setBusy(true);
     setError("");
-    const sb = getSupabase();
-    const { error: err } = await sb.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: `${window.location.origin}/admin/login`,
-        queryParams: { prompt: "select_account" },
-      },
-    });
-    if (err) {
+    try {
+      const { url } = await startGoogleLogin();
+      window.location.href = url;
+    } catch (err) {
       setBusy(false);
-      setError("Google sign-in is not available yet.");
+      setError(err instanceof Error ? err.message : "Google sign-in is not configured on Vercel yet.");
     }
   }
 

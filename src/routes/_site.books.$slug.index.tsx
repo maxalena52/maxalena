@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { WarningPanel } from "@/components/warning-panel";
 import { amazonUrl, goodreadsUrl, tropesList, warningsList } from "@/lib/content";
+import { coverSrc } from "@/lib/covers";
 import { characterDisplayName, characterPublicCopy, cleanText, inferGenre } from "@/lib/copy";
 import { useLibrary } from "@/lib/use-library";
 import { statusLabel } from "@/lib/urls";
@@ -97,8 +98,8 @@ function BookLoaded({
 
       <div className="grid gap-10 md:grid-cols-[280px_1fr]">
         <div className="aspect-cover overflow-hidden bg-charcoal">
-          {book.cover_url ? (
-            <img src={book.cover_url} alt={`Cover of ${book.title}`} className="h-full w-full object-cover" />
+          {coverSrc(book) ? (
+            <img src={coverSrc(book)!} alt={`Cover of ${book.title}`} className="h-full w-full object-cover" />
           ) : (
             <div className="font-display flex h-full items-center justify-center text-5xl text-gold">ML</div>
           )}

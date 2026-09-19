@@ -5,18 +5,7 @@ import { n as createMemoryHistory } from "../_libs/tanstack__history.mjs";
 import { a as getOrigin, c as createSerializationAdapter, d as toCrossJSONAsync, f as toCrossJSONStream, i as getNormalizedURL, l as makeSerovalPlugin, n as mergeHeaders, o as defaultSerovalPlugins, r as attachRouterServerSsrUtils, s as createRawStreamRPCPlugin, t as waitForRequest, u as fromJSON } from "../_libs/@tanstack/router-core+[...].mjs";
 import { i as toResponse, n as parseCookies, r as setCookie, t as H3Event } from "../_libs/h3-v2+rou3.mjs";
 import { AsyncLocalStorage } from "node:async_hooks";
-//#region node_modules/.nitro/vite/services/ssr/index.js
-var ssr_exports = /* @__PURE__ */ __exportAll$1({
-	a: () => __exportAll,
-	createServerEntry: () => createServerEntry,
-	default: () => server_default,
-	i: () => getServerFnById,
-	n: () => createServerFn,
-	r: () => TSS_SERVER_FUNCTION,
-	t: () => server_exports
-});
-require_react();
-var import_jsx_runtime = require_jsx_runtime();
+//#region node_modules/.nitro/vite/services/ssr/assets/rolldown-runtime-D7D4PA-g.js
 var __defProp = Object.defineProperty;
 var __exportAll = (all, no_symbols) => {
 	let target = {};
@@ -27,6 +16,18 @@ var __exportAll = (all, no_symbols) => {
 	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
 	return target;
 };
+//#endregion
+//#region node_modules/.nitro/vite/services/ssr/index.js
+var ssr_exports = /* @__PURE__ */ __exportAll$1({
+	createServerEntry: () => createServerEntry,
+	default: () => server_default,
+	i: () => getServerFnById,
+	n: () => createServerFn,
+	r: () => TSS_SERVER_FUNCTION,
+	t: () => server_exports
+});
+require_react();
+var import_jsx_runtime = require_jsx_runtime();
 function StartServer(props) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RouterProvider, { router: props.router });
 }
@@ -139,7 +140,7 @@ var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 * the dev styles URL for route-scoped CSS collection.
 */
 async function getStartManifest(matchedRoutes) {
-	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-IU3tEJ1R.mjs");
+	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-CXmYijUO.mjs");
 	const startManifest = tsrStartManifest();
 	let routes = startManifest.routes;
 	routes[rootRouteId];
@@ -169,7 +170,7 @@ var manifest = {
 	},
 	"3e9c412529332624378b47a398a3837b8fb6a9cd5cedee984e2fe75d30f864fc": {
 		functionName: "getBookPreviewForAdmin_createServerFn_handler",
-		importer: () => import("./preview-OBlNnJhz.mjs")
+		importer: () => import("./preview-DkmNP3Cv.mjs")
 	},
 	"4fe0013fec0a294969df4d2a162467d5535e7a51cf4e61734306d925b14c49f5": {
 		functionName: "verifyAuthorSession_createServerFn_handler",
@@ -177,15 +178,15 @@ var manifest = {
 	},
 	"65163f1efe7f467f3048c74544855a544889bb3070261531c8e3a9a9dea903f1": {
 		functionName: "saveBookPreview_createServerFn_handler",
-		importer: () => import("./preview-OBlNnJhz.mjs")
+		importer: () => import("./preview-DkmNP3Cv.mjs")
 	},
 	"6b32fc90e41e8cdeb5a3034277092aae86a0ead42932a2492d012936580e9fd8": {
 		functionName: "submitContact_createServerFn_handler",
-		importer: () => import("./contact-DY6ydO1a.mjs")
+		importer: () => import("./contact-DBc3SHsF.mjs")
 	},
 	"8c44b13b2a9683b3b5c14edda01b98072cd02fccd11556aab71b7b1c804098cf": {
 		functionName: "getBookPreview_createServerFn_handler",
-		importer: () => import("./preview-OBlNnJhz.mjs")
+		importer: () => import("./preview-DkmNP3Cv.mjs")
 	},
 	"989ae3db141d4a3e6bc89ec734d7f1fdbadf07996c774c799162525bf5024d8c": {
 		functionName: "finishGoogleLogin_createServerFn_handler",
@@ -193,7 +194,11 @@ var manifest = {
 	},
 	"9ac0ba5cb4789e20ebe96a0213d2b03c258cf8e258bc124a7dcb39c0c766eb11": {
 		functionName: "listContactInbox_createServerFn_handler",
-		importer: () => import("./contact-DY6ydO1a.mjs")
+		importer: () => import("./contact-DBc3SHsF.mjs")
+	},
+	"d021e94b4de027a0768936676c61c2d8e816800f370a1bf82f9a8fdc06242f01": {
+		functionName: "uploadBookCover_createServerFn_handler",
+		importer: () => import("./covers-A3t-gI6Y.mjs")
 	}
 };
 async function getServerFnById(id, access) {
@@ -1463,7 +1468,7 @@ var getBaseManifest = getProdBaseManifest;
 var createEarlyHintsForRequest = createEarlyHintsCollector;
 async function loadEntries() {
 	const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-		import("./router-6E2B80Am.mjs").then((n) => n.t),
+		import("./router-DJJGInlL.mjs").then((n) => n.t),
 		import("./start-5Z2QO8AU.mjs"),
 		import("./empty-plugin-adapters-D9UWiqvJ.mjs")
 	]);
@@ -1914,4 +1919,4 @@ function createServerEntry(entry) {
 }
 var server_default = createServerEntry({ fetch });
 //#endregion
-export { __exportAll as a, createServerEntry, server_default as default, getServerFnById as i, createServerFn as n, ssr_exports as o, TSS_SERVER_FUNCTION as r, server_exports as t };
+export { ssr_exports as a, createServerEntry, server_default as default, getServerFnById as i, createServerFn as n, __exportAll as o, TSS_SERVER_FUNCTION as r, server_exports as t };

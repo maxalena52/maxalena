@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireAuthor } from "./admin-auth";
+import { coverSrc } from "./covers";
 import { getSupabase } from "./supabase";
 import { isValidHttpUrl } from "./urls";
 
@@ -140,7 +141,7 @@ export const getBookPreview = createServerFn({ method: "POST" })
       found: true,
       slug: book.slug,
       title: book.title,
-      coverUrl: book.cover_url,
+      coverUrl: coverSrc(book) || book.cover_url,
       amazonUrl,
       patreonUrl,
       readingUrl,

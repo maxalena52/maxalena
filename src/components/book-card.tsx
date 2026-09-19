@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { Book, SiteSettings } from "@/lib/types";
 import { amazonUrl, tropesList } from "@/lib/content";
+import { coverSrc } from "@/lib/covers";
 import { inferGenre } from "@/lib/copy";
 import { statusLabel } from "@/lib/urls";
 
@@ -10,14 +11,15 @@ export function BookCard({ book }: { book: Book; settings?: SiteSettings }) {
   const amazon = amazonUrl(book);
   const coming = status === "Coming Soon";
   const genre = inferGenre(book.title, book.tropes, book.status);
+  const cover = coverSrc(book);
 
   return (
     <article className="card-frame group flex h-full flex-col overflow-hidden">
       <Link to="/books/$slug" params={{ slug: book.slug }} className="block no-underline" aria-label={book.title}>
         <div className="relative aspect-cover overflow-hidden bg-charcoal">
-          {book.cover_url ? (
+          {cover ? (
             <img
-              src={book.cover_url}
+              src={cover}
               alt={`Cover of ${book.title}`}
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"

@@ -32,7 +32,7 @@ async function signPayload(emailHash, exp) {
 	return `${body}.${await hmacHex(secret, body)}`;
 }
 async function readDeskCookie() {
-	const { getCookie } = await import("./ssr.mjs").then((n) => n.o).then((n) => n.t);
+	const { getCookie } = await import("./ssr.mjs").then((n) => n.a).then((n) => n.t);
 	const raw = getCookie(DESK_COOKIE);
 	if (!raw) return null;
 	const secret = deskSecret();
@@ -50,7 +50,7 @@ async function readDeskCookie() {
 	};
 }
 async function writeDeskCookie() {
-	const { setCookie } = await import("./ssr.mjs").then((n) => n.o).then((n) => n.t);
+	const { setCookie } = await import("./ssr.mjs").then((n) => n.a).then((n) => n.t);
 	setCookie(DESK_COOKIE, await signPayload(AUTHOR_EMAIL_SHA256, Date.now() + MAX_AGE_SEC * 1e3), {
 		httpOnly: true,
 		secure: true,
@@ -60,7 +60,7 @@ async function writeDeskCookie() {
 	});
 }
 async function clearAuthCookies() {
-	const { setCookie } = await import("./ssr.mjs").then((n) => n.o).then((n) => n.t);
+	const { setCookie } = await import("./ssr.mjs").then((n) => n.a).then((n) => n.t);
 	setCookie(DESK_COOKIE, "", {
 		httpOnly: true,
 		secure: true,
@@ -78,7 +78,7 @@ async function clearAuthCookies() {
 }
 async function requestOrigin() {
 	try {
-		const { getRequest } = await import("./ssr.mjs").then((n) => n.o).then((n) => n.t);
+		const { getRequest } = await import("./ssr.mjs").then((n) => n.a).then((n) => n.t);
 		const req = getRequest();
 		if (req?.url) {
 			const url = new URL(req.url);
@@ -118,7 +118,7 @@ var startGoogleLogin = createServerFn({ method: "POST" }).handler(startGoogleLog
 	const { clientId } = googleCreds();
 	if (!clientId || !deskSecret()) throw new Error("Google sign-in is not configured on Vercel yet.");
 	const { randomBytes } = await import("node:crypto");
-	const { setCookie } = await import("./ssr.mjs").then((n) => n.o).then((n) => n.t);
+	const { setCookie } = await import("./ssr.mjs").then((n) => n.a).then((n) => n.t);
 	const state = randomBytes(16).toString("hex");
 	setCookie(STATE_COOKIE, state, {
 		httpOnly: true,
@@ -148,7 +148,7 @@ var finishGoogleLogin = createServerFn({ method: "POST" }).validator((input) => 
 }).parse(input)).handler(finishGoogleLogin_createServerFn_handler, async ({ data }) => {
 	const { clientId, clientSecret } = googleCreds();
 	if (!clientId || !clientSecret || !deskSecret()) throw new Error("Google sign-in is not configured on Vercel yet.");
-	const { getCookie } = await import("./ssr.mjs").then((n) => n.o).then((n) => n.t);
+	const { getCookie } = await import("./ssr.mjs").then((n) => n.a).then((n) => n.t);
 	const expectedState = getCookie(STATE_COOKIE);
 	if (!expectedState || expectedState !== data.state) throw new Error("Sign-in expired. Try again.");
 	const origin = await requestOrigin();

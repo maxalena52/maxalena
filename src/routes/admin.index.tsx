@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { listContactInbox } from "@/lib/contact";
 import { signOutDesk, verifyAuthorSession } from "@/lib/admin-auth";
+import { coverSrc, uploadBookCover } from "@/lib/covers";
 import { getBookPreviewForAdmin, saveBookPreview } from "@/lib/preview";
 import { getSupabase } from "@/lib/supabase";
 import { isValidHttpUrl } from "@/lib/urls";
@@ -405,7 +406,36 @@ function BookEditor({
       <Field label="Title" value={book.title} onChange={(v) => onChange({ ...book, title: v })} />
       <Field label="Slug" value={book.slug} onChange={(v) => onChange({ ...book, slug: v })} />
       <Field label="Status" value={book.status || ""} onChange={(v) => onChange({ ...book, status: v, category: v })} />
-      <Field label="Cover URL" value={book.cover_url || ""} onChange={(v) => onChange({ ...book, cover_url: v })} />
+      <Field label="Cover file on GitHub" value={book.cover_url || ""} onChange={(v) => onChange({ ...book, cover_url: v })} />
+      <label className="block text-sm text-taupe">
+        Upload cover
+        <input
+          className="mt-1 block w-full text-ivory"
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          onChange={(e) => {
+            const file = e.target.files?.[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = () => {
+              const dataBase64 = String(reader.result || "");
+              void uploadBookCover({
+                data: { slug: book.slug, filename: file.name, dataBase64 },
+              })
+                .then((res) => {
+                  onChange({ ...book, cover_url: res.coverUrl });
+                })
+                .catch((err: unknown) => {
+                  window.alert(err instanceof Error ? err.message : "Cover upload failed.");
+                });
+            };
+            reader.readAsDataURL(file);
+          }}
+        />
+      </label>
+      {coverSrc(book) && (
+        <img src={coverSrc(book)!} alt="" className="mt-2 h-40 w-auto object-cover" />
+      )}
       <Field label="Hook" value={book.blurb || ""} onChange={(v) => onChange({ ...book, blurb: v })} area />
       <Field label="Synopsis" value={book.synopsis || ""} onChange={(v) => onChange({ ...book, synopsis: v })} area />
       <Field

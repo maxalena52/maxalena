@@ -10,6 +10,7 @@ import {
   amazonUrl,
 } from "@/lib/content";
 import { inferGenre } from "@/lib/copy";
+import { coverSrc } from "@/lib/covers";
 import { useLibrary } from "@/lib/use-library";
 import { statusLabel } from "@/lib/urls";
 
@@ -71,8 +72,8 @@ function HomePage() {
           <div className="card-frame grid gap-8 p-6 md:grid-cols-[280px_1fr] md:p-8">
             <Link to="/books/$slug" params={{ slug: featured.slug }} className="block">
               <div className="aspect-cover overflow-hidden bg-charcoal">
-                {featured.cover_url ? (
-                  <img src={featured.cover_url} alt={`Cover of ${featured.title}`} className="h-full w-full object-cover" />
+                {coverSrc(featured) ? (
+                  <img src={coverSrc(featured)!} alt={`Cover of ${featured.title}`} className="h-full w-full object-cover" />
                 ) : null}
               </div>
             </Link>

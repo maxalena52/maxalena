@@ -20,7 +20,6 @@ const FACTS = [
   "Writes best between midnight and 3am.",
   "Keeps a playlist for every book—and every character.",
   "Treats the villain’s arc as seriously as the hero’s.",
-  "Will defend enemies-to-lovers as a superior trope in any debate.",
   "Her characters argue with her constantly. She lets them win sometimes.",
 ];
 

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Maxalena L.">
+  <rect width="32" height="32" fill="#080808"/>
+  <!-- Bold serif L: thick stem + baseline, readable at 16px -->
+  <path fill="#D4AF37" d="M9 5.5h7.2v2.2H13.4V22.2H23V26.5H9z"/>
+</svg>

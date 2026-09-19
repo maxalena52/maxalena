@@ -46,6 +46,9 @@ export function SiteFooter() {
             <li>
               <Link to="/copyright">Copyright and Takedown</Link>
             </li>
+            <li>
+              <Link to="/admin/login">Author desk</Link>
+            </li>
           </ul>
         </div>
         <div>

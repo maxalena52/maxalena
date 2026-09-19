@@ -13,7 +13,7 @@ export function getSupabase(): SupabaseClient {
       auth: {
         persistSession: typeof window !== "undefined",
         autoRefreshToken: typeof window !== "undefined",
-        detectSessionInUrl: false,
+        detectSessionInUrl: typeof window !== "undefined",
       },
     });
   }

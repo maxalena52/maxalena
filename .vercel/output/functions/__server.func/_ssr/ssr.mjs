@@ -88,7 +88,7 @@ var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 * the dev styles URL for route-scoped CSS collection.
 */
 async function getStartManifest(matchedRoutes) {
-	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-C_WA_-LI.mjs");
+	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-ifb0rDVB.mjs");
 	const startManifest = tsrStartManifest();
 	let routes = startManifest.routes;
 	routes[rootRouteId];
@@ -110,27 +110,27 @@ async function getStartManifest(matchedRoutes) {
 var manifest = {
 	"3e9c412529332624378b47a398a3837b8fb6a9cd5cedee984e2fe75d30f864fc": {
 		functionName: "getBookPreviewForAdmin_createServerFn_handler",
-		importer: () => import("./preview-BmozIfL6.mjs")
+		importer: () => import("./preview-BQwTXiCj.mjs")
 	},
 	"4fe0013fec0a294969df4d2a162467d5535e7a51cf4e61734306d925b14c49f5": {
 		functionName: "verifyAuthorSession_createServerFn_handler",
-		importer: () => import("./admin-auth-J-tpPn29.mjs")
+		importer: () => import("./admin-auth-bGEZizS4.mjs")
 	},
 	"65163f1efe7f467f3048c74544855a544889bb3070261531c8e3a9a9dea903f1": {
 		functionName: "saveBookPreview_createServerFn_handler",
-		importer: () => import("./preview-BmozIfL6.mjs")
+		importer: () => import("./preview-BQwTXiCj.mjs")
 	},
 	"6b32fc90e41e8cdeb5a3034277092aae86a0ead42932a2492d012936580e9fd8": {
 		functionName: "submitContact_createServerFn_handler",
-		importer: () => import("./contact-YNL0WtKB.mjs")
+		importer: () => import("./contact-Lb-cZF-y.mjs")
 	},
 	"8c44b13b2a9683b3b5c14edda01b98072cd02fccd11556aab71b7b1c804098cf": {
 		functionName: "getBookPreview_createServerFn_handler",
-		importer: () => import("./preview-BmozIfL6.mjs")
+		importer: () => import("./preview-BQwTXiCj.mjs")
 	},
 	"9ac0ba5cb4789e20ebe96a0213d2b03c258cf8e258bc124a7dcb39c0c766eb11": {
 		functionName: "listContactInbox_createServerFn_handler",
-		importer: () => import("./contact-YNL0WtKB.mjs")
+		importer: () => import("./contact-Lb-cZF-y.mjs")
 	}
 };
 async function getServerFnById(id, access) {
@@ -1400,7 +1400,7 @@ var getBaseManifest = getProdBaseManifest;
 var createEarlyHintsForRequest = createEarlyHintsCollector;
 async function loadEntries() {
 	const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-		import("./router-D2LJUtFl.mjs").then((n) => n.t),
+		import("./router-BNnudyjE.mjs").then((n) => n.t),
 		import("./start-5Z2QO8AU.mjs"),
 		import("./empty-plugin-adapters-D9UWiqvJ.mjs")
 	]);

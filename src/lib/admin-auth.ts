@@ -2,7 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { getSupabase } from "./supabase";
 
-const AUTHOR_EMAIL = "magdalenashade@gmail.com";
+export const AUTHOR_EMAIL = "magdalenashade@gmail.com";
 
 export function isAuthorEmail(email?: string | null) {
   return (email || "").trim().toLowerCase() === AUTHOR_EMAIL;

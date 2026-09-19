@@ -10,7 +10,7 @@ const ALLOWED = new Set(["jpg", "jpeg", "png", "webp"]);
 const BY_SLUG: Record<string, string> = {
   "blood-covenant": "/covers/blood-covenant.jpg",
   "ceo-s-hostile-take-over": "/covers/ceo-s-hostile-take-over.jpg",
-  "office-hours": "/covers/office-hours.jpg",
+  "office-hours": "/covers/office-hours.png",
   "grim-reaper-chaos": "/covers/grim-reaper-chaos.png",
   "the-dragon-commanders-captive": "/covers/the-dragon-commanders-captive.jpg",
 };

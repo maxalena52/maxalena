@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-BkSabwWG.js";import{i as t}from"./index-__IsASGL.js";var n=e(),r=()=>(0,n.jsx)(t,{});export{r as component};

@@ -1,10 +1,10 @@
 import { r as statusLabel } from "./_ssr/urls-BA2l0Qq9.mjs";
 import { r as require_jsx_runtime } from "./_libs/react+tanstack__react-query.mjs";
 import { v as Link } from "./_libs/@tanstack/react-router+[...].mjs";
-import { a as useLibrary, c as featuredBook, d as parseReviews, o as amazonUrl, p as tropesList, s as authorCopy, u as groupBooks, v as inferGenre } from "./_ssr/router-DJJGInlL.mjs";
-import { t as coverSrc } from "./_ssr/covers-BuNMw5o3.mjs";
-import { n as BookGridSkeleton, t as BookCard } from "./_ssr/book-skeleton-B0xUYz5K.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_site.index-D3i6--3h.js
+import { a as useLibrary, c as featuredBook, d as parseReviews, o as amazonUrl, p as tropesList, s as authorCopy, u as groupBooks, v as inferGenre } from "./_ssr/router-BlRO6hVU.mjs";
+import { t as coverSrc } from "./_ssr/covers-xPA6G3At.mjs";
+import { n as BookGridSkeleton, t as BookCard } from "./_ssr/book-skeleton-Czofxa-k.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/_site.index-BB1u5m31.js
 var import_jsx_runtime = require_jsx_runtime();
 function HomePage() {
 	const { books, characters, settings, loading, error, refetch } = useLibrary();

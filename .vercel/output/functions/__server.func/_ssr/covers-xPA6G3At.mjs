@@ -1,11 +1,11 @@
 import { n as createServerFn } from "./ssr.mjs";
 import { t as createSsrRpc } from "./createSsrRpc-D75-wYbG.mjs";
 import { i as string, r as object } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/covers-BuNMw5o3.js
+//#region node_modules/.nitro/vite/services/ssr/assets/covers-xPA6G3At.js
 var BY_SLUG = {
 	"blood-covenant": "/covers/blood-covenant.jpg",
 	"ceo-s-hostile-take-over": "/covers/ceo-s-hostile-take-over.jpg",
-	"office-hours": "/covers/office-hours.png",
+	"office-hours": "/covers/office-hours.jpg",
 	"grim-reaper-chaos": "/covers/grim-reaper-chaos.png",
 	"the-dragon-commanders-captive": "/covers/the-dragon-commanders-captive.jpg"
 };

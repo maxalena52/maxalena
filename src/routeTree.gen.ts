@@ -21,6 +21,7 @@ import { Route as SiteCopyrightRouteImport } from './routes/_site.copyright'
 import { Route as SitePrivacyRouteImport } from './routes/_site.privacy'
 import { Route as SiteTermsRouteImport } from './routes/_site.terms'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminCallbackRouteImport } from './routes/admin.callback'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as SiteBooksIndexRouteImport } from './routes/_site.books.index'
 import { Route as SiteBooksSlugRouteImport } from './routes/_site.books.$slug'
@@ -86,6 +87,11 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminCallbackRoute = AdminCallbackRouteImport.update({
+  id: '/callback',
+  path: '/callback',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminLoginRoute = AdminLoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -123,6 +129,7 @@ export interface FileRoutesByFullPath {
   '/copyright': typeof SiteCopyrightRoute
   '/privacy': typeof SitePrivacyRoute
   '/terms': typeof SiteTermsRoute
+  '/admin/callback': typeof AdminCallbackRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/': typeof AdminIndexRoute
   '/books/$slug': typeof SiteBooksSlugRouteWithChildren
@@ -138,6 +145,7 @@ export interface FileRoutesByTo {
   '/copyright': typeof SiteCopyrightRoute
   '/privacy': typeof SitePrivacyRoute
   '/terms': typeof SiteTermsRoute
+  '/admin/callback': typeof AdminCallbackRoute
   '/admin/login': typeof AdminLoginRoute
   '/': typeof SiteIndexRoute
   '/admin': typeof AdminIndexRoute
@@ -157,6 +165,7 @@ export interface FileRoutesById {
   '/_site/copyright': typeof SiteCopyrightRoute
   '/_site/privacy': typeof SitePrivacyRoute
   '/_site/terms': typeof SiteTermsRoute
+  '/admin/callback': typeof AdminCallbackRoute
   '/admin/login': typeof AdminLoginRoute
   '/_site/': typeof SiteIndexRoute
   '/admin/': typeof AdminIndexRoute
@@ -178,6 +187,7 @@ export interface FileRouteTypes {
     | '/copyright'
     | '/privacy'
     | '/terms'
+    | '/admin/callback'
     | '/admin/login'
     | '/admin/'
     | '/books/$slug'
@@ -193,6 +203,7 @@ export interface FileRouteTypes {
     | '/copyright'
     | '/privacy'
     | '/terms'
+    | '/admin/callback'
     | '/admin/login'
     | '/'
     | '/admin'
@@ -211,6 +222,7 @@ export interface FileRouteTypes {
     | '/_site/copyright'
     | '/_site/privacy'
     | '/_site/terms'
+    | '/admin/callback'
     | '/admin/login'
     | '/_site/'
     | '/admin/'
@@ -311,6 +323,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/callback': {
+      id: '/admin/callback'
+      path: '/callback'
+      fullPath: '/admin/callback'
+      preLoaderRoute: typeof AdminCallbackRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/login': {
       id: '/admin/login'
       path: '/login'
@@ -404,11 +423,13 @@ const SiteRouteChildren: SiteRouteChildren = {
 const SiteRouteWithChildren = SiteRoute._addFileChildren(SiteRouteChildren)
 
 interface AdminRouteChildren {
+  AdminCallbackRoute: typeof AdminCallbackRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminCallbackRoute: AdminCallbackRoute,
   AdminLoginRoute: AdminLoginRoute,
   AdminIndexRoute: AdminIndexRoute,
 }

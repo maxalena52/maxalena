@@ -1,20 +1,32 @@
-import { r as __exportAll } from "../_runtime.mjs";
+import { r as __exportAll$1 } from "../_runtime.mjs";
 import { i as require_react, r as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { A as executeRewriteInput, D as resolveManifestAssetLink, E as getStylesheetHref, F as isResolvedRedirect, I as parseRedirect, O as resolveManifestCssLink, P as isRedirect, R as rootRouteId, T as getScriptPreloadAttrs, a as isSsrResponse, c as stripSsrResponseBody, f as RouterProvider, i as disposeSsrResponseDetached, j as invariant, k as _getRenderedMatches, n as bindSsrResponseToRequest, o as normalizeSsrResponse, r as defineHandlerCallback, s as replaceSsrResponse, t as renderRouterToStream, z as isNotFound } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as createMemoryHistory } from "../_libs/tanstack__history.mjs";
 import { a as getOrigin, c as createSerializationAdapter, d as toCrossJSONAsync, f as toCrossJSONStream, i as getNormalizedURL, l as makeSerovalPlugin, n as mergeHeaders, o as defaultSerovalPlugins, r as attachRouterServerSsrUtils, s as createRawStreamRPCPlugin, t as waitForRequest, u as fromJSON } from "../_libs/@tanstack/router-core+[...].mjs";
-import { n as toResponse, t as H3Event } from "../_libs/h3-v2+rou3.mjs";
+import { i as toResponse, n as parseCookies, r as setCookie, t as H3Event } from "../_libs/h3-v2+rou3.mjs";
 import { AsyncLocalStorage } from "node:async_hooks";
 //#region node_modules/.nitro/vite/services/ssr/index.js
-var ssr_exports = /* @__PURE__ */ __exportAll({
+var ssr_exports = /* @__PURE__ */ __exportAll$1({
+	a: () => __exportAll,
 	createServerEntry: () => createServerEntry,
 	default: () => server_default,
-	n: () => TSS_SERVER_FUNCTION,
-	r: () => getServerFnById,
-	t: () => createServerFn
+	i: () => getServerFnById,
+	n: () => createServerFn,
+	r: () => TSS_SERVER_FUNCTION,
+	t: () => server_exports
 });
 require_react();
 var import_jsx_runtime = require_jsx_runtime();
+var __defProp = Object.defineProperty;
+var __exportAll = (all, no_symbols) => {
+	let target = {};
+	for (var name in all) __defProp(target, name, {
+		get: all[name],
+		enumerable: true
+	});
+	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
+	return target;
+};
 function StartServer(props) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RouterProvider, { router: props.router });
 }
@@ -74,6 +86,45 @@ function getH3Event() {
 	if (!event) throw new Error(`No StartEvent found in AsyncLocalStorage. Make sure you are using the function within the server runtime.`);
 	return event.h3Event;
 }
+function getRequest() {
+	return getH3Event().req;
+}
+/**
+* Parse the request to get HTTP Cookie header string and return an object of all cookie name-value pairs.
+* @returns Object of cookie name-value pairs
+* ```ts
+* const cookies = getCookies()
+* ```
+*/
+function getCookies() {
+	const cookies = parseCookies(getH3Event());
+	const definedCookies = Object.create(null);
+	for (const [name, value] of Object.entries(cookies)) if (value !== void 0) definedCookies[name] = value;
+	return definedCookies;
+}
+/**
+* Get a cookie value by name.
+* @param name Name of the cookie to get
+* @returns {*} Value of the cookie (String or undefined)
+* ```ts
+* const authorization = getCookie('Authorization')
+* ```
+*/
+function getCookie(name) {
+	return getCookies()[name];
+}
+/**
+* Set a cookie value by name.
+* @param name Name of the cookie to set
+* @param value Value of the cookie to set
+* @param options {CookieSerializeOptions} Options for serializing the cookie
+* ```ts
+* setCookie('Authorization', '1234567')
+* ```
+*/
+function setCookie$1(name, value, options) {
+	setCookie(getH3Event(), name, value, options);
+}
 function getResponse() {
 	return getH3Event().res;
 }
@@ -88,7 +139,7 @@ var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 * the dev styles URL for route-scoped CSS collection.
 */
 async function getStartManifest(matchedRoutes) {
-	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-B5mjIlpP.mjs");
+	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-IU3tEJ1R.mjs");
 	const startManifest = tsrStartManifest();
 	let routes = startManifest.routes;
 	routes[rootRouteId];
@@ -108,29 +159,41 @@ async function getStartManifest(matchedRoutes) {
 	};
 }
 var manifest = {
+	"0bd0c6478faa37de4c26bff83343a39c5d9aa9fa49fb5a4a802f94361cf8bfb0": {
+		functionName: "startGoogleLogin_createServerFn_handler",
+		importer: () => import("./admin-auth-CeIbXivQ.mjs")
+	},
+	"388bc2e817d189359a2c7def1a0122d76e904ddbbd8bc1e23b044095aa5e6c18": {
+		functionName: "signOutDesk_createServerFn_handler",
+		importer: () => import("./admin-auth-CeIbXivQ.mjs")
+	},
 	"3e9c412529332624378b47a398a3837b8fb6a9cd5cedee984e2fe75d30f864fc": {
 		functionName: "getBookPreviewForAdmin_createServerFn_handler",
-		importer: () => import("./preview-D3UB_JuT.mjs")
+		importer: () => import("./preview-OBlNnJhz.mjs")
 	},
 	"4fe0013fec0a294969df4d2a162467d5535e7a51cf4e61734306d925b14c49f5": {
 		functionName: "verifyAuthorSession_createServerFn_handler",
-		importer: () => import("./admin-auth-sDS1hE2E.mjs")
+		importer: () => import("./admin-auth-CeIbXivQ.mjs")
 	},
 	"65163f1efe7f467f3048c74544855a544889bb3070261531c8e3a9a9dea903f1": {
 		functionName: "saveBookPreview_createServerFn_handler",
-		importer: () => import("./preview-D3UB_JuT.mjs")
+		importer: () => import("./preview-OBlNnJhz.mjs")
 	},
 	"6b32fc90e41e8cdeb5a3034277092aae86a0ead42932a2492d012936580e9fd8": {
 		functionName: "submitContact_createServerFn_handler",
-		importer: () => import("./contact-BcZH8po3.mjs")
+		importer: () => import("./contact-DY6ydO1a.mjs")
 	},
 	"8c44b13b2a9683b3b5c14edda01b98072cd02fccd11556aab71b7b1c804098cf": {
 		functionName: "getBookPreview_createServerFn_handler",
-		importer: () => import("./preview-D3UB_JuT.mjs")
+		importer: () => import("./preview-OBlNnJhz.mjs")
+	},
+	"989ae3db141d4a3e6bc89ec734d7f1fdbadf07996c774c799162525bf5024d8c": {
+		functionName: "finishGoogleLogin_createServerFn_handler",
+		importer: () => import("./admin-auth-CeIbXivQ.mjs")
 	},
 	"9ac0ba5cb4789e20ebe96a0213d2b03c258cf8e258bc124a7dcb39c0c766eb11": {
 		functionName: "listContactInbox_createServerFn_handler",
-		importer: () => import("./contact-BcZH8po3.mjs")
+		importer: () => import("./contact-DY6ydO1a.mjs")
 	}
 };
 async function getServerFnById(id, access) {
@@ -1400,7 +1463,7 @@ var getBaseManifest = getProdBaseManifest;
 var createEarlyHintsForRequest = createEarlyHintsCollector;
 async function loadEntries() {
 	const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-		import("./router-BRSjo72G.mjs").then((n) => n.t),
+		import("./router-6E2B80Am.mjs").then((n) => n.t),
 		import("./start-5Z2QO8AU.mjs"),
 		import("./empty-plugin-adapters-D9UWiqvJ.mjs")
 	]);
@@ -1838,6 +1901,11 @@ async function handleServerRoutes({ getRouter, request, url, executeRouter, cont
 	}
 	return normalizeSsrResponse(response);
 }
+var server_exports = /* @__PURE__ */ __exportAll({
+	getCookie: () => getCookie,
+	getRequest: () => getRequest,
+	setCookie: () => setCookie$1
+});
 var fetch = createStartHandler(defaultStreamHandler);
 function createServerEntry(entry) {
 	return { async fetch(...args) {
@@ -1846,4 +1914,4 @@ function createServerEntry(entry) {
 }
 var server_default = createServerEntry({ fetch });
 //#endregion
-export { createServerEntry, server_default as default, ssr_exports as i, TSS_SERVER_FUNCTION as n, getServerFnById as r, createServerFn as t };
+export { __exportAll as a, createServerEntry, server_default as default, getServerFnById as i, createServerFn as n, ssr_exports as o, TSS_SERVER_FUNCTION as r, server_exports as t };

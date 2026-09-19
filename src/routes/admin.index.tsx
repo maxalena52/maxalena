@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { listContactInbox } from "@/lib/contact";
-import { verifyAuthorSession } from "@/lib/admin-auth";
+import { signOutDesk, verifyAuthorSession } from "@/lib/admin-auth";
 import { getBookPreviewForAdmin, saveBookPreview } from "@/lib/preview";
 import { getSupabase } from "@/lib/supabase";
 import { isValidHttpUrl } from "@/lib/urls";
@@ -45,21 +45,14 @@ function AdminPage() {
   const [newCharacterName, setNewCharacterName] = useState("");
 
   useEffect(() => {
-    const sb = getSupabase();
-    void sb.auth.getSession().then(async ({ data }) => {
-      if (!data.session) {
-        void navigate({ to: "/admin/login" });
-        return;
-      }
-      try {
-        await verifyAuthorSession({ data: { accessToken: data.session.access_token } });
+    void verifyAuthorSession()
+      .then(() => {
         setReady(true);
         void load();
-      } catch {
-        await sb.auth.signOut();
+      })
+      .catch(() => {
         void navigate({ to: "/admin/login" });
-      }
-    });
+      });
   }, [navigate]);
 
   async function load() {
@@ -80,21 +73,20 @@ function AdminPage() {
     setSettings(map);
     setSubsCount(n.count || 0);
     setMsgCount(m.count || 0);
-    const { data: session } = await sb.auth.getSession();
-    if (session.session?.access_token) {
-      setToken(session.session.access_token);
-      try {
-        const rows = await listContactInbox({ data: { accessToken: session.session.access_token } });
-        setInbox(rows);
-      } catch {
-        setInbox([]);
-      }
+    setToken("desk-session-placeholder-token");
+    try {
+      const rows = await listContactInbox({ data: { accessToken: "desk-session-placeholder-token" } });
+      setInbox(rows);
+    } catch {
+      setInbox([]);
+    }
+    if (true) {
       const drafts: Record<string, PreviewDraft> = {};
       await Promise.all(
         ((b.data || []) as Book[]).map(async (book) => {
           try {
             const row = await getBookPreviewForAdmin({
-              data: { accessToken: session.session!.access_token, slug: book.slug },
+              data: { accessToken: "desk-session-placeholder-token", slug: book.slug },
             });
             drafts[book.slug] = {
               chapterOneTitle: row.chapter_one_title,
@@ -214,7 +206,7 @@ function AdminPage() {
   }
 
   async function signOut() {
-    await getSupabase().auth.signOut();
+    await signOutDesk();
     await navigate({ to: "/admin/login" });
   }
 

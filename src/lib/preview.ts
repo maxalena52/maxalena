@@ -153,7 +153,7 @@ export const saveBookPreview = createServerFn({ method: "POST" })
   .validator((input: unknown) =>
     z
       .object({
-        accessToken: z.string().min(20),
+        accessToken: z.string().min(1),
         slug: z.string().min(1).max(120),
         chapterOneTitle: z.string().max(200),
         chapterOneBody: z.string().max(MAX_BODY),
@@ -187,7 +187,7 @@ export const saveBookPreview = createServerFn({ method: "POST" })
   });
 
 export const getBookPreviewForAdmin = createServerFn({ method: "POST" })
-  .validator((input: unknown) => z.object({ accessToken: z.string().min(20), slug: z.string().min(1) }).parse(input))
+  .validator((input: unknown) => z.object({ accessToken: z.string().min(1), slug: z.string().min(1) }).parse(input))
   .handler(async ({ data }) => {
     await requireAuthor(data.accessToken);
     const { getSql } = await import("@/lib/db");

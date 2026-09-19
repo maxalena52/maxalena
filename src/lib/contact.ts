@@ -12,7 +12,7 @@ const submitSchema = z.object({
 });
 
 const tokenSchema = z.object({
-  accessToken: z.string().min(20),
+  accessToken: z.string().min(1),
 });
 
 export const submitContact = createServerFn({ method: "POST" })

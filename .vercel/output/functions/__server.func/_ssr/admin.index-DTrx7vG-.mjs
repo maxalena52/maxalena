@@ -3,10 +3,10 @@ import { t as getSupabase } from "./supabase-BbIcayfE.mjs";
 import { t as isValidHttpUrl } from "./urls-BA2l0Qq9.mjs";
 import { i as require_react, r as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { y as useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { b as getBookPreviewForAdmin, x as saveBookPreview } from "./router-DFnBLKVI.mjs";
+import { b as getBookPreviewForAdmin, x as saveBookPreview } from "./router-BRSjo72G.mjs";
 import { t as listContactInbox } from "./contact-DLdk46mN.mjs";
-import { i as verifyAuthorSession } from "./admin-auth-BDRixHf6.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/admin.index-DU7_iGhB.js
+import { n as verifyAuthorSession } from "./admin-auth-pZVjh40w.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/admin.index-DTrx7vG-.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function AdminPage() {
@@ -22,7 +22,6 @@ function AdminPage() {
 	const [inbox, setInbox] = (0, import_react.useState)([]);
 	const [previews, setPreviews] = (0, import_react.useState)({});
 	const [token, setToken] = (0, import_react.useState)("");
-	const [authorEmail, setAuthorEmail] = (0, import_react.useState)("");
 	const [newTitle, setNewTitle] = (0, import_react.useState)("");
 	const [newCharacterName, setNewCharacterName] = (0, import_react.useState)("");
 	(0, import_react.useEffect)(() => {
@@ -33,8 +32,7 @@ function AdminPage() {
 				return;
 			}
 			try {
-				const verified = await verifyAuthorSession({ data: { accessToken: data.session.access_token } });
-				setAuthorEmail(verified.email);
+				await verifyAuthorSession({ data: { accessToken: data.session.access_token } });
 				setReady(true);
 				load();
 			} catch {
@@ -196,13 +194,10 @@ function AdminPage() {
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "mb-8 flex flex-wrap items-center justify-between gap-3",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 					className: "font-display text-4xl",
 					children: "Author desk"
-				}), authorEmail && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-					className: "mt-1 text-sm text-taupe",
-					children: ["Signed in as ", authorEmail]
-				})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+				}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 					className: "btn btn-ghost",
 					onClick: () => void signOut(),
 					type: "button",

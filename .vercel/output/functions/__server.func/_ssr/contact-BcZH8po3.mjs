@@ -2,8 +2,8 @@ import { t as getSupabase } from "./supabase-BbIcayfE.mjs";
 import { t as createServerFn } from "./ssr.mjs";
 import { i as string, r as object } from "../_libs/zod.mjs";
 import { t as createServerRpc } from "./createServerRpc-A6pJPYTF.mjs";
-import { r as requireAuthor } from "./admin-auth-BDRixHf6.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/contact-Lb-cZF-y.js
+import { t as requireAuthor } from "./admin-auth-pZVjh40w.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/contact-BcZH8po3.js
 var submitSchema = object({
 	name: string().trim().min(1).max(120),
 	email: string().trim().email().max(200),

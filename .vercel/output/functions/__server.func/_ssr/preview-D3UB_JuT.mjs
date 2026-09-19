@@ -3,8 +3,8 @@ import { t as isValidHttpUrl } from "./urls-BA2l0Qq9.mjs";
 import { t as createServerFn } from "./ssr.mjs";
 import { i as string, r as object } from "../_libs/zod.mjs";
 import { t as createServerRpc } from "./createServerRpc-A6pJPYTF.mjs";
-import { r as requireAuthor } from "./admin-auth-BDRixHf6.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/preview-BQwTXiCj.js
+import { t as requireAuthor } from "./admin-auth-pZVjh40w.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/preview-D3UB_JuT.js
 var MAX_CHAPTERS = 2;
 var MAX_BODY = 8e4;
 function paragraphsOf(body) {

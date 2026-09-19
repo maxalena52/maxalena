@@ -1,1 +1,0 @@
-import{n as e,t}from"./createServerFn-Y8C0Bt3D.js";var n=`magdalenashade@gmail.com`;function r(e){return(e||``).trim().toLowerCase()===n}var i=t({method:`POST`}).handler(e(`4fe0013fec0a294969df4d2a162467d5535e7a51cf4e61734306d925b14c49f5`));export{r as n,i as r,n as t};

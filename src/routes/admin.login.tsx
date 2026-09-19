@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { AUTHOR_EMAIL, isAuthorEmail, verifyAuthorSession } from "@/lib/admin-auth";
+import { verifyAuthorSession } from "@/lib/admin-auth";
 import { getSupabase } from "@/lib/supabase";
 
 export const Route = createFileRoute("/admin/login")({
@@ -13,6 +13,8 @@ export const Route = createFileRoute("/admin/login")({
   component: AdminLoginPage,
 });
 
+const PRIVATE_DESK = "This desk is private.";
+
 function AdminLoginPage() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -23,17 +25,12 @@ function AdminLoginPage() {
     const { data: sub } = sb.auth.onAuthStateChange(async (event, session) => {
       if (!session) return;
       if (event !== "INITIAL_SESSION" && event !== "SIGNED_IN") return;
-      if (!isAuthorEmail(session.user.email)) {
-        await sb.auth.signOut();
-        setError("This desk is restricted to magdalenashade@gmail.com. Sign in with that Google account.");
-        return;
-      }
       try {
         await verifyAuthorSession({ data: { accessToken: session.access_token } });
         await navigate({ to: "/admin" });
       } catch {
         await sb.auth.signOut();
-        setError("This desk is restricted to magdalenashade@gmail.com.");
+        setError(PRIVATE_DESK);
       }
     });
     return () => sub.subscription.unsubscribe();
@@ -47,15 +44,12 @@ function AdminLoginPage() {
       provider: "google",
       options: {
         redirectTo: `${window.location.origin}/admin/login`,
-        queryParams: {
-          prompt: "select_account",
-          login_hint: AUTHOR_EMAIL,
-        },
+        queryParams: { prompt: "select_account" },
       },
     });
     if (err) {
       setBusy(false);
-      setError("Google sign-in is not available yet. The Google provider still needs to be switched on for this site.");
+      setError("Google sign-in is not available yet.");
     }
   }
 
@@ -64,7 +58,7 @@ function AdminLoginPage() {
       <p className="ornament mb-4">Private desk</p>
       <h1 className="font-display text-4xl">Author sign in</h1>
       <p className="mt-3 text-sm leading-6 text-taupe">
-        Use Google with {AUTHOR_EMAIL} only. There is no password. Any other Google account is refused.
+        Continue with Google. Only the authorised account can enter.
       </p>
       {error && <p className="mt-6 text-sm text-parchment">{error}</p>}
       <button className="btn mt-8 w-full" disabled={busy} type="button" onClick={() => void signInWithGoogle()}>

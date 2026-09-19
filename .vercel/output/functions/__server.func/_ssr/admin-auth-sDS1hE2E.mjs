@@ -2,14 +2,14 @@ import { t as getSupabase } from "./supabase-BbIcayfE.mjs";
 import { t as createServerFn } from "./ssr.mjs";
 import { i as string, r as object } from "../_libs/zod.mjs";
 import { t as createServerRpc } from "./createServerRpc-A6pJPYTF.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/admin-auth-bGEZizS4.js
-var AUTHOR_EMAIL = "magdalenashade@gmail.com";
-function isAuthorEmail(email) {
-	return (email || "").trim().toLowerCase() === AUTHOR_EMAIL;
-}
+//#region node_modules/.nitro/vite/services/ssr/assets/admin-auth-sDS1hE2E.js
+/** SHA-256 of the authorised account. Never put the address in UI or client JS. */
+var AUTHOR_EMAIL_SHA256 = "a324c53cab00a3794671e27ecc5794ef70b798231dc13d4cf93d09199c961542";
 async function requireAuthor(accessToken) {
 	const { data, error } = await getSupabase().auth.getUser(accessToken);
-	if (error || !data.user || !isAuthorEmail(data.user.email)) throw new Error("Unauthorized");
+	if (error || !data.user?.email) throw new Error("Unauthorized");
+	const { createHash } = await import("node:crypto");
+	if (createHash("sha256").update(data.user.email.trim().toLowerCase()).digest("hex") !== AUTHOR_EMAIL_SHA256) throw new Error("Unauthorized");
 	return data.user;
 }
 var verifyAuthorSession_createServerFn_handler = createServerRpc({
@@ -18,10 +18,8 @@ var verifyAuthorSession_createServerFn_handler = createServerRpc({
 	filename: "src/lib/admin-auth.ts"
 }, (opts) => verifyAuthorSession.__executeServer(opts));
 var verifyAuthorSession = createServerFn({ method: "POST" }).validator((input) => object({ accessToken: string().min(20) }).parse(input)).handler(verifyAuthorSession_createServerFn_handler, async ({ data }) => {
-	return {
-		ok: true,
-		email: (await requireAuthor(data.accessToken)).email || AUTHOR_EMAIL
-	};
+	await requireAuthor(data.accessToken);
+	return { ok: true };
 });
 //#endregion
 export { verifyAuthorSession_createServerFn_handler };

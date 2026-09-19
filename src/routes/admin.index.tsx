@@ -41,7 +41,6 @@ function AdminPage() {
   >([]);
   const [previews, setPreviews] = useState<Record<string, PreviewDraft>>({});
   const [token, setToken] = useState("");
-  const [authorEmail, setAuthorEmail] = useState("");
   const [newTitle, setNewTitle] = useState("");
   const [newCharacterName, setNewCharacterName] = useState("");
 
@@ -53,8 +52,7 @@ function AdminPage() {
         return;
       }
       try {
-        const verified = await verifyAuthorSession({ data: { accessToken: data.session.access_token } });
-        setAuthorEmail(verified.email);
+        await verifyAuthorSession({ data: { accessToken: data.session.access_token } });
         setReady(true);
         void load();
       } catch {
@@ -227,7 +225,6 @@ function AdminPage() {
       <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="font-display text-4xl">Author desk</h1>
-          {authorEmail && <p className="mt-1 text-sm text-taupe">Signed in as {authorEmail}</p>}
         </div>
         <button className="btn btn-ghost" onClick={() => void signOut()} type="button">
           Sign out

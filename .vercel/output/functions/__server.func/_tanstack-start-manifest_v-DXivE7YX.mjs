@@ -1,10 +1,10 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-BDp7ryoW.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-DXivE7YX.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/workspace/src/routes/__root.tsx",
 		children: ["/_site", "/admin"],
 		preloads: [
-			"/assets/index-C9CNNqUj.js",
+			"/assets/index-df_tuQ9Z.js",
 			"/assets/jsx-runtime-BkSabwWG.js",
 			"/assets/react-DHmoMYoq.js",
 			"/assets/createServerFn-DLPViJFp.js",
@@ -18,7 +18,7 @@ var tsrStartManifest = () => ({ routes: {
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-C9CNNqUj.js"
+			src: "/assets/index-df_tuQ9Z.js"
 		} }]
 	},
 	"/_site": {
@@ -34,7 +34,7 @@ var tsrStartManifest = () => ({ routes: {
 			"/_site/terms",
 			"/_site/"
 		],
-		preloads: ["/assets/_site-DzBnFE-A.js"]
+		preloads: ["/assets/_site-CtQ9Cgis.js"]
 	},
 	"/admin": {
 		filePath: "/workspace/src/routes/admin.tsx",
@@ -43,22 +43,22 @@ var tsrStartManifest = () => ({ routes: {
 			"/admin/login",
 			"/admin/"
 		],
-		preloads: ["/assets/admin-EHwedpgt.js"]
+		preloads: ["/assets/admin-cXjS8kUB.js"]
 	},
 	"/_site/about": {
 		filePath: "/workspace/src/routes/_site.about.tsx",
 		children: void 0,
-		preloads: ["/assets/_site.about-CKzouTZb.js"]
+		preloads: ["/assets/_site.about-D34SFUJN.js"]
 	},
 	"/_site/books": {
 		filePath: "/workspace/src/routes/_site.books.tsx",
 		children: ["/_site/books/$slug", "/_site/books/"],
-		preloads: ["/assets/_site.books-EHwedpgt.js"]
+		preloads: ["/assets/_site.books-cXjS8kUB.js"]
 	},
 	"/_site/characters": {
 		filePath: "/workspace/src/routes/_site.characters.tsx",
 		children: void 0,
-		preloads: ["/assets/_site.characters-rNDLH3UA.js"]
+		preloads: ["/assets/_site.characters-Cshz33cy.js"]
 	},
 	"/_site/contact": {
 		filePath: "/workspace/src/routes/_site.contact.tsx",
@@ -99,17 +99,16 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/workspace/src/routes/_site.index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_site.index-B0BPr6Ev.js",
-			"/assets/covers-IX3xBDhi.js",
-			"/assets/book-skeleton-xXcM-Tn3.js"
+			"/assets/_site.index-CaHe1zA6.js",
+			"/assets/covers-CZaUctjG.js",
+			"/assets/book-skeleton-C54yWBea.js"
 		]
 	},
 	"/admin/": {
 		filePath: "/workspace/src/routes/admin.index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/admin.index-BZMy5wH-.js",
-			"/assets/covers-IX3xBDhi.js",
+			"/assets/admin.index-BsbQj_WG.js",
 			"/assets/contact-ZuNPt_IW.js",
 			"/assets/admin-auth-_vfY459A.js"
 		]
@@ -117,22 +116,22 @@ var tsrStartManifest = () => ({ routes: {
 	"/_site/books/$slug": {
 		filePath: "/workspace/src/routes/_site.books.$slug.tsx",
 		children: ["/_site/books/$slug/preview", "/_site/books/$slug/"],
-		preloads: ["/assets/_site.books._slug-EHwedpgt.js"]
+		preloads: ["/assets/_site.books._slug-cXjS8kUB.js"]
 	},
 	"/_site/books/": {
 		filePath: "/workspace/src/routes/_site.books.index.tsx",
 		children: void 0,
-		preloads: ["/assets/_site.books.index-Ddh-Iu79.js", "/assets/book-skeleton-xXcM-Tn3.js"]
+		preloads: ["/assets/_site.books.index-vGGmznPO.js", "/assets/book-skeleton-C54yWBea.js"]
 	},
 	"/_site/books/$slug/preview": {
 		filePath: "/workspace/src/routes/_site.books.$slug.preview.tsx",
 		children: void 0,
-		preloads: ["/assets/_site.books._slug.preview-UuNYriY2.js"]
+		preloads: ["/assets/_site.books._slug.preview-BIJN8l1U.js"]
 	},
 	"/_site/books/$slug/": {
 		filePath: "/workspace/src/routes/_site.books.$slug.index.tsx",
 		children: void 0,
-		preloads: ["/assets/_site.books._slug.index-EfJCFyha.js", "/assets/covers-IX3xBDhi.js"]
+		preloads: ["/assets/_site.books._slug.index-BoZz4MNz.js", "/assets/covers-CZaUctjG.js"]
 	}
 } });
 //#endregion

@@ -2,10 +2,10 @@ import { t as getSupabase } from "./supabase-BbIcayfE.mjs";
 import { t as isValidHttpUrl } from "./urls-BA2l0Qq9.mjs";
 import { n as createServerFn } from "./ssr.mjs";
 import { i as string, r as object } from "../_libs/zod.mjs";
-import { t as coverSrc } from "./covers-xPA6G3At.mjs";
+import { t as coverSrc } from "./covers-zmGsailY.mjs";
 import { t as createServerRpc } from "./createServerRpc-CN-evIEF.mjs";
 import { n as requireAuthor } from "./admin-auth-Bcy-RAnP.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/preview-zPr65_4M.js
+//#region node_modules/.nitro/vite/services/ssr/assets/preview-CORT0nkl.js
 var MAX_CHAPTERS = 2;
 var MAX_BODY = 8e4;
 function paragraphsOf(body) {

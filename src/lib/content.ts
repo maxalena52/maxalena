@@ -1,3 +1,4 @@
+import { applyBookCopy } from "./book-copy";
 import { getSupabase } from "./supabase";
 import type { Book, Character, Review, SiteSettings } from "./types";
 import { isValidHttpUrl, normaliseStatus } from "./urls";
@@ -11,7 +12,7 @@ export async function fetchBooks(): Promise<Book[]> {
     )
     .order("order_index", { ascending: true });
   if (error) throw error;
-  return (data || []) as Book[];
+  return ((data || []) as Book[]).map(applyBookCopy);
 }
 
 export async function fetchCharacters(): Promise<Character[]> {

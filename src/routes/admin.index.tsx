@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { listContactInbox } from "@/lib/contact";
 import { signOutDesk, verifyAuthorSession } from "@/lib/admin-auth";
-import { coverSrc, uploadBookCover } from "@/lib/covers";
+import { applyBookCopy } from "@/lib/book-copy";
 import { getBookPreviewForAdmin, saveBookPreview } from "@/lib/preview";
 import { getSupabase } from "@/lib/supabase";
 import { isValidHttpUrl } from "@/lib/urls";
@@ -65,7 +65,7 @@ function AdminPage() {
       sb.from("newsletter_subscribers").select("id", { count: "exact", head: true }),
       sb.from("contact_messages").select("id", { count: "exact", head: true }),
     ]);
-    setBooks((b.data || []) as Book[]);
+    setBooks(((b.data || []) as Book[]).map(applyBookCopy));
     setCharacters((c.data || []) as Character[]);
     const map: Record<string, string> = {};
     (s.data || []).forEach((row: { key: string; value: string }) => {

@@ -2,9 +2,9 @@ import { o as __toESM } from "./_runtime.mjs";
 import { r as statusLabel } from "./_ssr/urls-BA2l0Qq9.mjs";
 import { i as require_react, r as require_jsx_runtime } from "./_libs/react+tanstack__react-query.mjs";
 import { v as Link } from "./_libs/@tanstack/react-router+[...].mjs";
-import { _ as cleanText, a as useLibrary, g as characterPublicCopy, h as characterDisplayName, l as goodreadsUrl, m as warningsList, o as amazonUrl, p as tropesList, r as Route$1, v as inferGenre } from "./_ssr/router-BlRO6hVU.mjs";
-import { t as coverSrc } from "./_ssr/covers-xPA6G3At.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_site.books._slug.index-jDtLwMDp.js
+import { _ as cleanText, a as useLibrary, g as characterPublicCopy, h as characterDisplayName, l as goodreadsUrl, m as warningsList, o as amazonUrl, p as tropesList, r as Route$1, v as inferGenre } from "./_ssr/router-XF8Dxwy3.mjs";
+import { t as coverSrc } from "./_ssr/covers-zmGsailY.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/_site.books._slug.index-CE8Tv2mS.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function WarningPanel({ warnings, mature }) {

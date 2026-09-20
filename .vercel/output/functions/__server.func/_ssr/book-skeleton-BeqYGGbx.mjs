@@ -1,9 +1,9 @@
 import { r as statusLabel } from "./urls-BA2l0Qq9.mjs";
 import { r as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { v as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { o as amazonUrl, p as tropesList, v as inferGenre } from "./router-BlRO6hVU.mjs";
-import { t as coverSrc } from "./covers-xPA6G3At.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/book-skeleton-Czofxa-k.js
+import { o as amazonUrl, p as tropesList, v as inferGenre } from "./router-XF8Dxwy3.mjs";
+import { t as coverSrc } from "./covers-zmGsailY.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/book-skeleton-BeqYGGbx.js
 var import_jsx_runtime = require_jsx_runtime();
 function BookCard({ book }) {
 	const status = statusLabel(book.status, book.category);

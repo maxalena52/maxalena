@@ -1,32 +1,16 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { t as getSupabase } from "./supabase-BbIcayfE.mjs";
 import { n as normaliseStatus, t as isValidHttpUrl } from "./urls-BA2l0Qq9.mjs";
+import { i as applyBookCopy, t as getBookPreview } from "./preview-CIDNfBJl.mjs";
 import { i as require_react, n as QueryClientProvider, r as require_jsx_runtime, t as useQuery } from "../_libs/react+tanstack__react-query.mjs";
 import { _ as createRootRoute, b as useRouter, d as useRouterState, g as createFileRoute, h as lazyRouteComponent, l as Scripts, m as Outlet, p as createRouter, u as HeadContent, v as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { n as createServerFn, o as __exportAll } from "./ssr.mjs";
-import { t as createSsrRpc } from "./createSsrRpc-D75-wYbG.mjs";
+import { o as __exportAll } from "./ssr.mjs";
 import { a as union, i as string, n as number, r as object, t as literal } from "../_libs/zod.mjs";
 import { t as TriangleAlert } from "../_libs/lucide-react.mjs";
 import { t as clsx } from "../_libs/clsx.mjs";
 import { t as twMerge } from "../_libs/tailwind-merge.mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/preview-CIDNfBJl.js
-var MAX_BODY = 8e4;
-var getBookPreview = createServerFn({ method: "POST" }).validator((input) => object({ slug: string().min(1).max(120) }).parse(input)).handler(createSsrRpc("8c44b13b2a9683b3b5c14edda01b98072cd02fccd11556aab71b7b1c804098cf"));
-var saveBookPreview = createServerFn({ method: "POST" }).validator((input) => object({
-	accessToken: string().min(1),
-	slug: string().min(1).max(120),
-	chapterOneTitle: string().max(200),
-	chapterOneBody: string().max(MAX_BODY),
-	chapterTwoTitle: string().max(200),
-	chapterTwoBody: string().max(MAX_BODY)
-}).parse(input)).handler(createSsrRpc("65163f1efe7f467f3048c74544855a544889bb3070261531c8e3a9a9dea903f1"));
-var getBookPreviewForAdmin = createServerFn({ method: "POST" }).validator((input) => object({
-	accessToken: string().min(1),
-	slug: string().min(1)
-}).parse(input)).handler(createSsrRpc("3e9c412529332624378b47a398a3837b8fb6a9cd5cedee984e2fe75d30f864fc"));
-//#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-BlRO6hVU.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-XF8Dxwy3.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var FALLBACK_MESSAGE = "An unexpected error occurred. Try reloading the page.";
@@ -192,7 +176,7 @@ function inferGenre(title, tropes, status) {
 async function fetchBooks() {
 	const { data, error } = await getSupabase().from("books").select("id,title,slug,cover_url,blurb,synopsis,tropes,trigger_warnings,status,category,order_index,purchase_links,character_art_urls,created_at,updated_at").order("order_index", { ascending: true });
 	if (error) throw error;
-	return data || [];
+	return (data || []).map(applyBookCopy);
 }
 async function fetchCharacters() {
 	const { data, error } = await getSupabase().from("characters").select("*").order("order_index", { ascending: true });
@@ -730,7 +714,7 @@ function QueryProvider({ children }) {
 		children
 	});
 }
-var styles_default = "/assets/styles-Do_P1u3p.css";
+var styles_default = "/assets/styles-C8HsaBwX.css";
 var APP_NAME = "Maxalena L.";
 var DESCRIPTION = "Official site of Maxalena L., author of dark romance, romantasy, gothic fiction, and emotionally intense serialised stories.";
 var Route$18 = createRootRoute({
@@ -815,11 +799,11 @@ function RootDocument() {
 		})]
 	});
 }
-var $$splitComponentImporter$17 = () => import("../_site-0P9_-ROr.mjs");
+var $$splitComponentImporter$17 = () => import("../_site-sgZoWEwT.mjs");
 var Route$17 = createFileRoute("/_site")({ component: lazyRouteComponent($$splitComponentImporter$17, "component") });
 var $$splitComponentImporter$16 = () => import("./admin-rRckGftk.mjs");
 var Route$16 = createFileRoute("/admin")({ component: lazyRouteComponent($$splitComponentImporter$16, "component") });
-var $$splitComponentImporter$15 = () => import("../_site.index-BB1u5m31.mjs");
+var $$splitComponentImporter$15 = () => import("../_site.index-DRhn2jPl.mjs");
 var Route$15 = createFileRoute("/_site/")({
 	head: () => ({ meta: [{ title: "Maxalena L. | Dark Romance & Romantasy Author" }, {
 		name: "description",
@@ -827,7 +811,7 @@ var Route$15 = createFileRoute("/_site/")({
 	}] }),
 	component: lazyRouteComponent($$splitComponentImporter$15, "component")
 });
-var $$splitComponentImporter$14 = () => import("../_site.about-SPnK3TN8.mjs");
+var $$splitComponentImporter$14 = () => import("../_site.about-CF5j-yDU.mjs");
 var Route$14 = createFileRoute("/_site/about")({
 	head: () => ({ meta: [{ title: "About Maxalena L. | Dark Romance & Fantasy Author" }, {
 		name: "description",
@@ -837,7 +821,7 @@ var Route$14 = createFileRoute("/_site/about")({
 });
 var $$splitComponentImporter$13 = () => import("../_site.books-CF0jU3k1.mjs");
 var Route$13 = createFileRoute("/_site/books")({ component: lazyRouteComponent($$splitComponentImporter$13, "component") });
-var $$splitComponentImporter$12 = () => import("../_site.characters-DAsuj0st.mjs");
+var $$splitComponentImporter$12 = () => import("../_site.characters-DOBR6jUL.mjs");
 var Route$12 = createFileRoute("/_site/characters")({
 	head: () => ({ meta: [{ title: "Characters | The Worlds of Maxalena L." }, {
 		name: "description",
@@ -885,7 +869,7 @@ var Route$7 = createFileRoute("/_site/terms")({
 	}] }),
 	component: lazyRouteComponent($$splitComponentImporter$7, "component")
 });
-var $$splitComponentImporter$6 = () => import("./admin.index-D2lfUaY7.mjs");
+var $$splitComponentImporter$6 = () => import("./admin.index-DZMEtUhf.mjs");
 var Route$6 = createFileRoute("/admin/")({
 	head: () => ({ meta: [{ title: "Author desk" }, {
 		name: "robots",
@@ -909,7 +893,7 @@ var Route$4 = createFileRoute("/admin/login")({
 	}] }),
 	component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
-var $$splitComponentImporter$3 = () => import("../_site.books.index-MoHpZNlI.mjs");
+var $$splitComponentImporter$3 = () => import("../_site.books.index-DC4pq1AO.mjs");
 var Route$3 = createFileRoute("/_site/books/")({
 	head: () => ({ meta: [{ title: "Books by Maxalena L. | Dark Romance, Fantasy & Romantasy" }, {
 		name: "description",
@@ -919,12 +903,12 @@ var Route$3 = createFileRoute("/_site/books/")({
 });
 var $$splitComponentImporter$2 = () => import("../_site.books._slug-BQveVWWv.mjs");
 var Route$2 = createFileRoute("/_site/books/$slug")({ component: lazyRouteComponent($$splitComponentImporter$2, "component") });
-var $$splitComponentImporter$1 = () => import("../_site.books._slug.index-jDtLwMDp.mjs");
+var $$splitComponentImporter$1 = () => import("../_site.books._slug.index-CE8Tv2mS.mjs");
 var Route$1 = createFileRoute("/_site/books/$slug/")({
 	head: ({ params }) => ({ meta: [{ title: `${params.slug} | Maxalena L.` }] }),
 	component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-var $$splitComponentImporter = () => import("../_site.books._slug.preview-DfEwVRx9.mjs");
+var $$splitComponentImporter = () => import("../_site.books._slug.preview-3gE5KZ4D.mjs");
 var Route = createFileRoute("/_site/books/$slug/preview")({
 	loader: ({ params }) => getBookPreview({ data: { slug: params.slug } }),
 	head: ({ params }) => ({ meta: [{ title: `Sample · ${params.slug} | Maxalena L.` }, {
@@ -1060,4 +1044,4 @@ function getRouter() {
 	});
 }
 //#endregion
-export { cleanText as _, useLibrary as a, getBookPreviewForAdmin as b, featuredBook as c, parseReviews as d, socialLinks as f, characterPublicCopy as g, characterDisplayName as h, SiteFooter as i, goodreadsUrl as l, warningsList as m, Route as n, amazonUrl as o, tropesList as p, Route$1 as r, authorCopy as s, router_exports as t, groupBooks as u, inferGenre as v, saveBookPreview as x, SiteHeader as y };
+export { cleanText as _, useLibrary as a, featuredBook as c, parseReviews as d, socialLinks as f, characterPublicCopy as g, characterDisplayName as h, SiteFooter as i, goodreadsUrl as l, warningsList as m, Route as n, amazonUrl as o, tropesList as p, Route$1 as r, authorCopy as s, router_exports as t, groupBooks as u, inferGenre as v, SiteHeader as y };

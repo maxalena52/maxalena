@@ -18,6 +18,7 @@ import { Route as SiteCharactersRouteImport } from './routes/_site.characters'
 import { Route as SiteContactRouteImport } from './routes/_site.contact'
 import { Route as SiteCookiesRouteImport } from './routes/_site.cookies'
 import { Route as SiteCopyrightRouteImport } from './routes/_site.copyright'
+import { Route as SiteJournalRouteImport } from './routes/_site.journal'
 import { Route as SitePrivacyRouteImport } from './routes/_site.privacy'
 import { Route as SiteTermsRouteImport } from './routes/_site.terms'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
@@ -70,6 +71,11 @@ const SiteCookiesRoute = SiteCookiesRouteImport.update({
 const SiteCopyrightRoute = SiteCopyrightRouteImport.update({
   id: '/copyright',
   path: '/copyright',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteJournalRoute = SiteJournalRouteImport.update({
+  id: '/journal',
+  path: '/journal',
   getParentRoute: () => SiteRoute,
 } as any)
 const SitePrivacyRoute = SitePrivacyRouteImport.update({
@@ -127,6 +133,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof SiteContactRoute
   '/cookies': typeof SiteCookiesRoute
   '/copyright': typeof SiteCopyrightRoute
+  '/journal': typeof SiteJournalRoute
   '/privacy': typeof SitePrivacyRoute
   '/terms': typeof SiteTermsRoute
   '/admin/callback': typeof AdminCallbackRoute
@@ -143,6 +150,7 @@ export interface FileRoutesByTo {
   '/contact': typeof SiteContactRoute
   '/cookies': typeof SiteCookiesRoute
   '/copyright': typeof SiteCopyrightRoute
+  '/journal': typeof SiteJournalRoute
   '/privacy': typeof SitePrivacyRoute
   '/terms': typeof SiteTermsRoute
   '/admin/callback': typeof AdminCallbackRoute
@@ -163,6 +171,7 @@ export interface FileRoutesById {
   '/_site/contact': typeof SiteContactRoute
   '/_site/cookies': typeof SiteCookiesRoute
   '/_site/copyright': typeof SiteCopyrightRoute
+  '/_site/journal': typeof SiteJournalRoute
   '/_site/privacy': typeof SitePrivacyRoute
   '/_site/terms': typeof SiteTermsRoute
   '/admin/callback': typeof AdminCallbackRoute
@@ -185,6 +194,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookies'
     | '/copyright'
+    | '/journal'
     | '/privacy'
     | '/terms'
     | '/admin/callback'
@@ -201,6 +211,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookies'
     | '/copyright'
+    | '/journal'
     | '/privacy'
     | '/terms'
     | '/admin/callback'
@@ -220,6 +231,7 @@ export interface FileRouteTypes {
     | '/_site/contact'
     | '/_site/cookies'
     | '/_site/copyright'
+    | '/_site/journal'
     | '/_site/privacy'
     | '/_site/terms'
     | '/admin/callback'
@@ -300,6 +312,13 @@ declare module '@tanstack/react-router' {
       path: '/copyright'
       fullPath: '/copyright'
       preLoaderRoute: typeof SiteCopyrightRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/journal': {
+      id: '/_site/journal'
+      path: '/journal'
+      fullPath: '/journal'
+      preLoaderRoute: typeof SiteJournalRouteImport
       parentRoute: typeof SiteRoute
     }
     '/_site/privacy': {
@@ -403,6 +422,7 @@ interface SiteRouteChildren {
   SiteContactRoute: typeof SiteContactRoute
   SiteCookiesRoute: typeof SiteCookiesRoute
   SiteCopyrightRoute: typeof SiteCopyrightRoute
+  SiteJournalRoute: typeof SiteJournalRoute
   SitePrivacyRoute: typeof SitePrivacyRoute
   SiteTermsRoute: typeof SiteTermsRoute
   SiteIndexRoute: typeof SiteIndexRoute
@@ -415,6 +435,7 @@ const SiteRouteChildren: SiteRouteChildren = {
   SiteContactRoute: SiteContactRoute,
   SiteCookiesRoute: SiteCookiesRoute,
   SiteCopyrightRoute: SiteCopyrightRoute,
+  SiteJournalRoute: SiteJournalRoute,
   SitePrivacyRoute: SitePrivacyRoute,
   SiteTermsRoute: SiteTermsRoute,
   SiteIndexRoute: SiteIndexRoute,

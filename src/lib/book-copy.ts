@@ -132,6 +132,28 @@ export function catalogBooks(): Book[] {
   );
 }
 
+export function shelfBooks(live: Book[]): Book[] {
+  const map = new Map<string, Book>();
+  for (const book of catalogBooks()) map.set(book.slug, book);
+  for (const book of live) {
+    const base = map.get(book.slug);
+    map.set(
+      book.slug,
+      applyBookCopy({
+        ...(base || {}),
+        ...book,
+        title: book.title || base?.title || book.slug,
+        cover_url: book.cover_url || base?.cover_url || null,
+        blurb: book.blurb || base?.blurb || null,
+        synopsis: book.synopsis || base?.synopsis || null,
+        tropes: book.tropes?.length ? book.tropes : base?.tropes || null,
+        trigger_warnings: book.trigger_warnings?.length ? book.trigger_warnings : base?.trigger_warnings || null,
+      }),
+    );
+  }
+  return [...map.values()];
+}
+
 export function applyBookCopy<T extends Pick<Book, "slug"> & Partial<Book>>(book: T): T {
   const extra = COPY[book.slug];
   return extra ? { ...book, ...extra } : book;

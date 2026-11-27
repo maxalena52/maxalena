@@ -6,8 +6,8 @@ const NAV = [
   { to: "/", label: "Home" },
   { to: "/books", label: "Stories" },
   { to: "/characters", label: "Universes" },
-  { to: "/about", label: "Journal" },
-  { to: "/about", label: "About", exact: true },
+  { to: "/journal", label: "Journal" },
+  { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -28,8 +28,6 @@ export function SiteHeader() {
     };
   }, [open]);
 
-  const active = (to: string) => (to === "/" ? pathname === "/" : pathname.startsWith(to));
-
   function search(e: React.FormEvent) {
     e.preventDefault();
     void navigate({ to: "/books" });
@@ -48,7 +46,7 @@ export function SiteHeader() {
         </Link>
         <nav className="hidden flex-1 items-center justify-center gap-1 lg:flex" aria-label="Primary">
           {NAV.map((item) => {
-            const on = item.to === "/" ? pathname === "/" : item.label === "Journal" ? false : active(item.to) && item.label !== "About";
+            const on = item.to === "/" ? pathname === "/" : pathname === item.to || pathname.startsWith(`${item.to}/`);
             const home = item.label === "Home" && pathname === "/";
             return (
               <Link

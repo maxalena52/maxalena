@@ -51,7 +51,7 @@ function HomePage() {
         <Link to="/books" className="neon-pill">
           Explore Stories →
         </Link>
-        <Link to="/about" className="neon-pill">
+        <Link to="/journal" className="neon-pill">
           Read the Journal →
         </Link>
       </div>
@@ -135,14 +135,14 @@ function HomePage() {
           title="Author Journal"
           body="Behind the stories: thoughts, process, inspiration, travel, and creative musings."
           cta="Read the Journal →"
-          to="/about"
+          to="/journal"
         />
       </section>
     </div>
   );
 }
 
-function Panel({ title, body, cta, to }: { title: string; body: string; cta: string; to: "/books" | "/characters" | "/about" }) {
+function Panel({ title, body, cta, to }: { title: string; body: string; cta: string; to: "/books" | "/characters" | "/journal" }) {
   return (
     <div className="neon-panel flex flex-col p-5">
       <h3 className="font-display text-3xl font-semibold tracking-tight text-[#ffe27a]">{title}</h3>

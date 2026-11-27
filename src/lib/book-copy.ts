@@ -91,6 +91,47 @@ const COPY: Record<string, Copy> = {
   },
 };
 
+const TITLES: Record<string, string> = {
+  "blood-covenant": "Blood Covenant",
+  "office-hours": "Office Hours",
+  "ceo-s-hostile-take-over": "The CEO's Hostile Takeover",
+  "grim-reaper-chaos": "Transmigrated into a Novel and Trapped the Grim Reaper",
+  "the-dragon-commanders-captive": "The Dragon Commander's Captive",
+  "the-emperors-black-widow": "The Emperor's Black Widow",
+  "the-algorithm-of-vengeance": "The Algorithm of Vengeance",
+};
+
+const COVERS: Record<string, string> = {
+  "blood-covenant": "/covers/blood-covenant.jpg",
+  "office-hours": "/covers/office-hours.jpg",
+  "ceo-s-hostile-take-over": "/covers/ceo-s-hostile-take-over.jpg",
+  "grim-reaper-chaos": "/covers/grim-reaper-chaos.png",
+  "the-dragon-commanders-captive": "/covers/the-dragon-commanders-captive.jpg",
+  "the-emperors-black-widow": "/covers/the-emperors-black-widow.jpg",
+  "the-algorithm-of-vengeance": "/covers/the-algorithm-of-vengeance.jpg",
+};
+
+export function catalogBooks(): Book[] {
+  return Object.keys(COVERS).map((slug, index) =>
+    applyBookCopy({
+      id: slug,
+      title: TITLES[slug] || slug,
+      slug,
+      cover_url: COVERS[slug],
+      blurb: null,
+      synopsis: null,
+      tropes: null,
+      trigger_warnings: null,
+      status: "published",
+      category: null,
+      order_index: index,
+      purchase_links: null,
+      sample_chapter: null,
+      character_art_urls: null,
+    }),
+  );
+}
+
 export function applyBookCopy<T extends Pick<Book, "slug"> & Partial<Book>>(book: T): T {
   const extra = COPY[book.slug];
   return extra ? { ...book, ...extra } : book;

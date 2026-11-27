@@ -1,8 +1,8 @@
 import { o as __toESM } from "./_runtime.mjs";
 import { i as require_react, r as require_jsx_runtime } from "./_libs/react+tanstack__react-query.mjs";
 import { b as Link } from "./_libs/@tanstack/react-router+[...].mjs";
-import { i as characterPublicCopy, r as characterDisplayName, u as useLibrary } from "./_ssr/use-library-DbEl6tLx.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_site.characters-Cer7pkFT.js
+import { i as characterPublicCopy, r as characterDisplayName, u as useLibrary } from "./_ssr/use-library-COU1plfd.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/_site.characters-CiQOKcYb.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function roleLabel(role) {

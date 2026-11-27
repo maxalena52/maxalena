@@ -1,8 +1,8 @@
 import { t as useQuery } from "../_libs/react+tanstack__react-query.mjs";
 import { t as getSupabase } from "./supabase-BbIcayfE.mjs";
 import { t as isValidHttpUrl } from "./urls-BA2l0Qq9.mjs";
-import { t as applyBookCopy } from "./book-copy-BAYIOclk.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/use-library-DbEl6tLx.js
+import { t as applyBookCopy } from "./book-copy-DY41s1ai.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/use-library-COU1plfd.js
 var LOLA_NEW = "Lola has a filthy mouth and no patience for bullshit. After the Grim Reaper accidentally kills her and she awakens inside the novel she hated most, she decides that living quietly is not an option. But the harder she fights the story, the more she begins to realise that she may not control its plot as completely as she believed.";
 var CASSIUS_NEW = "Cassius Thornwood is the kingdom’s most dangerous Fixer—a hunter tasked with eradicating the witches he has been taught to regard as pests. His certainty begins to fracture when he encounters Grace, the only witch he fails to kill.";
 function cleanText(value) {

@@ -2,9 +2,10 @@ import { o as __toESM } from "./_runtime.mjs";
 import { i as require_react, r as require_jsx_runtime } from "./_libs/react+tanstack__react-query.mjs";
 import { b as Link } from "./_libs/@tanstack/react-router+[...].mjs";
 import { n as normaliseStatus, r as statusLabel } from "./_ssr/urls-BA2l0Qq9.mjs";
-import { l as tropesList, s as inferGenre, t as amazonUrl, u as useLibrary } from "./_ssr/use-library-DbEl6tLx.mjs";
+import { n as catalogBooks } from "./_ssr/book-copy-DY41s1ai.mjs";
+import { l as tropesList, s as inferGenre, t as amazonUrl, u as useLibrary } from "./_ssr/use-library-COU1plfd.mjs";
 import { t as coverSrc } from "./_ssr/covers-CWiKK2cQ.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_site.books.index-CAqVxMdV.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_site.books.index-BBh6rn1y.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function BookCard({ book }) {
@@ -22,7 +23,7 @@ function BookCard({ book }) {
 			className: "block no-underline",
 			"aria-label": book.title,
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "relative aspect-cover overflow-hidden bg-charcoal",
+				className: "relative aspect-[2/3] overflow-hidden bg-[#1a0630]",
 				children: cover ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 					src: cover,
 					alt: `Cover of ${book.title}`,
@@ -55,7 +56,7 @@ function BookCard({ book }) {
 					})
 				}),
 				book.blurb && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "text-sm leading-6 text-taupe",
+					className: "line-clamp-5 text-sm leading-6 text-pink-50/90",
 					children: book.blurb
 				}),
 				tropes.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
@@ -97,28 +98,6 @@ function BookCard({ book }) {
 		})]
 	});
 }
-function BookSkeleton() {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		className: "card-frame overflow-hidden",
-		"aria-hidden": "true",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "skeleton aspect-cover" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "space-y-3 p-5",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "skeleton h-4 w-24" }),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "skeleton h-7 w-3/4" }),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "skeleton h-16 w-full" })
-			]
-		})]
-	});
-}
-function BookGridSkeleton({ count = 3 }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		className: "grid gap-6 sm:grid-cols-2 lg:grid-cols-3",
-		"aria-busy": "true",
-		"aria-label": "Loading books",
-		children: Array.from({ length: count }).map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BookSkeleton, {}, i))
-	});
-}
 var FILTERS = [
 	{
 		id: "all",
@@ -148,7 +127,7 @@ function BooksPage() {
 		books.forEach((b) => (b.tropes || []).forEach((t) => set.add(t)));
 		return Array.from(set).sort();
 	}, [books]);
-	const visible = books.filter((book) => {
+	const visible = (books.length ? books : catalogBooks()).filter((book) => {
 		const status = normaliseStatus(book.status, book.category);
 		if (filter !== "all" && status !== filter) return false;
 		if (q && !book.title.toLowerCase().includes(q.toLowerCase())) return false;
@@ -193,7 +172,7 @@ function BooksPage() {
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-sm text-taupe",
 						"aria-live": "polite",
-						children: loading ? "Loading titles…" : `${visible.length} ${visible.length === 1 ? "book" : "books"}`
+						children: loading && !books.length ? "Loading titles…" : `${visible.length} ${visible.length === 1 ? "story" : "stories"}`
 					})
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
@@ -269,7 +248,7 @@ function BooksPage() {
 					]
 				})
 			]
-		}), loading ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BookGridSkeleton, { count: 6 }) : visible.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		}), visible.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 			className: "card-frame p-10 text-center text-taupe",
 			children: "No titles match this search. Try another filter."
 		}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {

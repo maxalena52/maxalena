@@ -1,7 +1,7 @@
 import { r as require_jsx_runtime } from "./_libs/react+tanstack__react-query.mjs";
 import { b as Link } from "./_libs/@tanstack/react-router+[...].mjs";
-import { c as socialLinks, n as authorCopy, u as useLibrary } from "./_ssr/use-library-DbEl6tLx.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_site.about-CZCFmjYl.js
+import { c as socialLinks, n as authorCopy, u as useLibrary } from "./_ssr/use-library-COU1plfd.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/_site.about-FR_3_SFG.js
 var import_jsx_runtime = require_jsx_runtime();
 var FACTS = [
 	"Writes best between midnight and 3am.",

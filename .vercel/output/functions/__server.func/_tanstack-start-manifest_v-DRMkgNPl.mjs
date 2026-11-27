@@ -1,10 +1,10 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-BNetLEM1.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-DRMkgNPl.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/workspace/src/routes/__root.tsx",
 		children: ["/_site", "/admin"],
 		preloads: [
-			"/assets/index-BhiejzOy.js",
+			"/assets/index-2LAf3vmE.js",
 			"/assets/jsx-runtime-BkSabwWG.js",
 			"/assets/qss-CY_ZYQqz.js",
 			"/assets/createServerFn-C4DMp0w2.js",
@@ -19,7 +19,7 @@ var tsrStartManifest = () => ({ routes: {
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-BhiejzOy.js"
+			src: "/assets/index-2LAf3vmE.js"
 		} }]
 	},
 	"/_site": {
@@ -35,7 +35,7 @@ var tsrStartManifest = () => ({ routes: {
 			"/_site/terms",
 			"/_site/"
 		],
-		preloads: ["/assets/_site-BeH3wtTI.js"]
+		preloads: ["/assets/_site-BFpRJs3n.js"]
 	},
 	"/admin": {
 		filePath: "/workspace/src/routes/admin.tsx",
@@ -44,22 +44,22 @@ var tsrStartManifest = () => ({ routes: {
 			"/admin/login",
 			"/admin/"
 		],
-		preloads: ["/assets/admin-Cg1iY8ld.js"]
+		preloads: ["/assets/admin-yrslvyfG.js"]
 	},
 	"/_site/about": {
 		filePath: "/workspace/src/routes/_site.about.tsx",
 		children: void 0,
-		preloads: ["/assets/_site.about-DlusV7jn.js", "/assets/use-library-C6OC0U1O.js"]
+		preloads: ["/assets/_site.about-CfNWCOZr.js", "/assets/use-library-CDtHUe2k.js"]
 	},
 	"/_site/books": {
 		filePath: "/workspace/src/routes/_site.books.tsx",
 		children: ["/_site/books/$slug", "/_site/books/"],
-		preloads: ["/assets/_site.books-Cg1iY8ld.js"]
+		preloads: ["/assets/_site.books-yrslvyfG.js"]
 	},
 	"/_site/characters": {
 		filePath: "/workspace/src/routes/_site.characters.tsx",
 		children: void 0,
-		preloads: ["/assets/_site.characters-D8_1pNeQ.js", "/assets/use-library-C6OC0U1O.js"]
+		preloads: ["/assets/_site.characters-C4UBOMSb.js", "/assets/use-library-CDtHUe2k.js"]
 	},
 	"/_site/contact": {
 		filePath: "/workspace/src/routes/_site.contact.tsx",
@@ -99,14 +99,14 @@ var tsrStartManifest = () => ({ routes: {
 	"/_site/": {
 		filePath: "/workspace/src/routes/_site.index.tsx",
 		children: void 0,
-		preloads: ["/assets/_site.index-OqRnxyhM.js", "/assets/use-library-C6OC0U1O.js"]
+		preloads: ["/assets/_site.index-D8xSiRJe.js", "/assets/use-library-CDtHUe2k.js"]
 	},
 	"/admin/": {
 		filePath: "/workspace/src/routes/admin.index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/admin.index-D3hjPwxY.js",
-			"/assets/supabase-Osr1qPO-.js",
+			"/assets/admin.index-BGmdc8kj.js",
+			"/assets/supabase-DIDlP0wu.js",
 			"/assets/urls-CCvb9OPe.js",
 			"/assets/contact-Dfwn4LjR.js",
 			"/assets/admin-auth-BEuUiI3w.js"
@@ -115,14 +115,15 @@ var tsrStartManifest = () => ({ routes: {
 	"/_site/books/$slug": {
 		filePath: "/workspace/src/routes/_site.books.$slug.tsx",
 		children: ["/_site/books/$slug/preview", "/_site/books/$slug/"],
-		preloads: ["/assets/_site.books._slug-Cg1iY8ld.js"]
+		preloads: ["/assets/_site.books._slug-yrslvyfG.js"]
 	},
 	"/_site/books/": {
 		filePath: "/workspace/src/routes/_site.books.index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_site.books.index-D_tL_ZC7.js",
-			"/assets/use-library-C6OC0U1O.js",
+			"/assets/_site.books.index-DZYuinDJ.js",
+			"/assets/use-library-CDtHUe2k.js",
+			"/assets/supabase-DIDlP0wu.js",
 			"/assets/urls-CCvb9OPe.js",
 			"/assets/covers-CiU6E-2h.js"
 		]
@@ -130,14 +131,14 @@ var tsrStartManifest = () => ({ routes: {
 	"/_site/books/$slug/preview": {
 		filePath: "/workspace/src/routes/_site.books.$slug.preview.tsx",
 		children: void 0,
-		preloads: ["/assets/_site.books._slug.preview-DUVDytan.js", "/assets/urls-CCvb9OPe.js"]
+		preloads: ["/assets/_site.books._slug.preview-Bb-oqCZj.js", "/assets/urls-CCvb9OPe.js"]
 	},
 	"/_site/books/$slug/": {
 		filePath: "/workspace/src/routes/_site.books.$slug.index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_site.books._slug.index-Dfw8dtLJ.js",
-			"/assets/use-library-C6OC0U1O.js",
+			"/assets/_site.books._slug.index-1urXO-BU.js",
+			"/assets/use-library-CDtHUe2k.js",
 			"/assets/urls-CCvb9OPe.js",
 			"/assets/covers-CiU6E-2h.js"
 		]

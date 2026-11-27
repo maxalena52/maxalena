@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { BookCard } from "@/components/book-card";
-import { BookGridSkeleton } from "@/components/book-skeleton";
+import { catalogBooks } from "@/lib/book-copy";
 import { useLibrary } from "@/lib/use-library";
 import { normaliseStatus } from "@/lib/urls";
 
@@ -38,7 +38,8 @@ function BooksPage() {
     return Array.from(set).sort();
   }, [books]);
 
-  const visible = books.filter((book) => {
+  const shelf = books.length ? books : catalogBooks();
+  const visible = shelf.filter((book) => {
     const status = normaliseStatus(book.status, book.category);
     if (filter !== "all" && status !== filter) return false;
     if (q && !book.title.toLowerCase().includes(q.toLowerCase())) return false;
@@ -73,7 +74,7 @@ function BooksPage() {
           <div className="ink-panel mb-8 p-5 md:p-6">
           <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
             <p className="text-sm text-taupe" aria-live="polite">
-              {loading ? "Loading titles…" : `${visible.length} ${visible.length === 1 ? "book" : "books"}`}
+              {loading && !books.length ? "Loading titles…" : `${visible.length} ${visible.length === 1 ? "story" : "stories"}`}
             </p>
           </div>
 
@@ -134,9 +135,7 @@ function BooksPage() {
           </div>
           </div>
 
-          {loading ? (
-            <BookGridSkeleton count={6} />
-          ) : visible.length === 0 ? (
+          {visible.length === 0 ? (
             <div className="card-frame p-10 text-center text-taupe">No titles match this search. Try another filter.</div>
           ) : (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

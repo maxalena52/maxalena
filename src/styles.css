@@ -267,9 +267,11 @@
 }
 
 .card-frame {
-  background: linear-gradient(180deg, #14110f 0%, #0e0c0b 100%);
-  border: 1px solid rgb(198 161 91 / 0.18);
-  box-shadow: 0 18px 50px rgb(0 0 0 / 0.35);
+  background: rgb(28 8 52 / 0.94);
+  border: 2px solid rgb(255 90 190 / 0.75);
+  border-radius: 18px;
+  box-shadow: 0 0 16px rgb(255 50 160 / 0.22);
+  color: #f7eefc;
 }
 
 .badge {

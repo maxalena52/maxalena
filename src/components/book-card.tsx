@@ -16,7 +16,7 @@ export function BookCard({ book }: { book: Book; settings?: SiteSettings }) {
   return (
     <article className="card-frame group flex h-full flex-col overflow-hidden">
       <Link to="/books/$slug" params={{ slug: book.slug }} className="block no-underline" aria-label={book.title}>
-        <div className="relative aspect-cover overflow-hidden bg-charcoal">
+        <div className="relative aspect-[2/3] overflow-hidden bg-[#1a0630]">
           {cover ? (
             <img
               src={cover}
@@ -39,7 +39,7 @@ export function BookCard({ book }: { book: Book; settings?: SiteSettings }) {
             {book.title}
           </Link>
         </h3>
-        {book.blurb && <p className="text-sm leading-6 text-taupe">{book.blurb}</p>}
+        {book.blurb && <p className="line-clamp-5 text-sm leading-6 text-pink-50/90">{book.blurb}</p>}
         {tropes.length > 0 && (
           <div className="flex flex-wrap gap-1.5">
             {tropes.map((t) => (

@@ -1,13 +1,13 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { i as require_react, r as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { x as useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { o as getBookPreviewForAdmin, s as saveBookPreview } from "./router-Dwo1YWjt.mjs";
+import { o as getBookPreviewForAdmin, s as saveBookPreview } from "./router-CqJvuNGr.mjs";
 import { t as getSupabase } from "./supabase-BbIcayfE.mjs";
 import { t as isValidHttpUrl } from "./urls-BA2l0Qq9.mjs";
-import { t as applyBookCopy } from "./book-copy-BAYIOclk.mjs";
+import { t as applyBookCopy } from "./book-copy-DY41s1ai.mjs";
 import { t as listContactInbox } from "./contact-8EhAGb7u.mjs";
 import { a as verifyAuthorSession, r as signOutDesk } from "./admin-auth-Bcy-RAnP.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/admin.index-D5r9MXgX.js
+//#region node_modules/.nitro/vite/services/ssr/assets/admin.index-DdrQumXZ.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function AdminPage() {

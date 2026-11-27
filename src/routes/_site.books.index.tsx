@@ -51,13 +51,15 @@ function BooksPage() {
   });
 
   return (
-    <div className="mx-auto max-w-6xl px-5 py-14">
+    <div className="mx-auto max-w-6xl px-5 py-10">
+      <div className="read-panel mb-8 p-6 md:p-8">
       <p className="ornament mb-4 !justify-start">The Library</p>
       <h1 className="font-display text-5xl">Books</h1>
       <p className="mt-4 max-w-2xl text-taupe">
         Dark romance, romantasy, and forbidden contemporary stories—published, serialised, and forthcoming.
       </p>
       <div className="gold-rule my-8" />
+      </div>
 
       {error ? (
         <div className="card-frame p-8">
@@ -68,6 +70,7 @@ function BooksPage() {
         </div>
       ) : (
         <>
+          <div className="ink-panel mb-8 p-5 md:p-6">
           <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
             <p className="text-sm text-taupe" aria-live="polite">
               {loading ? "Loading titles…" : `${visible.length} ${visible.length === 1 ? "book" : "books"}`}
@@ -128,6 +131,7 @@ function BooksPage() {
                 ))}
               </select>
             </label>
+          </div>
           </div>
 
           {loading ? (

@@ -41,10 +41,11 @@ function ContactPage() {
   }
 
   return (
-    <div className="mx-auto max-w-2xl px-5 py-14">
-      <p className="ornament mb-4 !justify-start">Correspondence</p>
-      <h1 className="font-display text-5xl">Contact</h1>
-      <p className="mt-4 leading-8 text-taupe">
+    <div className="mx-auto max-w-2xl px-5 py-10">
+      <div className="ink-panel p-6 md:p-10">
+      <p className="font-ui mb-2 text-xs uppercase tracking-[0.22em] text-[#c6a15b]">Correspondence</p>
+      <h1 className="font-display text-5xl text-[#f4ead8]">Contact</h1>
+      <p className="mt-4 leading-8 text-[#d8ccb4]">
         Write to Maxalena L. using the form below. There is no public email address on this site.
       </p>
       <div className="gold-rule my-8" />
@@ -67,7 +68,7 @@ function ContactPage() {
               autoComplete="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="mt-1 w-full border border-gold/25 bg-charcoal px-3 py-2 text-sm text-ivory"
+              className="ink-field"
             />
           </label>
           <label className="font-ui block text-xs uppercase tracking-widest text-taupe">
@@ -79,7 +80,7 @@ function ContactPage() {
               autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full border border-gold/25 bg-charcoal px-3 py-2 text-sm text-ivory"
+              className="ink-field"
             />
           </label>
           <label className="font-ui block text-xs uppercase tracking-widest text-taupe">
@@ -88,7 +89,7 @@ function ContactPage() {
               name="subject"
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
-              className="mt-1 w-full border border-gold/25 bg-charcoal px-3 py-2 text-sm text-ivory"
+              className="ink-field"
             />
           </label>
           <label className="font-ui block text-xs uppercase tracking-widest text-taupe">
@@ -100,7 +101,7 @@ function ContactPage() {
               rows={8}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="mt-1 w-full border border-gold/25 bg-charcoal px-3 py-2 text-sm text-ivory"
+              className="ink-field"
             />
           </label>
           {error && <p className="text-sm text-parchment">{error}</p>}
@@ -109,6 +110,7 @@ function ContactPage() {
           </button>
         </form>
       )}
+      </div>
     </div>
   );
 }

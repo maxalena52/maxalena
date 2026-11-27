@@ -1,18 +1,21 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const NAV = [
   { to: "/", label: "Home" },
-  { to: "/books", label: "Books" },
-  { to: "/characters", label: "Characters" },
-  { to: "/about", label: "About" },
+  { to: "/books", label: "Stories" },
+  { to: "/characters", label: "Universes" },
+  { to: "/about", label: "Journal" },
+  { to: "/about", label: "About", exact: true },
   { to: "/contact", label: "Contact" },
 ] as const;
 
 export function SiteHeader() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const [q, setQ] = useState("");
 
   useEffect(() => {
     setOpen(false);
@@ -20,68 +23,85 @@ export function SiteHeader() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKey);
     };
   }, [open]);
 
   const active = (to: string) => (to === "/" ? pathname === "/" : pathname.startsWith(to));
 
+  function search(e: React.FormEvent) {
+    e.preventDefault();
+    void navigate({ to: "/books" });
+  }
+
   return (
-    <header className="sticky top-0 z-50 border-b border-gold/15 bg-obsidian/92 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
-        <Link to="/" className="flex items-center gap-3 no-underline">
-          <img src="/brand-mark.png" alt="" className="h-10 w-10 object-contain" width={40} height={40} />
-          <span className="font-display text-xl tracking-[0.08em] text-ivory">Maxalena L.</span>
+    <header className="sticky top-0 z-50 border-b border-pink-400/40 bg-[#1a0630]/75 backdrop-blur-md">
+      <div className="mx-auto flex max-w-[1200px] items-center gap-3 px-3 py-2.5 md:px-4">
+        <Link to="/" className="flex shrink-0 items-center gap-2 no-underline">
+          <img
+            src="/author-portrait.jpg"
+            alt=""
+            className="h-9 w-9 rounded-full border border-[#ffe27a]/70 object-cover object-[30%_12%]"
+          />
+          <span className="font-display text-xl font-semibold tracking-wide text-[#ffe27a]">maxalena.com</span>
         </Link>
-
-        <nav className="font-ui hidden items-center gap-8 text-[0.78rem] tracking-[0.18em] uppercase md:flex" aria-label="Primary">
-          {NAV.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              className={cn(
-                "pb-1 no-underline",
-                active(item.to) ? "border-b border-gold text-gold" : "text-taupe hover:text-ivory",
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <Link to="/books" className="btn !min-h-9 !px-4 !text-[0.68rem]">
-            Explore Books
-          </Link>
+        <nav className="hidden flex-1 items-center justify-center gap-1 lg:flex" aria-label="Primary">
+          {NAV.map((item) => {
+            const on = item.to === "/" ? pathname === "/" : item.label === "Journal" ? false : active(item.to) && item.label !== "About";
+            const home = item.label === "Home" && pathname === "/";
+            return (
+              <Link
+                key={item.label}
+                to={item.to}
+                className={cn(
+                  "rounded-full px-3 py-1.5 text-sm font-semibold no-underline",
+                  home
+                    ? "bg-[#ff4db8] text-white shadow-[0_0_14px_#ff4db8]"
+                    : on
+                      ? "text-[#ffe27a]"
+                      : "text-white/90 hover:text-[#ffe27a]",
+                )}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
-
+        <form onSubmit={search} className="ml-auto hidden items-center md:flex">
+          <input
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="Search MAXALENA..."
+            aria-label="Search stories"
+            className="w-40 rounded-full border border-pink-300/50 bg-[#2a0a40]/80 px-3 py-1.5 text-xs text-white outline-none placeholder:text-pink-100/50 lg:w-48"
+          />
+        </form>
         <button
           type="button"
-          className="font-ui border border-gold/40 px-3 py-2 text-[0.7rem] tracking-[0.16em] uppercase text-parchment md:hidden"
+          className="ml-auto rounded-full border border-pink-300/60 px-3 py-1.5 text-xs text-white lg:hidden"
           aria-expanded={open}
-          aria-controls="mobile-nav"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? "Close" : "Menu"}
         </button>
       </div>
-
       {open && (
-        <div id="mobile-nav" className="border-t border-gold/15 bg-soft px-5 py-6 md:hidden">
-          <nav className="font-ui flex flex-col gap-4 text-sm tracking-[0.16em] uppercase" aria-label="Mobile">
-            {NAV.map((item) => (
-              <Link key={item.to} to={item.to} className={active(item.to) ? "text-gold" : "text-parchment"}>
-                {item.label}
-              </Link>
-            ))}
-            <Link to="/books" className="btn mt-2 w-fit">
-              Explore Books
+        <nav className="flex flex-col gap-2 border-t border-pink-400/30 px-4 py-4 lg:hidden" aria-label="Mobile">
+          {NAV.map((item) => (
+            <Link key={item.label} to={item.to} className="text-white no-underline">
+              {item.label}
             </Link>
-          </nav>
-        </div>
+          ))}
+          <form onSubmit={search}>
+            <input
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="Search MAXALENA..."
+              className="mt-2 w-full rounded-full border border-pink-300/50 bg-[#2a0a40] px-3 py-2 text-sm text-white"
+            />
+          </form>
+        </nav>
       )}
     </header>
   );

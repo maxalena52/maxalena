@@ -12,7 +12,8 @@ export const Route = createFileRoute("/_site/terms")({
 
 function TermsPage() {
   return (
-    <div className="mx-auto max-w-3xl px-5 py-14">
+    <div className="mx-auto max-w-3xl px-5 py-10">
+      <div className="read-panel p-6 md:p-10">
       <h1 className="font-display text-5xl">Terms of Use</h1>
       <div className="gold-rule my-8" />
       <div className="space-y-5 leading-8 text-parchment">
@@ -20,6 +21,7 @@ function TermsPage() {
         <p>All text, cover art, character art, and branding remain the property of Maxalena L. unless another owner is clearly credited.</p>
         <p>Retailer buttons open third-party sites. Those sites have their own terms.</p>
         <p>Availability of a title does not guarantee a particular retailer listing.</p>
+      </div>
       </div>
     </div>
   );

@@ -29,15 +29,14 @@ function AboutPage() {
   const socials = socialLinks(settings);
 
   return (
-    <div className="mx-auto max-w-3xl px-5 py-14">
+    <div className="mx-auto max-w-3xl px-5 py-10">
+      <div className="read-panel p-6 md:p-10">
       <p className="ornament mb-4 !justify-start">The Author</p>
-      <div className="mb-8 flex h-28 w-28 items-center justify-center rounded-full border border-gold/30 bg-charcoal">
-        {copy.authorImage ? (
-          <img src={copy.authorImage} alt="Portrait of Maxalena L." className="h-full w-full rounded-full object-cover" />
-        ) : (
-          <span className="font-display text-4xl text-gold">ML</span>
-        )}
-      </div>
+      <img
+        src={copy.authorImage || "/author-portrait.jpg"}
+        alt="Portrait of Maxalena L."
+        className="mb-8 h-64 w-48 rounded-2xl border border-pink-300/40 object-cover object-[32%_18%] sm:h-72 sm:w-56"
+      />
       <h1 className="font-display text-5xl">Maxalena L.</h1>
       <p className="mt-2 text-gold">Dark Romance, Romantasy & Fantasy Author</p>
       <div className="gold-rule my-8" />
@@ -88,6 +87,7 @@ function AboutPage() {
         <Link to="/characters" className="btn btn-ghost">
           Characters
         </Link>
+      </div>
       </div>
     </div>
   );

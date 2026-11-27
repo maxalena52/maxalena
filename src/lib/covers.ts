@@ -13,6 +13,8 @@ const BY_SLUG: Record<string, string> = {
   "office-hours": "/covers/office-hours.jpg",
   "grim-reaper-chaos": "/covers/grim-reaper-chaos.png",
   "the-dragon-commanders-captive": "/covers/the-dragon-commanders-captive.jpg",
+  "the-emperors-black-widow": "/covers/the-emperors-black-widow.jpg",
+  "the-algorithm-of-vengeance": "/covers/the-algorithm-of-vengeance.jpg",
 };
 
 export function coverSrc(book: { slug?: string | null; cover_url?: string | null }) {

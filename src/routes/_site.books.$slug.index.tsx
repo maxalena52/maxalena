@@ -88,7 +88,7 @@ function BookLoaded({
 
   return (
     <div className="mx-auto max-w-6xl px-5 py-12">
-      <nav className="font-ui mb-8 text-xs uppercase tracking-widest text-taupe" aria-label="Breadcrumb">
+      <nav className="read-panel mb-6 px-4 py-3 font-ui text-xs uppercase tracking-widest text-pink-100" aria-label="Breadcrumb">
         <Link to="/">Home</Link>
         <span> / </span>
         <Link to="/books">Books</Link>
@@ -104,7 +104,7 @@ function BookLoaded({
             <div className="font-display flex h-full items-center justify-center text-5xl text-gold">ML</div>
           )}
         </div>
-        <div>
+        <div className="read-panel p-6 md:p-8">
           <div className="mb-4 flex flex-wrap gap-2">
             <span className={coming ? "badge badge-ox" : "badge"}>{statusLabel(book.status, book.category)}</span>
             <span className="tag">{genre}</span>
@@ -142,7 +142,7 @@ function BookLoaded({
       </div>
 
       {synopsis.length > 0 && (
-        <section className="mx-auto mt-14 max-w-xl">
+        <section className="read-panel mx-auto mt-8 max-w-2xl p-6 md:p-8">
           <h2 className="font-display mb-4 text-3xl">Synopsis</h2>
           {synopsis.map((p) => (
             <p key={p.slice(0, 24)} className="mb-4 leading-8 text-parchment">
@@ -153,7 +153,7 @@ function BookLoaded({
       )}
 
       {relatedChars.length > 0 && (
-        <section className="mt-16">
+        <section className="read-panel mt-8 p-6 md:p-8">
           <h2 className="font-display mb-6 text-3xl">Characters</h2>
           <div className="grid gap-5 sm:grid-cols-2">
             {relatedChars.map((c) => {
@@ -182,7 +182,7 @@ function BookLoaded({
       )}
 
       {art.length > 0 && (
-        <section className="mt-16">
+        <section className="read-panel mt-8 p-6 md:p-8">
           <h2 className="font-display mb-6 text-3xl">Character art</h2>
           <div className="grid gap-4 sm:grid-cols-3">
             {art.map((src) => (
@@ -193,7 +193,7 @@ function BookLoaded({
       )}
 
       {relatedBooks.length > 0 && (
-        <section className="mt-16">
+        <section className="read-panel mt-8 p-6 md:p-8">
           <h2 className="font-display mb-6 text-3xl">Further into the library</h2>
           <ul className="space-y-2 text-parchment">
             {relatedBooks.map((b) => (

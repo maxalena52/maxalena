@@ -12,7 +12,8 @@ export const Route = createFileRoute("/_site/privacy")({
 
 function PrivacyPage() {
   return (
-    <div className="mx-auto max-w-3xl px-5 py-14">
+    <div className="mx-auto max-w-3xl px-5 py-10">
+      <div className="read-panel p-6 md:p-10">
       <h1 className="font-display text-5xl">Privacy Policy</h1>
       <p className="mt-4 text-sm text-taupe">Last updated 13 September 2026</p>
       <div className="gold-rule my-8" />
@@ -31,6 +32,7 @@ function PrivacyPage() {
           <li>Retailer-link destinations if you choose to follow a purchase or reading link.</li>
         </ul>
         <p>No public author email address is published on this site.</p>
+      </div>
       </div>
     </div>
   );

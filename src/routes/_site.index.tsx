@@ -1,230 +1,155 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BookCard } from "@/components/book-card";
-import { BookGridSkeleton } from "@/components/book-skeleton";
-import {
-  authorCopy,
-  featuredBook,
-  groupBooks,
-  parseReviews,
-  tropesList,
-  amazonUrl,
-} from "@/lib/content";
-import { inferGenre } from "@/lib/copy";
-import { coverSrc } from "@/lib/covers";
+import { useMemo, useState } from "react";
 import { useLibrary } from "@/lib/use-library";
-import { statusLabel } from "@/lib/urls";
 
 export const Route = createFileRoute("/_site/")({
   head: () => ({
     meta: [
-      { title: "Maxalena L. | Dark Romance & Romantasy Author" },
+      { title: "MAXALENA | I write what you pretend not to read" },
       {
         name: "description",
-        content: "Dark romance. Fantasy worlds. Characters that haunt you long after the final page.",
+        content: "Romantasy, dark fantasy, noir, and beautifully unconventional worlds.",
       },
     ],
   }),
   component: HomePage,
 });
 
+const GENRES = ["Romantasy", "Dark Fantasy", "Webnovel", "Serial", "Thriller", "Bite-Size Fiction"];
+
+const FEATURED = [
+  { slug: "ceo-s-hostile-take-over", title: "The CEO's Hostile Takeover", cover: "/covers/ceo-s-hostile-take-over.jpg" },
+  { slug: "office-hours", title: "Office Hours", cover: "/covers/office-hours.jpg" },
+  { slug: "blood-covenant", title: "Blood Covenant", cover: "/covers/blood-covenant.jpg" },
+  { slug: "the-dragon-commanders-captive", title: "The Dragon Commander's Captive", cover: "/covers/the-dragon-commanders-captive.jpg" },
+  { slug: "grim-reaper-chaos", title: "Transmigrated into a Novel and Trapped the Grim Reaper", cover: "/covers/grim-reaper-chaos.png" },
+  { slug: "the-emperors-black-widow", title: "The Emperor's Black Widow", cover: "/covers/the-emperors-black-widow.jpg" },
+  { slug: "the-algorithm-of-vengeance", title: "The Algorithm of Vengeance", cover: "/covers/the-algorithm-of-vengeance.jpg" },
+] as const;
+
 function HomePage() {
-  const { books, characters, settings, loading, error, refetch } = useLibrary();
-  const copy = authorCopy(settings);
-  const featured = featuredBook(books, settings);
-  const reviews = parseReviews(settings);
-  const groups = groupBooks(books);
+  const { books } = useLibrary();
+  const [start, setStart] = useState(0);
+  const shown = useMemo(() => {
+    const out = [];
+    for (let i = 0; i < FEATURED.length; i++) out.push(FEATURED[(start + i) % FEATURED.length]);
+    return out;
+  }, [start]);
+  const known = new Set(books.map((b) => b.slug));
 
   return (
-    <div>
-      <section className="relative overflow-hidden px-5 pb-20 pt-16 md:pt-24">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="ornament mb-6">Maxalena L.</p>
-          <h1 className="font-display text-5xl leading-none text-ivory md:text-7xl">
-            Stories That
-            <span className="block text-gold">Consume You</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-taupe">
-            Dark romance. Fantasy worlds. Characters that haunt you long after the final page.
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Link to="/books" className="btn">
-              Explore the Books
-            </Link>
-            <Link to="/about" className="btn btn-ghost">
-              Meet Maxalena L.
-            </Link>
-          </div>
-        </div>
+    <div className="mx-auto max-w-[1180px] px-3 pb-6 pt-3 md:px-4">
+      <section className="overflow-hidden rounded-[28px] border-2 border-pink-400/70 shadow-[0_0_28px_rgb(255_60_170/0.45)]">
+        <img
+          src="/hero-banner.png"
+          alt="MAXALENA — I write what you pretend not to read"
+          className="block h-auto w-full"
+        />
       </section>
 
-      {error && (
-        <div className="mx-auto max-w-6xl px-5">
-          <p className="text-sm text-parchment">The library could not be reached.</p>
-          <button type="button" className="btn mt-3" onClick={() => refetch()}>
-            Retry
+      <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+        <Link to="/books" className="neon-pill">
+          Explore Stories →
+        </Link>
+        <Link to="/about" className="neon-pill">
+          Read the Journal →
+        </Link>
+      </div>
+
+      <div className="mt-3 flex flex-wrap justify-center gap-2">
+        {GENRES.map((g) => (
+          <Link key={g} to="/books" className="neon-pill text-xs">
+            {g}
+          </Link>
+        ))}
+      </div>
+
+      <section className="neon-panel mt-4 p-3 md:p-4">
+        <div className="mb-3 flex items-center justify-between px-1">
+          <h2 className="font-display text-3xl font-semibold tracking-tight text-[#ffe27a]">Featured Stories</h2>
+          <Link to="/books" className="text-sm text-pink-100 no-underline hover:text-[#ffe27a]">
+            View All Stories →
+          </Link>
+        </div>
+        <div className="flex items-stretch gap-2">
+          <button
+            type="button"
+            aria-label="Previous stories"
+            className="hidden w-8 shrink-0 rounded-full border border-pink-300/50 text-white sm:block"
+            onClick={() => setStart((s) => (s - 1 + FEATURED.length) % FEATURED.length)}
+          >
+            ‹
+          </button>
+          <div className="grid flex-1 grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-7">
+            {shown.map((book) => {
+              const live = known.has(book.slug);
+              const card = (
+                <>
+                  <img src={book.cover} alt="" className="aspect-[3/4] w-full object-cover" />
+                  <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent px-1.5 pb-2 pt-8 text-center font-display text-sm font-semibold leading-tight text-white">
+                    {book.title}
+                  </span>
+                </>
+              );
+              return live ? (
+                <Link
+                  key={book.slug}
+                  to="/books/$slug"
+                  params={{ slug: book.slug }}
+                  className="group relative overflow-hidden rounded-2xl border border-pink-300/40 no-underline"
+                >
+                  {card}
+                </Link>
+              ) : (
+                <div key={book.slug} className="relative overflow-hidden rounded-2xl border border-pink-300/40">
+                  {card}
+                </div>
+              );
+            })}
+          </div>
+          <button
+            type="button"
+            aria-label="Next stories"
+            className="hidden w-8 shrink-0 rounded-full border border-pink-300/50 text-white sm:block"
+            onClick={() => setStart((s) => (s + 1) % FEATURED.length)}
+          >
+            ›
           </button>
         </div>
-      )}
-
-      {featured && (
-        <section className="mx-auto max-w-6xl px-5 py-10">
-          <p className="ornament mb-6 !justify-start">Featured</p>
-          <div className="card-frame grid gap-8 p-6 md:grid-cols-[280px_1fr] md:p-8">
-            <Link to="/books/$slug" params={{ slug: featured.slug }} className="block">
-              <div className="aspect-cover overflow-hidden bg-charcoal">
-                {coverSrc(featured) ? (
-                  <img src={coverSrc(featured)!} alt={`Cover of ${featured.title}`} className="h-full w-full object-cover" />
-                ) : null}
-              </div>
-            </Link>
-            <div className="flex flex-col justify-center">
-              <div className="mb-3 flex flex-wrap gap-2">
-                <span className="badge">{statusLabel(featured.status, featured.category)}</span>
-                <span className="tag">{inferGenre(featured.title, featured.tropes, featured.status)}</span>
-              </div>
-              <h2 className="font-display text-4xl text-ivory">{featured.title}</h2>
-              {featured.blurb && <p className="mt-4 max-w-xl text-base leading-7 text-taupe">{featured.blurb}</p>}
-              <div className="mt-4 flex flex-wrap gap-2">
-                {tropesList(featured, 4).map((t) => (
-                  <span key={t} className="tag">
-                    {t}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link to="/books/$slug" params={{ slug: featured.slug }} className="btn">
-                  View Book
-                </Link>
-                <Link to="/books/$slug/preview" params={{ slug: featured.slug }} className="btn btn-ghost">
-                  Read sample
-                </Link>
-                {amazonUrl(featured) && (
-                  <a className="btn btn-ghost" href={amazonUrl(featured)!} target="_blank" rel="noopener noreferrer">
-                    Buy on Amazon
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      <section className="mx-auto max-w-6xl px-5 py-12">
-        <div className="mb-8 flex items-end justify-between gap-4">
-          <div>
-            <p className="ornament mb-3 !justify-start">The Library</p>
-            <h2 className="font-display text-4xl">Latest Releases</h2>
-          </div>
-          <Link to="/books" className="btn btn-ghost min-h-9">
-            View All
-          </Link>
-        </div>
-        {loading ? (
-          <BookGridSkeleton count={3} />
-        ) : (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {books.slice(0, 3).map((book) => (
-              <BookCard key={book.id} book={book} settings={settings} />
-            ))}
-          </div>
-        )}
       </section>
 
-      <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 md:grid-cols-[220px_1fr]">
-        <div className="mx-auto flex h-52 w-52 items-center justify-center rounded-full border border-gold/30 bg-charcoal">
-          {copy.authorImage ? (
-            <img src={copy.authorImage} alt="Author portrait of Maxalena L." className="h-full w-full rounded-full object-cover" />
-          ) : (
-            <span className="font-display text-6xl text-gold">ML</span>
-          )}
-        </div>
-        <div>
-          <p className="ornament mb-3 !justify-start">The Author</p>
-          <h2 className="font-display text-4xl">Meet Maxalena L.</h2>
-          <p className="mt-4 max-w-2xl text-base leading-8 text-taupe">{copy.intro}</p>
-          <Link to="/about" className="btn mt-6">
-            Read Full Biography
-          </Link>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-5 py-12">
-        <p className="ornament mb-3">Discovery</p>
-        <h2 className="font-display mb-8 text-center text-4xl md:text-5xl">Enter the Worlds of Maxalena L.</h2>
-        <div className="grid gap-4 md:grid-cols-3">
-          <WorldTile title="Published" count={loading ? null : groups.published.length} to="/books" />
-          <WorldTile title="Ongoing Serials" count={loading ? null : groups.ongoing.length} to="/books" />
-          <WorldTile title="Coming Soon" count={loading ? null : groups.coming.length} to="/books" />
-        </div>
-        {characters.length > 0 && (
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {characters.slice(0, 4).map((c) => (
-              <Link key={c.id} to="/characters" className="card-frame overflow-hidden no-underline">
-                <div className="aspect-portrait bg-charcoal">
-                  {c.image_url ? <img src={c.image_url} alt="" className="h-full w-full object-cover" /> : null}
-                </div>
-                <p className="font-display p-3 text-center text-lg">{c.name.split("(")[0]}</p>
-              </Link>
-            ))}
-          </div>
-        )}
-        <div className="mt-8 flex justify-center gap-3">
-          <Link to="/books" className="btn">
-            Books
-          </Link>
-          <Link to="/characters" className="btn btn-ghost">
-            Characters
-          </Link>
-        </div>
-      </section>
-
-      {reviews.length > 0 && (
-        <section className="mx-auto max-w-4xl px-5 py-12">
-          <p className="ornament mb-6">Praise</p>
-          <div className="space-y-8">
-            {reviews.map((r, i) => (
-              <blockquote key={i} className="card-frame p-6">
-                <p className="font-display text-2xl leading-snug text-parchment">“{r.text}”</p>
-                <footer className="mt-4 text-sm text-taupe">
-                  {r.reviewer}
-                  {r.source ? ` — ${r.source}` : ""}
-                </footer>
-              </blockquote>
-            ))}
-          </div>
-        </section>
-      )}
-
-      <section className="mx-auto max-w-4xl px-5 py-16 text-center">
-        <div className="gold-rule mb-8" />
-        <h2 className="font-display text-4xl">Every book is a world waiting to swallow you whole.</h2>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link to="/books" className="btn">
-            Browse All Books
-          </Link>
-          <Link to="/characters" className="btn btn-ghost">
-            Meet the Characters
-          </Link>
-          <Link to="/about" className="btn btn-ghost">
-            About Maxalena L.
-          </Link>
-        </div>
+      <section className="mt-4 grid gap-3 md:grid-cols-3">
+        <Panel
+          title="Story Universes"
+          body="The worlds, kingdoms, cities, and secret systems behind the stories."
+          cta="Explore Universes →"
+          to="/characters"
+        />
+        <Panel
+          title="New & Noteworthy"
+          body="Latest releases, ongoing serials, updates, and special features."
+          cta="See What's New →"
+          to="/books"
+        />
+        <Panel
+          title="Author Journal"
+          body="Behind the stories: thoughts, process, inspiration, travel, and creative musings."
+          cta="Read the Journal →"
+          to="/about"
+        />
       </section>
     </div>
   );
 }
 
-function WorldTile({ title, count, to }: { title: string; count: number | null; to: "/books" }) {
+function Panel({ title, body, cta, to }: { title: string; body: string; cta: string; to: "/books" | "/characters" | "/about" }) {
   return (
-    <Link to={to} className="card-frame p-6 no-underline">
-      <p className="font-display text-2xl text-ivory">{title}</p>
-      {count === null ? (
-        <div className="skeleton mt-2 h-4 w-16" />
-      ) : (
-        <p className="mt-2 text-sm text-taupe">
-          {count} {count === 1 ? "title" : "titles"}
-        </p>
-      )}
-    </Link>
+    <div className="neon-panel flex flex-col p-5">
+      <h3 className="font-display text-3xl font-semibold tracking-tight text-[#ffe27a]">{title}</h3>
+      <p className="mt-2 flex-1 text-sm leading-6 text-pink-50/90">{body}</p>
+      <Link to={to} className="neon-pill mt-4 w-fit text-sm">
+        {cta}
+      </Link>
+    </div>
   );
 }

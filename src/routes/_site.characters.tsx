@@ -47,11 +47,13 @@ function CharactersPage() {
   });
 
   return (
-    <div className="mx-auto max-w-6xl px-5 py-14">
+    <div className="mx-auto max-w-6xl px-5 py-10">
+      <div className="read-panel mb-8 p-6 md:p-8">
       <p className="ornament mb-4 !justify-start">The Cast</p>
       <h1 className="font-display text-5xl">Characters</h1>
       <p className="mt-4 max-w-2xl text-taupe">Meet the heroes, heroines, and unforgettable figures who inhabit these worlds.</p>
       <div className="gold-rule my-8" />
+      </div>
 
       {error ? (
         <div className="card-frame p-8">
@@ -62,7 +64,7 @@ function CharactersPage() {
         </div>
       ) : (
         <>
-          <div className="mb-8 grid gap-3 md:grid-cols-2">
+          <div className="ink-panel mb-8 grid gap-3 p-5 md:grid-cols-2 md:p-6">
             <label className="font-ui text-xs uppercase tracking-widest text-taupe">
               Filter by book
               <select

@@ -112,7 +112,7 @@ export function authorCopy(settings: SiteSettings) {
     contactSupport:
       settings.contact_supporting_message ||
       "Official contact and social links will appear here when they become available.",
-    authorImage: isValidHttpUrl(settings.author_image_url) ? settings.author_image_url : null,
+    authorImage: isValidHttpUrl(settings.author_image_url) ? settings.author_image_url : "/author-portrait.jpg",
   };
 }
 

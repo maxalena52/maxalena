@@ -469,3 +469,169 @@ textarea.ink-input {
     display: none !important;
   }
 }
+
+.about-sheet {
+  border: 1.5px solid rgb(232 196 120 / 0.85);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgb(46 16 72 / 0.94), rgb(28 8 48 / 0.96));
+  box-shadow: 0 0 0 1px rgb(255 80 160 / 0.18), 0 18px 50px rgb(0 0 0 / 0.35);
+  padding: 1.4rem 1.1rem 1rem;
+}
+
+.about-hero {
+  display: grid;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.about-portrait {
+  width: min(280px, 78vw);
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+.about-copy h1 {
+  font-family: "Cinzel Decorative", "Cormorant Garamond", serif;
+  font-weight: 700;
+  font-size: clamp(2.4rem, 5vw, 4.3rem);
+  line-height: 1;
+  text-align: center;
+  color: #f3d48a;
+  text-shadow: 0 0 16px rgb(255 190 80 / 0.25);
+}
+
+.about-divider,
+.about-rule {
+  display: block;
+  height: 18px;
+  width: auto;
+  max-width: 220px;
+  margin: 0.35rem auto 0.7rem;
+  object-fit: contain;
+}
+
+.about-copy p,
+.about-grid p,
+.about-grid li {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.12rem;
+  line-height: 1.45;
+  color: #f4efe8;
+  text-align: center;
+}
+
+.em-pink {
+  color: #ff7eb6;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.em-gold {
+  color: #f3d48a;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.about-quote {
+  display: block;
+  width: min(760px, 100%);
+  height: auto;
+  margin: 0.8rem auto 0.4rem;
+}
+
+.about-grid {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+}
+
+.about-grid article {
+  border: 1px solid rgb(232 196 120 / 0.55);
+  border-radius: 18px;
+  background: rgb(22 6 40 / 0.45);
+  padding: 0.85rem 0.8rem 1rem;
+}
+
+.about-grid article > img:first-child {
+  display: block;
+  height: 42px;
+  width: auto;
+  margin: 0.15rem auto 0.25rem;
+  object-fit: contain;
+}
+
+.about-grid h2 {
+  font-family: "Cinzel Decorative", "Cormorant Garamond", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: center;
+  color: #f3d48a;
+  line-height: 1.2;
+}
+
+.about-grid ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.about-grid li {
+  text-align: left;
+  font-size: 1.02rem;
+  line-height: 1.35;
+  margin: 0.28rem 0;
+  padding-left: 1.15rem;
+  position: relative;
+}
+
+.about-hearts li::before {
+  content: "♥";
+  position: absolute;
+  left: 0;
+  color: #ff6b9d;
+  font-size: 0.85rem;
+}
+
+.about-checks li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #f3d48a;
+  font-weight: 700;
+}
+
+.about-flourish {
+  display: block;
+  width: min(420px, 80%);
+  height: auto;
+  margin: 0.85rem auto 0.15rem;
+}
+
+@media (min-width: 900px) {
+  .about-sheet {
+    padding: 1.6rem 1.5rem 1rem;
+  }
+
+  .about-hero {
+    grid-template-columns: 300px 1fr;
+    gap: 0.5rem 0.25rem;
+  }
+
+  .about-portrait {
+    width: 320px;
+    margin-left: -0.4rem;
+  }
+
+  .about-copy p {
+    text-align: left;
+    font-size: 1.22rem;
+    padding-right: 0.5rem;
+  }
+
+  .about-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.7rem;
+  }
+}

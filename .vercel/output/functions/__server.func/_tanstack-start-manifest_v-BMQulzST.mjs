@@ -1,10 +1,10 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-De6K99o3.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-BMQulzST.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/workspace/src/routes/__root.tsx",
 		children: ["/_site", "/admin"],
 		preloads: [
-			"/assets/index-DJHHVez9.js",
+			"/assets/index-CQiH3vcA.js",
 			"/assets/jsx-runtime-BkSabwWG.js",
 			"/assets/react-DHmoMYoq.js",
 			"/assets/createServerFn-CUKV2yyw.js",
@@ -20,7 +20,7 @@ var tsrStartManifest = () => ({ routes: {
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-DJHHVez9.js"
+			src: "/assets/index-CQiH3vcA.js"
 		} }]
 	},
 	"/_site": {
@@ -37,7 +37,7 @@ var tsrStartManifest = () => ({ routes: {
 			"/_site/terms",
 			"/_site/"
 		],
-		preloads: ["/assets/_site-CZIszqIG.js"]
+		preloads: ["/assets/_site-BHnpznVA.js"]
 	},
 	"/admin": {
 		filePath: "/workspace/src/routes/admin.tsx",
@@ -46,24 +46,24 @@ var tsrStartManifest = () => ({ routes: {
 			"/admin/login",
 			"/admin/"
 		],
-		preloads: ["/assets/admin-qI-OpinE.js"]
+		preloads: ["/assets/admin-CcU4zf8m.js"]
 	},
 	"/_site/about": {
 		filePath: "/workspace/src/routes/_site.about.tsx",
 		children: void 0,
-		preloads: ["/assets/_site.about-BHayNZaU.js", "/assets/copy-ByKSrdep.js"]
+		preloads: ["/assets/_site.about-BYEQkYmE.js"]
 	},
 	"/_site/books": {
 		filePath: "/workspace/src/routes/_site.books.tsx",
 		children: ["/_site/books/$slug", "/_site/books/"],
-		preloads: ["/assets/_site.books-qI-OpinE.js"]
+		preloads: ["/assets/_site.books-CcU4zf8m.js"]
 	},
 	"/_site/characters": {
 		filePath: "/workspace/src/routes/_site.characters.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_site.characters-TJoO0-Ee.js",
-			"/assets/use-library-CtNJHYmu.js",
+			"/assets/_site.characters-UxbnsKq6.js",
+			"/assets/use-library-C2sURLQH.js",
 			"/assets/supabase-DN5CwLDK.js",
 			"/assets/covers-DY9ZwPfi.js"
 		]
@@ -72,8 +72,8 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/workspace/src/routes/_site.contact.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_site.contact-CzHqLmlv.js",
-			"/assets/use-library-CtNJHYmu.js",
+			"/assets/_site.contact-DltSfXH1.js",
+			"/assets/use-library-C2sURLQH.js",
 			"/assets/contact-C9f9D4jl.js"
 		]
 	},
@@ -115,13 +115,13 @@ var tsrStartManifest = () => ({ routes: {
 	"/_site/": {
 		filePath: "/workspace/src/routes/_site.index.tsx",
 		children: void 0,
-		preloads: ["/assets/_site.index-DSONGZNf.js", "/assets/use-library-CtNJHYmu.js"]
+		preloads: ["/assets/_site.index-BiHFbGtM.js", "/assets/use-library-C2sURLQH.js"]
 	},
 	"/admin/": {
 		filePath: "/workspace/src/routes/admin.index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/admin.index-DmPO2vyL.js",
+			"/assets/admin.index-BiIHLsUD.js",
 			"/assets/supabase-DN5CwLDK.js",
 			"/assets/urls-DZNoNvap.js",
 			"/assets/contact-C9f9D4jl.js",
@@ -131,14 +131,14 @@ var tsrStartManifest = () => ({ routes: {
 	"/_site/books/$slug": {
 		filePath: "/workspace/src/routes/_site.books.$slug.tsx",
 		children: ["/_site/books/$slug/preview", "/_site/books/$slug/"],
-		preloads: ["/assets/_site.books._slug-qI-OpinE.js"]
+		preloads: ["/assets/_site.books._slug-CcU4zf8m.js"]
 	},
 	"/_site/books/": {
 		filePath: "/workspace/src/routes/_site.books.index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_site.books.index-C8NVVXKk.js",
-			"/assets/use-library-CtNJHYmu.js",
+			"/assets/_site.books.index-9Au-CM2s.js",
+			"/assets/use-library-C2sURLQH.js",
 			"/assets/supabase-DN5CwLDK.js",
 			"/assets/covers-DY9ZwPfi.js"
 		]
@@ -146,15 +146,14 @@ var tsrStartManifest = () => ({ routes: {
 	"/_site/books/$slug/preview": {
 		filePath: "/workspace/src/routes/_site.books.$slug.preview.tsx",
 		children: void 0,
-		preloads: ["/assets/_site.books._slug.preview-Dc3HIiUf.js", "/assets/urls-DZNoNvap.js"]
+		preloads: ["/assets/_site.books._slug.preview-DERtpZNo.js", "/assets/urls-DZNoNvap.js"]
 	},
 	"/_site/books/$slug/": {
 		filePath: "/workspace/src/routes/_site.books.$slug.index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_site.books._slug.index-Ckcqkiyy.js",
-			"/assets/use-library-CtNJHYmu.js",
-			"/assets/copy-ByKSrdep.js",
+			"/assets/_site.books._slug.index-DsVrYBEu.js",
+			"/assets/use-library-C2sURLQH.js",
 			"/assets/supabase-DN5CwLDK.js",
 			"/assets/covers-DY9ZwPfi.js"
 		]

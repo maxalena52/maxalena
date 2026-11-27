@@ -1,9 +1,9 @@
 import { o as __toESM } from "./_runtime.mjs";
 import { i as require_react, r as require_jsx_runtime } from "./_libs/react+tanstack__react-query.mjs";
 import { b as Link } from "./_libs/@tanstack/react-router+[...].mjs";
-import { n as Route } from "./_ssr/router-BRDCOGnn.mjs";
+import { n as Route } from "./_ssr/router-BGM-rNqD.mjs";
 import { n as statusLabel } from "./_ssr/urls-WBx1qNe-.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_site.books._slug.preview-Bb-VmhgY.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_site.books._slug.preview-DfPgM5Rv.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function guard(e) {

@@ -1,14 +1,41 @@
 import { o as __toESM } from "./_runtime.mjs";
 import { i as require_react, r as require_jsx_runtime } from "./_libs/react+tanstack__react-query.mjs";
 import { b as Link } from "./_libs/@tanstack/react-router+[...].mjs";
-import { r as Route$1 } from "./_ssr/router-BRDCOGnn.mjs";
-import { a as inferGenre, i as cleanText, n as characterDisplayName, r as characterPublicCopy } from "./_ssr/copy-CNt9qNSL.mjs";
+import { r as Route$1 } from "./_ssr/router-BGM-rNqD.mjs";
 import { t as coverSrc } from "./_ssr/covers-CWiKK2cQ.mjs";
 import { n as shelfBooks } from "./_ssr/book-copy-DuJUW-1Y.mjs";
 import { n as useLibrary, r as warningsList } from "./_ssr/use-library-BISHb0t-.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_site.books._slug.index-DcNafo4e.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_site.books._slug.index-NiAkP23z.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
+var LOLA_NEW = "Lola has a filthy mouth and no patience for bullshit. After the Grim Reaper accidentally kills her and she awakens inside the novel she hated most, she decides that living quietly is not an option. But the harder she fights the story, the more she begins to realise that she may not control its plot as completely as she believed.";
+var CASSIUS_NEW = "Cassius Thornwood is the kingdom’s most dangerous Fixer—a hunter tasked with eradicating the witches he has been taught to regard as pests. His certainty begins to fracture when he encounters Grace, the only witch he fails to kill.";
+function cleanText(value) {
+	if (!value) return "";
+	return value.replace(/\u00a0/g, " ").replace(/[ \t]+\n/g, "\n").replace(/\n{3,}/g, "\n\n").replace(/the kingdoms most dangerous fixer/gi, "the kingdom’s most dangerous Fixer").replace(/the only difference this is is that/gi, "the only difference is that").trim();
+}
+function characterPublicCopy(name, description) {
+	const n = name.trim().toLowerCase();
+	if (n.startsWith("lola daffodil")) return LOLA_NEW;
+	if (n === "cassius thornwood") return CASSIUS_NEW;
+	let text = cleanText(description);
+	if (text.toLowerCase().includes("dirty mouth who isn't afraid") || text.toLowerCase().includes("dirty mouth who isn’t afraid")) return LOLA_NEW;
+	if (text.includes("the only difference this is is")) text = text.replace(/He is every bit the antagonist a novel hero needs, the only difference this is is that the hero he is antagonizing happens to be the woman he is slowly falling in love with\./i, "He is every bit the antagonist a novel hero needs—except the hero he is opposing is the woman he is slowly falling in love with.");
+	return text;
+}
+function characterDisplayName(name) {
+	if (name.toLowerCase().startsWith("lola daffodil")) return "Lola Daffodil";
+	if (name.includes("Raphael Grimwraith")) return "Raphael Grimwraith";
+	return name.trim();
+}
+function inferGenre(title, tropes, status) {
+	const blob = `${title} ${(tropes || []).join(" ")}`.toLowerCase();
+	if (blob.includes("professor") || blob.includes("contemporary") || blob.includes("ceo") || blob.includes("corporate")) return "Contemporary forbidden romance";
+	if (blob.includes("grim reaper") || blob.includes("mythology") || blob.includes("transmigrat")) return "Dark fantasy romance";
+	if (blob.includes("witch") || blob.includes("dragon") || blob.includes("supernatural") || blob.includes("war")) return "Romantasy";
+	if ((status || "").includes("ongoing")) return "Serialised romantasy";
+	return "Dark romance";
+}
 function BookDetailPage() {
 	const { slug } = Route$1.useParams();
 	const { books, characters } = useLibrary();

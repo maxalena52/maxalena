@@ -3,10 +3,10 @@ import { r as universeForBook } from "./_ssr/universes-ESzdYHvU.mjs";
 import { n as shelfBooks, r as storyPage } from "./_ssr/book-copy-B8fwQdTf.mjs";
 import { i as require_react, r as require_jsx_runtime } from "./_libs/react+tanstack__react-query.mjs";
 import { b as Link } from "./_libs/@tanstack/react-router+[...].mjs";
-import { r as Route$1 } from "./_ssr/router-zbDqz_0m.mjs";
+import { r as Route$1 } from "./_ssr/router-D5goO_d2.mjs";
 import { t as coverSrc } from "./_ssr/covers-CWiKK2cQ.mjs";
-import { n as useLibrary, r as warningsList } from "./_ssr/use-library-CVxkl_Uc.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_site.books._slug.index-CY3eKb6v.js
+import { n as useLibrary, r as warningsList } from "./_ssr/use-library-BAzJA7Ee.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/_site.books._slug.index-DCDf1OCd.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var LOLA_NEW = "Lola has a filthy mouth and no patience for bullshit. After the Grim Reaper accidentally kills her and she awakens inside the novel she hated most, she decides that living quietly is not an option. But the harder she fights the story, the more she begins to realise that she may not control its plot as completely as she believed.";

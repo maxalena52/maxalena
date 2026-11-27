@@ -3,8 +3,8 @@ import { n as shelfBooks } from "./_ssr/book-copy-B8fwQdTf.mjs";
 import { i as require_react, r as require_jsx_runtime } from "./_libs/react+tanstack__react-query.mjs";
 import { b as Link } from "./_libs/@tanstack/react-router+[...].mjs";
 import { t as coverSrc } from "./_ssr/covers-CWiKK2cQ.mjs";
-import { n as useLibrary } from "./_ssr/use-library-CVxkl_Uc.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_site.books.index-DDKoBSG_.js
+import { n as useLibrary } from "./_ssr/use-library-BAzJA7Ee.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/_site.books.index-B7q97Pnm.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var FILTERS = [

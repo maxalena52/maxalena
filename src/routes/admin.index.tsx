@@ -331,6 +331,8 @@ function AdminPage() {
               ["facebook_url", "Facebook URL"],
               ["x_url", "X URL"],
               ["youtube_url", "YouTube URL"],
+              ["twitch_url", "Twitch URL"],
+              ["discord_url", "Discord URL"],
               ["legal_name", "Legal or business name"],
               ["legal_jurisdiction", "Governing country or jurisdiction"],
               ["legal_contact_method", "Formal legal contact method"],

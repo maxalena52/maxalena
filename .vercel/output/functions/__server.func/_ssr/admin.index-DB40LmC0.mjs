@@ -2,12 +2,12 @@ import { o as __toESM } from "../_runtime.mjs";
 import { t as applyBookCopy } from "./book-copy-B8fwQdTf.mjs";
 import { i as require_react, r as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { x as useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { c as saveBookPreview, s as getBookPreviewForAdmin } from "./router-zbDqz_0m.mjs";
+import { c as saveBookPreview, s as getBookPreviewForAdmin } from "./router-D5goO_d2.mjs";
 import { t as getSupabase } from "./supabase-BbIcayfE.mjs";
 import { t as isValidHttpUrl } from "./urls-WBx1qNe-.mjs";
 import { t as listContactInbox } from "./contact-8EhAGb7u.mjs";
 import { a as verifyAuthorSession, r as signOutDesk } from "./admin-auth-Bcy-RAnP.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/admin.index-C1lFeEJD.js
+//#region node_modules/.nitro/vite/services/ssr/assets/admin.index-DB40LmC0.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function AdminPage() {
@@ -299,6 +299,8 @@ function AdminPage() {
 						["facebook_url", "Facebook URL"],
 						["x_url", "X URL"],
 						["youtube_url", "YouTube URL"],
+						["twitch_url", "Twitch URL"],
+						["discord_url", "Discord URL"],
 						["legal_name", "Legal or business name"],
 						["legal_jurisdiction", "Governing country or jurisdiction"],
 						["legal_contact_method", "Formal legal contact method"],

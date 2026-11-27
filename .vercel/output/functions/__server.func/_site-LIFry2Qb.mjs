@@ -1,7 +1,7 @@
 import { r as require_jsx_runtime } from "./_libs/react+tanstack__react-query.mjs";
 import { g as Outlet, p as useRouterState } from "./_libs/@tanstack/react-router+[...].mjs";
-import { a as SiteFooter, o as SiteHeader } from "./_ssr/router-zbDqz_0m.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_site-0aRt5Fw6.js
+import { a as SiteFooter, o as SiteHeader } from "./_ssr/router-D5goO_d2.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/_site-LIFry2Qb.js
 var import_jsx_runtime = require_jsx_runtime();
 function SiteLayout() {
 	const pathname = useRouterState({ select: (s) => s.location.pathname });

@@ -81,25 +81,17 @@ export function featuredBook(books: Book[], settings: SiteSettings) {
 
 export function socialLinks(settings: SiteSettings) {
   const keys = [
-    ["instagram_url", "Instagram"],
-    ["tiktok_url", "TikTok"],
-    ["goodreads_url", "Goodreads"],
-    ["patreon_url", "Patreon"],
-    ["facebook_url", "Facebook"],
-    ["x_url", "X"],
-    ["twitter_url", "X"],
-    ["youtube_url", "YouTube"],
+    ["youtube_url", "YouTube", "https://www.youtube.com"],
+    ["instagram_url", "Instagram", "https://www.instagram.com"],
+    ["tiktok_url", "TikTok", "https://www.tiktok.com"],
+    ["x_url", "X", "https://x.com"],
+    ["twitch_url", "Twitch", "https://www.twitch.tv"],
+    ["discord_url", "Discord", "https://discord.com"],
   ] as const;
-  const seen = new Set<string>();
-  const links: { label: string; href: string }[] = [];
-  for (const [key, label] of keys) {
-    const href = settings[key];
-    if (isValidHttpUrl(href) && !seen.has(label)) {
-      seen.add(label);
-      links.push({ label, href });
-    }
-  }
-  return links;
+  return keys.map(([key, label, fallback]) => {
+    const saved = settings[key] || (key === "x_url" ? settings.twitter_url : "");
+    return { label, href: isValidHttpUrl(saved) ? saved : fallback };
+  });
 }
 
 export function authorCopy(settings: SiteSettings) {

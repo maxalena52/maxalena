@@ -2,7 +2,7 @@ import { o as __toESM } from "../_runtime.mjs";
 import { t as applyBookCopy } from "./book-copy-B8fwQdTf.mjs";
 import { i as require_react, r as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { x as useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { o as getBookPreviewForAdmin, s as saveBookPreview } from "./router-CE5HwmZw.mjs";
+import { c as saveBookPreview, s as getBookPreviewForAdmin } from "./router-BdzGg4F9.mjs";
 import { t as getSupabase } from "./supabase-BbIcayfE.mjs";
 import { t as isValidHttpUrl } from "./urls-WBx1qNe-.mjs";
 import { t as listContactInbox } from "./contact-8EhAGb7u.mjs";

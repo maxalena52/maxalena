@@ -26,6 +26,8 @@ import { Route as AdminCallbackRouteImport } from './routes/admin.callback'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as SiteBooksIndexRouteImport } from './routes/_site.books.index'
 import { Route as SiteBooksSlugRouteImport } from './routes/_site.books.$slug'
+import { Route as SiteCharactersIndexRouteImport } from './routes/_site.characters.index'
+import { Route as SiteCharactersSlugRouteImport } from './routes/_site.characters.$slug'
 import { Route as SiteBooksSlugIndexRouteImport } from './routes/_site.books.$slug.index'
 import { Route as SiteBooksSlugPreviewRouteImport } from './routes/_site.books.$slug.preview'
 
@@ -113,6 +115,16 @@ const SiteBooksSlugRoute = SiteBooksSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => SiteBooksRoute,
 } as any)
+const SiteCharactersIndexRoute = SiteCharactersIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SiteCharactersRoute,
+} as any)
+const SiteCharactersSlugRoute = SiteCharactersSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => SiteCharactersRoute,
+} as any)
 const SiteBooksSlugIndexRoute = SiteBooksSlugIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -129,7 +141,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteWithChildren
   '/about': typeof SiteAboutRoute
   '/books': typeof SiteBooksRouteWithChildren
-  '/characters': typeof SiteCharactersRoute
+  '/characters': typeof SiteCharactersRouteWithChildren
   '/contact': typeof SiteContactRoute
   '/cookies': typeof SiteCookiesRoute
   '/copyright': typeof SiteCopyrightRoute
@@ -140,13 +152,14 @@ export interface FileRoutesByFullPath {
   '/admin/login': typeof AdminLoginRoute
   '/admin/': typeof AdminIndexRoute
   '/books/$slug': typeof SiteBooksSlugRouteWithChildren
+  '/characters/$slug': typeof SiteCharactersSlugRoute
   '/books/': typeof SiteBooksIndexRoute
+  '/characters/': typeof SiteCharactersIndexRoute
   '/books/$slug/preview': typeof SiteBooksSlugPreviewRoute
   '/books/$slug/': typeof SiteBooksSlugIndexRoute
 }
 export interface FileRoutesByTo {
   '/about': typeof SiteAboutRoute
-  '/characters': typeof SiteCharactersRoute
   '/contact': typeof SiteContactRoute
   '/cookies': typeof SiteCookiesRoute
   '/copyright': typeof SiteCopyrightRoute
@@ -157,7 +170,9 @@ export interface FileRoutesByTo {
   '/admin/login': typeof AdminLoginRoute
   '/': typeof SiteIndexRoute
   '/admin': typeof AdminIndexRoute
+  '/characters/$slug': typeof SiteCharactersSlugRoute
   '/books': typeof SiteBooksIndexRoute
+  '/characters': typeof SiteCharactersIndexRoute
   '/books/$slug/preview': typeof SiteBooksSlugPreviewRoute
   '/books/$slug': typeof SiteBooksSlugIndexRoute
 }
@@ -167,7 +182,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteWithChildren
   '/_site/about': typeof SiteAboutRoute
   '/_site/books': typeof SiteBooksRouteWithChildren
-  '/_site/characters': typeof SiteCharactersRoute
+  '/_site/characters': typeof SiteCharactersRouteWithChildren
   '/_site/contact': typeof SiteContactRoute
   '/_site/cookies': typeof SiteCookiesRoute
   '/_site/copyright': typeof SiteCopyrightRoute
@@ -179,7 +194,9 @@ export interface FileRoutesById {
   '/_site/': typeof SiteIndexRoute
   '/admin/': typeof AdminIndexRoute
   '/_site/books/$slug': typeof SiteBooksSlugRouteWithChildren
+  '/_site/characters/$slug': typeof SiteCharactersSlugRoute
   '/_site/books/': typeof SiteBooksIndexRoute
+  '/_site/characters/': typeof SiteCharactersIndexRoute
   '/_site/books/$slug/preview': typeof SiteBooksSlugPreviewRoute
   '/_site/books/$slug/': typeof SiteBooksSlugIndexRoute
 }
@@ -201,13 +218,14 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/admin/'
     | '/books/$slug'
+    | '/characters/$slug'
     | '/books/'
+    | '/characters/'
     | '/books/$slug/preview'
     | '/books/$slug/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/about'
-    | '/characters'
     | '/contact'
     | '/cookies'
     | '/copyright'
@@ -218,7 +236,9 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/'
     | '/admin'
+    | '/characters/$slug'
     | '/books'
+    | '/characters'
     | '/books/$slug/preview'
     | '/books/$slug'
   id:
@@ -239,7 +259,9 @@ export interface FileRouteTypes {
     | '/_site/'
     | '/admin/'
     | '/_site/books/$slug'
+    | '/_site/characters/$slug'
     | '/_site/books/'
+    | '/_site/characters/'
     | '/_site/books/$slug/preview'
     | '/_site/books/$slug/'
   fileRoutesById: FileRoutesById
@@ -370,6 +392,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteBooksSlugRouteImport
       parentRoute: typeof SiteBooksRoute
     }
+    '/_site/characters/': {
+      id: '/_site/characters/'
+      path: '/'
+      fullPath: '/characters/'
+      preLoaderRoute: typeof SiteCharactersIndexRouteImport
+      parentRoute: typeof SiteCharactersRoute
+    }
+    '/_site/characters/$slug': {
+      id: '/_site/characters/$slug'
+      path: '/$slug'
+      fullPath: '/characters/$slug'
+      preLoaderRoute: typeof SiteCharactersSlugRouteImport
+      parentRoute: typeof SiteCharactersRoute
+    }
     '/_site/books/$slug/': {
       id: '/_site/books/$slug/'
       path: '/'
@@ -415,10 +451,24 @@ const SiteBooksRouteWithChildren = SiteBooksRoute._addFileChildren(
   SiteBooksRouteChildren,
 )
 
+interface SiteCharactersRouteChildren {
+  SiteCharactersSlugRoute: typeof SiteCharactersSlugRoute
+  SiteCharactersIndexRoute: typeof SiteCharactersIndexRoute
+}
+
+const SiteCharactersRouteChildren: SiteCharactersRouteChildren = {
+  SiteCharactersSlugRoute: SiteCharactersSlugRoute,
+  SiteCharactersIndexRoute: SiteCharactersIndexRoute,
+}
+
+const SiteCharactersRouteWithChildren = SiteCharactersRoute._addFileChildren(
+  SiteCharactersRouteChildren,
+)
+
 interface SiteRouteChildren {
   SiteAboutRoute: typeof SiteAboutRoute
   SiteBooksRoute: typeof SiteBooksRouteWithChildren
-  SiteCharactersRoute: typeof SiteCharactersRoute
+  SiteCharactersRoute: typeof SiteCharactersRouteWithChildren
   SiteContactRoute: typeof SiteContactRoute
   SiteCookiesRoute: typeof SiteCookiesRoute
   SiteCopyrightRoute: typeof SiteCopyrightRoute
@@ -431,7 +481,7 @@ interface SiteRouteChildren {
 const SiteRouteChildren: SiteRouteChildren = {
   SiteAboutRoute: SiteAboutRoute,
   SiteBooksRoute: SiteBooksRouteWithChildren,
-  SiteCharactersRoute: SiteCharactersRoute,
+  SiteCharactersRoute: SiteCharactersRouteWithChildren,
   SiteContactRoute: SiteContactRoute,
   SiteCookiesRoute: SiteCookiesRoute,
   SiteCopyrightRoute: SiteCopyrightRoute,

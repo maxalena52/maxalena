@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { shelfBooks, storyPage } from "@/lib/book-copy";
+import { universeForBook } from "@/lib/universes";
 import { warningsList } from "@/lib/content";
 import { coverSrc } from "@/lib/covers";
 import { characterDisplayName, characterPublicCopy, cleanText, inferGenre } from "@/lib/copy";
@@ -58,6 +59,7 @@ function BookLoaded({
   const page = storyPage(book.slug);
   const relatedChars = characters.filter((c) => c.book_id === book.id);
   const related = books.filter((b) => b.slug !== book.slug).slice(0, 2);
+  const world = universeForBook(book.slug);
   const warnings = warningsList(book);
   const mature = page ? true : warnings.some((w) => /18\+|smut|explicit|mature/i.test(w));
   const synopsis = page ? cleanText(book.synopsis).split(/\n\n+/).filter(Boolean) : cleanText(book.synopsis).split(/\n\n+/).filter(Boolean);
@@ -156,6 +158,11 @@ function BookLoaded({
             <button type="button" className="ghost-pill" onClick={() => void share()}>
               {shared ? "Link copied" : "Share"}
             </button>
+            {world && (
+              <Link to="/characters/$slug" params={{ slug: world.slug }} className="ghost-pill">
+                Explore universe
+              </Link>
+            )}
           </div>
         </div>
       </section>

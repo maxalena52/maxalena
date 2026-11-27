@@ -1,6 +1,6 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { i as require_react, r as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
-import { v as Link } from "../_libs/@tanstack/react-router+[...].mjs";
+import { b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { a as verifyAuthorSession, i as startGoogleLogin } from "./admin-auth-Bcy-RAnP.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/admin.login-BA58Aci4.js
 var import_react = /* @__PURE__ */ __toESM(require_react());

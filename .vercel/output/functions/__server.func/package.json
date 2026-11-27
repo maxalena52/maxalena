@@ -3,5 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "tslib": "2.8.1"
+  }
 }

@@ -1,7 +1,7 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { i as require_react, r as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { x as useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
-import { o as getBookPreviewForAdmin, s as saveBookPreview } from "./router-CqJvuNGr.mjs";
+import { o as getBookPreviewForAdmin, s as saveBookPreview } from "./router-Dy5cjkNM.mjs";
 import { t as getSupabase } from "./supabase-BbIcayfE.mjs";
 import { t as isValidHttpUrl } from "./urls-BA2l0Qq9.mjs";
 import { t as applyBookCopy } from "./book-copy-DY41s1ai.mjs";

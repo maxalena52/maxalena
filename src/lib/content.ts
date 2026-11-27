@@ -105,7 +105,7 @@ export function socialLinks(settings: SiteSettings) {
 export function authorCopy(settings: SiteSettings) {
   return {
     name: settings.author_display_name || "Maxalena L.",
-    bio: settings.biography || DEFAULT_BIO,
+    bio: DEFAULT_BIO,
     intro: settings.homepage_introduction || DEFAULT_INTRO,
     positioning: settings.footer_positioning || DEFAULT_POSITIONING,
     contactMessage: settings.contact_availability_message || "Public enquiries are currently closed.",

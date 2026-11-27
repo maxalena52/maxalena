@@ -17,10 +17,16 @@ export const Route = createFileRoute("/_site/about")({
 });
 
 const FACTS = [
-  "Writes best between midnight and 3am.",
-  "Keeps a playlist for every book—and every character.",
-  "Treats the villain’s arc as seriously as the hero’s.",
-  "Her characters argue with her constantly. She lets them win sometimes.",
+  "“My imagination has never been particularly well-behaved.”",
+  "“I write fiction. My alibis are considerably less convincing.”",
+  "“Some chapters are best enjoyed with the door closed.”",
+  "“I have impeccable taste in fictional men and questionable taste in their intentions.”",
+  "“I make no apologies for the temperature of my prose.”",
+  "“Literary merit and indecent thoughts are not mutually exclusive.”",
+  "“Respectability is a dress code, not a personality.”",
+  "“Not everything I write is a confession. How unfortunate for the curious.”",
+  "“I prefer my characters complicated, my dialogue intelligent, and my fictional affairs thoroughly inconvenient.”",
+  "“My private life is not available for publication. My imagination, however, is remarkably affordable.”",
 ];
 
 function AboutPage() {
@@ -37,10 +43,17 @@ function AboutPage() {
         alt="Portrait of Maxalena L."
         className="mb-8 h-64 w-48 rounded-2xl border border-pink-300/40 object-cover object-[32%_18%] sm:h-72 sm:w-56"
       />
-      <h1 className="font-display text-5xl">Maxalena L.</h1>
-      <p className="mt-2 text-gold">Dark Romance, Romantasy & Fantasy Author</p>
+      <h1 className="font-display text-5xl">Maxalena</h1>
+      <p className="mt-2 text-gold">An acquired taste. A questionable influence. An excellent distraction.</p>
       <div className="gold-rule my-8" />
-      <p className="leading-8 text-parchment">{copy.bio}</p>
+      <div className="space-y-5 leading-8 text-parchment">
+        {copy.bio
+          .split(/\n\n+/)
+          .filter((p) => p.trim() && !p.startsWith("An acquired taste"))
+          .map((p) => (
+            <p key={p}>{p}</p>
+          ))}
+      </div>
       <h2 className="font-display mt-12 text-3xl">Themes</h2>
       <p className="mt-3 leading-8 text-taupe">
         Forbidden love. Soul-bonds and broken oaths. Hunters and the hunted. Slow-burn obsession. Worlds that blur the
@@ -61,7 +74,7 @@ function AboutPage() {
         </>
       )}
       <h2 className="font-display mt-12 text-3xl">Notes from the desk</h2>
-      <ul className="mt-4 list-disc space-y-2 pl-5 text-taupe">
+      <ul className="mt-4 list-disc space-y-3 pl-5 leading-7 text-parchment">
         {FACTS.map((f) => (
           <li key={f}>{f}</li>
         ))}

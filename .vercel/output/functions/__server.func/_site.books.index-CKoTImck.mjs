@@ -3,9 +3,9 @@ import { i as require_react, r as require_jsx_runtime } from "./_libs/react+tans
 import { b as Link } from "./_libs/@tanstack/react-router+[...].mjs";
 import { n as normaliseStatus, r as statusLabel } from "./_ssr/urls-BA2l0Qq9.mjs";
 import { n as catalogBooks } from "./_ssr/book-copy-DY41s1ai.mjs";
-import { l as tropesList, s as inferGenre, t as amazonUrl, u as useLibrary } from "./_ssr/use-library-COU1plfd.mjs";
+import { l as tropesList, s as inferGenre, t as amazonUrl, u as useLibrary } from "./_ssr/use-library-cL09V1Ok.mjs";
 import { t as coverSrc } from "./_ssr/covers-CWiKK2cQ.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_site.books.index-BBh6rn1y.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_site.books.index-CKoTImck.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function BookCard({ book }) {

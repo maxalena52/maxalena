@@ -1,11 +1,11 @@
 import { o as __toESM } from "./_runtime.mjs";
 import { i as require_react, r as require_jsx_runtime } from "./_libs/react+tanstack__react-query.mjs";
 import { b as Link } from "./_libs/@tanstack/react-router+[...].mjs";
-import { r as Route$1 } from "./_ssr/router-CqJvuNGr.mjs";
+import { r as Route$1 } from "./_ssr/router-Dy5cjkNM.mjs";
 import { r as statusLabel } from "./_ssr/urls-BA2l0Qq9.mjs";
-import { a as cleanText, d as warningsList, i as characterPublicCopy, l as tropesList, o as goodreadsUrl, r as characterDisplayName, s as inferGenre, t as amazonUrl, u as useLibrary } from "./_ssr/use-library-COU1plfd.mjs";
+import { a as cleanText, d as warningsList, i as characterPublicCopy, l as tropesList, o as goodreadsUrl, r as characterDisplayName, s as inferGenre, t as amazonUrl, u as useLibrary } from "./_ssr/use-library-cL09V1Ok.mjs";
 import { t as coverSrc } from "./_ssr/covers-CWiKK2cQ.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_site.books._slug.index-C27jmWU2.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_site.books._slug.index-CsNUmfQT.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function WarningPanel({ warnings, mature }) {

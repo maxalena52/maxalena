@@ -2,7 +2,7 @@ import { t as useQuery } from "../_libs/react+tanstack__react-query.mjs";
 import { t as getSupabase } from "./supabase-BbIcayfE.mjs";
 import { t as isValidHttpUrl } from "./urls-BA2l0Qq9.mjs";
 import { t as applyBookCopy } from "./book-copy-DY41s1ai.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/use-library-COU1plfd.js
+//#region node_modules/.nitro/vite/services/ssr/assets/use-library-cL09V1Ok.js
 var LOLA_NEW = "Lola has a filthy mouth and no patience for bullshit. After the Grim Reaper accidentally kills her and she awakens inside the novel she hated most, she decides that living quietly is not an option. But the harder she fights the story, the more she begins to realise that she may not control its plot as completely as she believed.";
 var CASSIUS_NEW = "Cassius Thornwood is the kingdom’s most dangerous Fixer—a hunter tasked with eradicating the witches he has been taught to regard as pests. His certainty begins to fracture when he encounters Grace, the only witch he fails to kill.";
 function cleanText(value) {
@@ -31,6 +31,7 @@ function inferGenre(title, tropes, status) {
 	if ((status || "").includes("ongoing")) return "Serialised romantasy";
 	return "Dark romance";
 }
+var DEFAULT_BIO = "An acquired taste. A questionable influence. An excellent distraction.\n\nMaxalena has a particular fascination with desire, power, temptation, and the wonderfully inconvenient things people do when good judgment abandons them.\n\nShe writes for the curious, the unashamed, and those whose reading habits are considerably less innocent than their public personalities suggest.\n\nHer stories wander between sensual romance, dangerous obsessions, morally complicated characters, dark fantasy, and deliciously questionable circumstances. She enjoys intelligent seduction, wicked humour, beautiful villains, formidable women, and men whose composure is worth dismantling.\n\nShe believes intimacy deserves as much literary attention as tragedy, that pleasure need not apologise for its existence, and that a perfectly respectable imagination is a terribly underutilised one.\n\nAs for the woman behind the words, Maxalena prefers to remain an unreliable narrator of her own existence. She might tell you something about herself over a glass of wine, but whether it is a confession, an embellishment, or the beginning of another novel is entirely your problem.\n\nSome things are better left to the imagination.\n\nShe writes what you pretend not to read.";
 async function fetchBooks() {
 	const { data, error } = await getSupabase().from("books").select("id,title,slug,cover_url,blurb,synopsis,tropes,trigger_warnings,status,category,order_index,purchase_links,character_art_urls,created_at,updated_at").order("order_index", { ascending: true });
 	if (error) throw error;
@@ -85,7 +86,7 @@ function socialLinks(settings) {
 function authorCopy(settings) {
 	return {
 		name: settings.author_display_name || "Maxalena L.",
-		bio: settings.biography || "Maxalena L. writes the love stories that fight hardest to exist—the forbidden ones, the dangerous ones, the ones that cost everything. Her work lives in the space between romance and fantasy, dark and light, hope and despair. Her heroes are flawed. Her heroines are fierce. Her worlds are lived-in and treacherous, and her love stories make no promises except to be unforgettable.",
+		bio: DEFAULT_BIO,
 		intro: settings.homepage_introduction || "A storyteller who crafts dark romances and fantasy worlds so vivid that readers lose themselves completely. Every book is a descent into something beautiful and dangerous.",
 		positioning: settings.footer_positioning || "Where dark romance meets unforgettable worlds. Stories that pull you in and refuse to let go.",
 		contactMessage: settings.contact_availability_message || "Public enquiries are currently closed.",

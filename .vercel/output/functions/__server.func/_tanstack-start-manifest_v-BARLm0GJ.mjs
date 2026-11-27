@@ -1,10 +1,10 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-DRMkgNPl.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-BARLm0GJ.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/workspace/src/routes/__root.tsx",
 		children: ["/_site", "/admin"],
 		preloads: [
-			"/assets/index-2LAf3vmE.js",
+			"/assets/index-D3NoBv1f.js",
 			"/assets/jsx-runtime-BkSabwWG.js",
 			"/assets/qss-CY_ZYQqz.js",
 			"/assets/createServerFn-C4DMp0w2.js",
@@ -19,7 +19,7 @@ var tsrStartManifest = () => ({ routes: {
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-2LAf3vmE.js"
+			src: "/assets/index-D3NoBv1f.js"
 		} }]
 	},
 	"/_site": {
@@ -35,7 +35,7 @@ var tsrStartManifest = () => ({ routes: {
 			"/_site/terms",
 			"/_site/"
 		],
-		preloads: ["/assets/_site-BFpRJs3n.js"]
+		preloads: ["/assets/_site-Bx8iJT7k.js"]
 	},
 	"/admin": {
 		filePath: "/workspace/src/routes/admin.tsx",
@@ -44,22 +44,22 @@ var tsrStartManifest = () => ({ routes: {
 			"/admin/login",
 			"/admin/"
 		],
-		preloads: ["/assets/admin-yrslvyfG.js"]
+		preloads: ["/assets/admin-3tO6PRiw.js"]
 	},
 	"/_site/about": {
 		filePath: "/workspace/src/routes/_site.about.tsx",
 		children: void 0,
-		preloads: ["/assets/_site.about-CfNWCOZr.js", "/assets/use-library-CDtHUe2k.js"]
+		preloads: ["/assets/_site.about-p7YZkozE.js", "/assets/use-library-D4RJo3of.js"]
 	},
 	"/_site/books": {
 		filePath: "/workspace/src/routes/_site.books.tsx",
 		children: ["/_site/books/$slug", "/_site/books/"],
-		preloads: ["/assets/_site.books-yrslvyfG.js"]
+		preloads: ["/assets/_site.books-3tO6PRiw.js"]
 	},
 	"/_site/characters": {
 		filePath: "/workspace/src/routes/_site.characters.tsx",
 		children: void 0,
-		preloads: ["/assets/_site.characters-C4UBOMSb.js", "/assets/use-library-CDtHUe2k.js"]
+		preloads: ["/assets/_site.characters-BzbrvbDQ.js", "/assets/use-library-D4RJo3of.js"]
 	},
 	"/_site/contact": {
 		filePath: "/workspace/src/routes/_site.contact.tsx",
@@ -99,13 +99,13 @@ var tsrStartManifest = () => ({ routes: {
 	"/_site/": {
 		filePath: "/workspace/src/routes/_site.index.tsx",
 		children: void 0,
-		preloads: ["/assets/_site.index-D8xSiRJe.js", "/assets/use-library-CDtHUe2k.js"]
+		preloads: ["/assets/_site.index-DzyDSVXl.js", "/assets/use-library-D4RJo3of.js"]
 	},
 	"/admin/": {
 		filePath: "/workspace/src/routes/admin.index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/admin.index-BGmdc8kj.js",
+			"/assets/admin.index-Cz4UxKfC.js",
 			"/assets/supabase-DIDlP0wu.js",
 			"/assets/urls-CCvb9OPe.js",
 			"/assets/contact-Dfwn4LjR.js",
@@ -115,14 +115,14 @@ var tsrStartManifest = () => ({ routes: {
 	"/_site/books/$slug": {
 		filePath: "/workspace/src/routes/_site.books.$slug.tsx",
 		children: ["/_site/books/$slug/preview", "/_site/books/$slug/"],
-		preloads: ["/assets/_site.books._slug-yrslvyfG.js"]
+		preloads: ["/assets/_site.books._slug-3tO6PRiw.js"]
 	},
 	"/_site/books/": {
 		filePath: "/workspace/src/routes/_site.books.index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_site.books.index-DZYuinDJ.js",
-			"/assets/use-library-CDtHUe2k.js",
+			"/assets/_site.books.index-D9QgF2IP.js",
+			"/assets/use-library-D4RJo3of.js",
 			"/assets/supabase-DIDlP0wu.js",
 			"/assets/urls-CCvb9OPe.js",
 			"/assets/covers-CiU6E-2h.js"
@@ -131,14 +131,14 @@ var tsrStartManifest = () => ({ routes: {
 	"/_site/books/$slug/preview": {
 		filePath: "/workspace/src/routes/_site.books.$slug.preview.tsx",
 		children: void 0,
-		preloads: ["/assets/_site.books._slug.preview-Bb-oqCZj.js", "/assets/urls-CCvb9OPe.js"]
+		preloads: ["/assets/_site.books._slug.preview-Bzr5ebdR.js", "/assets/urls-CCvb9OPe.js"]
 	},
 	"/_site/books/$slug/": {
 		filePath: "/workspace/src/routes/_site.books.$slug.index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/_site.books._slug.index-1urXO-BU.js",
-			"/assets/use-library-CDtHUe2k.js",
+			"/assets/_site.books._slug.index-Z6FKfcuG.js",
+			"/assets/use-library-D4RJo3of.js",
 			"/assets/urls-CCvb9OPe.js",
 			"/assets/covers-CiU6E-2h.js"
 		]

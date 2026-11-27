@@ -2,10 +2,10 @@ import { n as universeBySlug } from "./_ssr/universes-ESzdYHvU.mjs";
 import { n as shelfBooks } from "./_ssr/book-copy-B8fwQdTf.mjs";
 import { r as require_jsx_runtime } from "./_libs/react+tanstack__react-query.mjs";
 import { b as Link } from "./_libs/@tanstack/react-router+[...].mjs";
-import { i as Route$2 } from "./_ssr/router-BdzGg4F9.mjs";
+import { i as Route$2 } from "./_ssr/router-zbDqz_0m.mjs";
 import { t as coverSrc } from "./_ssr/covers-CWiKK2cQ.mjs";
 import { n as useLibrary } from "./_ssr/use-library-CVxkl_Uc.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_site.characters._slug-CCfhsZP4.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_site.characters._slug-BBfGL_23.js
 var import_jsx_runtime = require_jsx_runtime();
 function UniversePage() {
 	const { slug } = Route$2.useParams();

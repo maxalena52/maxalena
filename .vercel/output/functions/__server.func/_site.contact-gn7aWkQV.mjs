@@ -2,7 +2,7 @@ import { o as __toESM } from "./_runtime.mjs";
 import { i as require_react, r as require_jsx_runtime } from "./_libs/react+tanstack__react-query.mjs";
 import { n as useLibrary, t as socialLinks } from "./_ssr/use-library-CVxkl_Uc.mjs";
 import { n as submitContact } from "./_ssr/contact-8EhAGb7u.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_site.contact-Cv-qynZz.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_site.contact-gn7aWkQV.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var SUBJECTS = [
@@ -20,7 +20,6 @@ function ContactPage() {
 	const [subject, setSubject] = (0, import_react.useState)("");
 	const [message, setMessage] = (0, import_react.useState)("");
 	const [website, setWebsite] = (0, import_react.useState)("");
-	const [news, setNews] = (0, import_react.useState)("");
 	const [status, setStatus] = (0, import_react.useState)("idle");
 	const [note, setNote] = (0, import_react.useState)("");
 	async function send(data) {
@@ -37,7 +36,6 @@ function ContactPage() {
 			setEmail("");
 			setSubject("");
 			setMessage("");
-			setNews("");
 		} catch {
 			setStatus("error");
 			setNote("The message could not be sent. Please try again.");
@@ -50,15 +48,6 @@ function ContactPage() {
 			email,
 			subject,
 			message
-		});
-	}
-	function subscribe(e) {
-		e.preventDefault();
-		send({
-			name: "Newsletter",
-			email: news,
-			subject: "Newsletter",
-			message: "Please add this address to the Maxalena newsletter."
 		});
 	}
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -162,36 +151,6 @@ function ContactPage() {
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "grid gap-3",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
-						onSubmit: subscribe,
-						className: "glass-panel p-4",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-								className: "font-display text-3xl text-[#ffe7a8]",
-								children: "Newsletter"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "mt-1 text-sm text-pink-50/85",
-								children: "New stories, universe notes, and the occasional announcement."
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "mt-3 flex flex-col gap-2 sm:flex-row",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-									required: true,
-									type: "email",
-									value: news,
-									onChange: (e) => setNews(e.target.value),
-									placeholder: "Enter your email",
-									className: "ink-input"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-									type: "submit",
-									className: "gold-pill",
-									disabled: status === "sending",
-									children: "Subscribe"
-								})]
-							})
-						]
-					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("aside", {
 						className: "glass-panel p-4",
 						children: [

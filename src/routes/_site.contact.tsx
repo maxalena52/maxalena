@@ -24,7 +24,6 @@ function ContactPage() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [website, setWebsite] = useState("");
-  const [news, setNews] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [note, setNote] = useState("");
 
@@ -39,7 +38,6 @@ function ContactPage() {
       setEmail("");
       setSubject("");
       setMessage("");
-      setNews("");
     } catch {
       setStatus("error");
       setNote("The message could not be sent. Please try again.");
@@ -49,16 +47,6 @@ function ContactPage() {
   function onSubmit(e: FormEvent) {
     e.preventDefault();
     void send({ name, email, subject, message });
-  }
-
-  function subscribe(e: FormEvent) {
-    e.preventDefault();
-    void send({
-      name: "Newsletter",
-      email: news,
-      subject: "Newsletter",
-      message: "Please add this address to the Maxalena newsletter.",
-    });
   }
 
   return (
@@ -106,16 +94,6 @@ function ContactPage() {
           <p className="mt-4 text-center text-xs text-pink-100/70">Your information is kept private and is used only to reply.</p>
         </form>
         <div className="grid gap-3">
-          <form onSubmit={subscribe} className="glass-panel p-4">
-            <h2 className="font-display text-3xl text-[#ffe7a8]">Newsletter</h2>
-            <p className="mt-1 text-sm text-pink-50/85">New stories, universe notes, and the occasional announcement.</p>
-            <div className="mt-3 flex flex-col gap-2 sm:flex-row">
-              <input required type="email" value={news} onChange={(e) => setNews(e.target.value)} placeholder="Enter your email" className="ink-input" />
-              <button type="submit" className="gold-pill" disabled={status === "sending"}>
-                Subscribe
-              </button>
-            </div>
-          </form>
           <aside className="glass-panel p-4">
             <h2 className="font-display text-3xl text-[#ffe7a8]">Rights & inquiries</h2>
             <p className="mt-1 text-sm text-pink-50/85">Publishing rights, media, and official requests.</p>

@@ -26,7 +26,7 @@ var getBookPreviewForAdmin = createServerFn({ method: "POST" }).validator((input
 	slug: string().min(1)
 }).parse(input)).handler(createSsrRpc("3e9c412529332624378b47a398a3837b8fb6a9cd5cedee984e2fe75d30f864fc"));
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-BdzGg4F9.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-zbDqz_0m.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var FALLBACK_MESSAGE = "An unexpected error occurred. Try reloading the page.";
@@ -515,7 +515,7 @@ function QueryProvider({ children }) {
 		children
 	});
 }
-var styles_default = "/assets/styles-DNe9SEhv.css";
+var styles_default = "/assets/styles-CESRdOgS.css";
 var APP_NAME = "Maxalena L.";
 var DESCRIPTION = "Official site of Maxalena L., author of dark romance, romantasy, gothic fiction, and emotionally intense serialised stories.";
 var Route$21 = createRootRoute({
@@ -644,7 +644,7 @@ function RootDocument() {
 		})]
 	});
 }
-var $$splitComponentImporter$20 = () => import("../_site-D6YxhzWa.mjs");
+var $$splitComponentImporter$20 = () => import("../_site-0aRt5Fw6.mjs");
 var Route$20 = createFileRoute("/_site")({ component: lazyRouteComponent($$splitComponentImporter$20, "component") });
 var $$splitComponentImporter$19 = () => import("./admin-rRckGftk.mjs");
 var Route$19 = createFileRoute("/admin")({ component: lazyRouteComponent($$splitComponentImporter$19, "component") });
@@ -668,7 +668,7 @@ var $$splitComponentImporter$16 = () => import("../_site.books-CF0jU3k1.mjs");
 var Route$16 = createFileRoute("/_site/books")({ component: lazyRouteComponent($$splitComponentImporter$16, "component") });
 var $$splitComponentImporter$15 = () => import("../_site.characters-BcQFbDZA.mjs");
 var Route$15 = createFileRoute("/_site/characters")({ component: lazyRouteComponent($$splitComponentImporter$15, "component") });
-var $$splitComponentImporter$14 = () => import("../_site.contact-Cv-qynZz.mjs");
+var $$splitComponentImporter$14 = () => import("../_site.contact-gn7aWkQV.mjs");
 var Route$14 = createFileRoute("/_site/contact")({
 	head: () => ({ meta: [{ title: "Contact | Maxalena" }, {
 		name: "description",
@@ -758,7 +758,7 @@ var Route$3 = createFileRoute("/_site/characters/")({
 	}] }),
 	component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
-var $$splitComponentImporter$2 = () => import("../_site.characters._slug-CCfhsZP4.mjs");
+var $$splitComponentImporter$2 = () => import("../_site.characters._slug-BBfGL_23.mjs");
 var Route$2 = createFileRoute("/_site/characters/$slug")({
 	head: ({ params }) => {
 		const world = universeBySlug(params.slug);
@@ -769,7 +769,7 @@ var Route$2 = createFileRoute("/_site/characters/$slug")({
 	},
 	component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-var $$splitComponentImporter$1 = () => import("../_site.books._slug.index-BDilIjXl.mjs");
+var $$splitComponentImporter$1 = () => import("../_site.books._slug.index-CY3eKb6v.mjs");
 var Route$1 = createFileRoute("/_site/books/$slug/")({
 	head: ({ params }) => {
 		const page = storyPage(params.slug);
@@ -796,7 +796,7 @@ var Route$1 = createFileRoute("/_site/books/$slug/")({
 	},
 	component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-var $$splitComponentImporter = () => import("../_site.books._slug.preview-B-rh4M-h.mjs");
+var $$splitComponentImporter = () => import("../_site.books._slug.preview-BWOSNqsq.mjs");
 var Route = createFileRoute("/_site/books/$slug/preview")({
 	loader: ({ params }) => getBookPreview({ data: { slug: params.slug } }),
 	head: ({ params }) => ({ meta: [{ title: `Sample · ${params.slug} | Maxalena L.` }, {

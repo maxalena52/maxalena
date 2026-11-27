@@ -1,11 +1,11 @@
 import { o as __toESM } from "./_runtime.mjs";
+import { n as shelfBooks, r as storyPage } from "./_ssr/book-copy-B8fwQdTf.mjs";
 import { i as require_react, r as require_jsx_runtime } from "./_libs/react+tanstack__react-query.mjs";
 import { b as Link } from "./_libs/@tanstack/react-router+[...].mjs";
-import { r as Route$1 } from "./_ssr/router-Dz72wVUl.mjs";
+import { r as Route$1 } from "./_ssr/router-CE5HwmZw.mjs";
 import { t as coverSrc } from "./_ssr/covers-CWiKK2cQ.mjs";
-import { n as shelfBooks } from "./_ssr/book-copy-DuJUW-1Y.mjs";
-import { n as useLibrary, r as warningsList } from "./_ssr/use-library-BISHb0t-.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_site.books._slug.index-s-s7KpX9.js
+import { n as useLibrary, r as warningsList } from "./_ssr/use-library-CVxkl_Uc.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/_site.books._slug.index-guVFlXhx.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var LOLA_NEW = "Lola has a filthy mouth and no patience for bullshit. After the Grim Reaper accidentally kills her and she awakens inside the novel she hated most, she decides that living quietly is not an option. But the harder she fights the story, the more she begins to realise that she may not control its plot as completely as she believed.";
@@ -59,19 +59,21 @@ function BookDetailPage() {
 	});
 }
 function BookLoaded({ book, characters, books }) {
+	const page = storyPage(book.slug);
 	const relatedChars = characters.filter((c) => c.book_id === book.id);
 	const related = books.filter((b) => b.slug !== book.slug).slice(0, 2);
 	const warnings = warningsList(book);
-	const mature = warnings.some((w) => /18\+|smut|explicit|mature/i.test(w));
-	const synopsis = cleanText(book.synopsis).split(/\n\n+/).filter(Boolean);
+	const mature = page ? true : warnings.some((w) => /18\+|smut|explicit|mature/i.test(w));
+	const synopsis = page ? cleanText(book.synopsis).split(/\n\n+/).filter(Boolean) : cleanText(book.synopsis).split(/\n\n+/).filter(Boolean);
 	const genre = inferGenre(book.title, book.tropes, book.status);
-	const tropes = (book.tropes || []).filter(Boolean);
-	const tags = [genre, ...tropes].filter((v, i, a) => v && a.indexOf(v) === i).slice(0, 4);
-	const excerpt = cleanText(book.sample_chapter) || synopsis[0] || book.blurb || "";
+	const tropes = page?.genres ? [] : (book.tropes || []).filter(Boolean);
+	const tags = page ? page.genres : [genre, ...book.tropes || []].filter((v, i, a) => v && a.indexOf(v) === i).slice(0, 4);
+	const tropeList = page ? book.tropes || [] : tropes.length ? tropes : tags;
+	const excerpt = page ? "" : cleanText(book.sample_chapter) || synopsis[0] || book.blurb || "";
 	const [saved, setSaved] = (0, import_react.useState)(false);
 	const [shared, setShared] = (0, import_react.useState)(false);
 	(0, import_react.useEffect)(() => {
-		document.title = `${book.title} | Maxalena`;
+		document.title = page?.metaTitle || `${book.title} | Maxalena`;
 		try {
 			const raw = localStorage.getItem("maxalena-library");
 			const list = raw ? JSON.parse(raw) : [];
@@ -79,7 +81,11 @@ function BookLoaded({ book, characters, books }) {
 		} catch {
 			setSaved(false);
 		}
-	}, [book.slug, book.title]);
+	}, [
+		book.slug,
+		book.title,
+		page
+	]);
 	function toggleSaved() {
 		const next = !saved;
 		setSaved(next);
@@ -145,7 +151,7 @@ function BookLoaded({ book, characters, books }) {
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "mt-1 text-sm tracking-[0.2em] text-pink-100/80 uppercase",
-						children: "Maxalena"
+						children: "Maxalena L."
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "mt-3 flex flex-wrap gap-2",
@@ -154,14 +160,14 @@ function BookLoaded({ book, characters, books }) {
 							children: t
 						}, t))
 					}),
-					book.blurb && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					(page?.tagline || book.blurb) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "mt-4 text-lg italic text-[#ffe7a8]",
-						children: book.blurb
+						children: page?.tagline || book.blurb
 					}),
-					synopsis[0] && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					(page ? page.short : synopsis.slice(0, 1)).map((p) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "mt-3 leading-7 text-pink-50/90",
-						children: synopsis[0]
-					}),
+						children: p
+					}, p.slice(0, 40))),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: "mt-5 flex flex-wrap items-center gap-2",
 						children: [
@@ -193,6 +199,16 @@ function BookLoaded({ book, characters, books }) {
 					})
 				] })]
 			}),
+			page && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
+				className: "glass-panel mt-4 grid gap-3 p-5 sm:grid-cols-2 lg:grid-cols-4",
+				children: page.facts.map((fact) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+					className: "text-sm text-pink-50/90",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "block text-xs tracking-[0.16em] text-[#ffe7a8] uppercase",
+						children: fact.label
+					}), fact.value]
+				}, fact.label))
+			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "mt-4 grid gap-4 lg:grid-cols-3",
 				children: [
@@ -213,7 +229,7 @@ function BookLoaded({ book, characters, books }) {
 							children: "Tropes"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
 							className: "mt-3 space-y-2 text-sm text-pink-50/90",
-							children: (tropes.length ? tropes : tags).map((t) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: ["♡ ", t] }, t))
+							children: (tropeList || []).map((t) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: ["♡ ", t] }, t))
 						})]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
@@ -229,21 +245,34 @@ function BookLoaded({ book, characters, books }) {
 							})]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "mt-3 text-sm leading-6 text-pink-50/90",
-							children: warnings.length ? `This story contains mature themes, including ${warnings.join(", ")}.` : "Content notes will be listed here when they are added."
+							children: page ? page.notes : warnings.length ? `This story contains mature themes, including ${warnings.join(", ")}.` : "Content notes will be listed here when they are added."
 						})]
 					})
 				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "mt-4 grid gap-4 lg:grid-cols-2",
-				children: [relatedChars.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+				children: [(page?.leads?.length || relatedChars.length > 0) && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 					className: "glass-panel p-5",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 						className: "font-display text-3xl text-[#ffe7a8]",
 						children: "Character spotlight"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "mt-4 grid gap-4 sm:grid-cols-2",
-						children: relatedChars.slice(0, 2).map((c) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { children: [
+						children: page ? page.leads.map((c) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+								className: "font-display text-2xl",
+								children: c.name
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs uppercase tracking-widest text-[#ffe7a8]",
+								children: c.role
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mt-2 text-sm leading-6 text-pink-50/90",
+								children: c.bio
+							})
+						] }, c.name)) : relatedChars.slice(0, 2).map((c) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", { children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 								className: "font-display text-2xl",
 								children: characterDisplayName(c.name)
@@ -265,7 +294,13 @@ function BookLoaded({ book, characters, books }) {
 							className: "font-display text-3xl text-[#ffe7a8]",
 							children: "Excerpt preview"
 						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("blockquote", {
+						page ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "mt-3 space-y-3 text-sm leading-7 text-pink-50/90",
+							children: page.excerpt.map((line) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: line.startsWith("“") ? "italic" : "",
+								children: line
+							}, line.slice(0, 24)))
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("blockquote", {
 							className: "mt-3 text-sm italic leading-7 text-pink-50/90",
 							children: [
 								"“",
@@ -282,6 +317,29 @@ function BookLoaded({ book, characters, books }) {
 						})
 					]
 				})]
+			}),
+			page && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+				className: "glass-panel mt-4 p-5",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+						className: "font-display text-3xl text-[#ffe7a8]",
+						children: "For readers who want"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3",
+						children: page.ratings.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							className: "text-sm text-pink-50/90",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "block text-xs tracking-[0.16em] text-[#ffe7a8] uppercase",
+								children: item.label
+							}), item.value]
+						}, item.label))
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "mt-4 text-sm leading-6 text-pink-50/90",
+						children: ["Recommended for ", page.recommended]
+					})
+				]
 			}),
 			related.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 				className: "glass-panel mt-4 p-5",

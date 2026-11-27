@@ -1,8 +1,8 @@
+import { t as applyBookCopy } from "./book-copy-B8fwQdTf.mjs";
 import { t as useQuery } from "../_libs/react+tanstack__react-query.mjs";
-import { t as applyBookCopy } from "./book-copy-DuJUW-1Y.mjs";
 import { t as getSupabase } from "./supabase-BbIcayfE.mjs";
 import { t as isValidHttpUrl } from "./urls-WBx1qNe-.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/use-library-BISHb0t-.js
+//#region node_modules/.nitro/vite/services/ssr/assets/use-library-CVxkl_Uc.js
 async function fetchBooks() {
 	const { data, error } = await getSupabase().from("books").select("id,title,slug,cover_url,blurb,synopsis,tropes,trigger_warnings,status,category,order_index,purchase_links,character_art_urls,created_at,updated_at").order("order_index", { ascending: true });
 	if (error) throw error;

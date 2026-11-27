@@ -1,4 +1,5 @@
 import { o as __toESM } from "../_runtime.mjs";
+import { r as storyPage } from "./book-copy-B8fwQdTf.mjs";
 import { i as require_react, n as QueryClientProvider, r as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { S as useRouter, _ as lazyRouteComponent, b as Link, d as Scripts, f as HeadContent, g as Outlet, h as createRouter, p as useRouterState, v as createFileRoute, x as useNavigate, y as createRootRoute } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as createServerFn, o as __exportAll } from "./ssr.mjs";
@@ -24,7 +25,7 @@ var getBookPreviewForAdmin = createServerFn({ method: "POST" }).validator((input
 	slug: string().min(1)
 }).parse(input)).handler(createSsrRpc("3e9c412529332624378b47a398a3837b8fb6a9cd5cedee984e2fe75d30f864fc"));
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-Dz72wVUl.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-CE5HwmZw.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var FALLBACK_MESSAGE = "An unexpected error occurred. Try reloading the page.";
@@ -642,11 +643,11 @@ function RootDocument() {
 		})]
 	});
 }
-var $$splitComponentImporter$18 = () => import("../_site-D9MahdSD.mjs");
+var $$splitComponentImporter$18 = () => import("../_site-BxzgunQx.mjs");
 var Route$18 = createFileRoute("/_site")({ component: lazyRouteComponent($$splitComponentImporter$18, "component") });
 var $$splitComponentImporter$17 = () => import("./admin-rRckGftk.mjs");
 var Route$17 = createFileRoute("/admin")({ component: lazyRouteComponent($$splitComponentImporter$17, "component") });
-var $$splitComponentImporter$16 = () => import("../_site.index-CXi6AX__.mjs");
+var $$splitComponentImporter$16 = () => import("../_site.index-B7tQYsz4.mjs");
 var Route$16 = createFileRoute("/_site/")({
 	head: () => ({ meta: [{ title: "MAXALENA | I write what you pretend not to read" }, {
 		name: "description",
@@ -664,7 +665,7 @@ var Route$15 = createFileRoute("/_site/about")({
 });
 var $$splitComponentImporter$14 = () => import("../_site.books-CF0jU3k1.mjs");
 var Route$14 = createFileRoute("/_site/books")({ component: lazyRouteComponent($$splitComponentImporter$14, "component") });
-var $$splitComponentImporter$13 = () => import("../_site.characters-Bd_mbO_R.mjs");
+var $$splitComponentImporter$13 = () => import("../_site.characters-B61pfLQY.mjs");
 var Route$13 = createFileRoute("/_site/characters")({
 	head: () => ({ meta: [{ title: "Universes | Maxalena" }, {
 		name: "description",
@@ -672,7 +673,7 @@ var Route$13 = createFileRoute("/_site/characters")({
 	}] }),
 	component: lazyRouteComponent($$splitComponentImporter$13, "component")
 });
-var $$splitComponentImporter$12 = () => import("../_site.contact-CGJeCm95.mjs");
+var $$splitComponentImporter$12 = () => import("../_site.contact-Cv-qynZz.mjs");
 var Route$12 = createFileRoute("/_site/contact")({
 	head: () => ({ meta: [{ title: "Contact | Maxalena" }, {
 		name: "description",
@@ -720,7 +721,7 @@ var Route$7 = createFileRoute("/_site/terms")({
 	}] }),
 	component: lazyRouteComponent($$splitComponentImporter$7, "component")
 });
-var $$splitComponentImporter$6 = () => import("./admin.index-Byzoo_yP.mjs");
+var $$splitComponentImporter$6 = () => import("./admin.index-C1lFeEJD.mjs");
 var Route$6 = createFileRoute("/admin/")({
 	head: () => ({ meta: [{ title: "Author desk" }, {
 		name: "robots",
@@ -744,7 +745,7 @@ var Route$4 = createFileRoute("/admin/login")({
 	}] }),
 	component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
-var $$splitComponentImporter$3 = () => import("../_site.books.index-BbssVEDR.mjs");
+var $$splitComponentImporter$3 = () => import("../_site.books.index-DDKoBSG_.mjs");
 var Route$3 = createFileRoute("/_site/books/")({
 	head: () => ({ meta: [{ title: "Stories | Maxalena" }, {
 		name: "description",
@@ -754,12 +755,34 @@ var Route$3 = createFileRoute("/_site/books/")({
 });
 var $$splitComponentImporter$2 = () => import("../_site.books._slug-BQveVWWv.mjs");
 var Route$2 = createFileRoute("/_site/books/$slug")({ component: lazyRouteComponent($$splitComponentImporter$2, "component") });
-var $$splitComponentImporter$1 = () => import("../_site.books._slug.index-s-s7KpX9.mjs");
+var $$splitComponentImporter$1 = () => import("../_site.books._slug.index-guVFlXhx.mjs");
 var Route$1 = createFileRoute("/_site/books/$slug/")({
-	head: ({ params }) => ({ meta: [{ title: `${params.slug} | Maxalena` }] }),
+	head: ({ params }) => {
+		const page = storyPage(params.slug);
+		if (page) return { meta: [
+			{ title: page.metaTitle },
+			{
+				name: "description",
+				content: page.metaDescription
+			},
+			{
+				name: "keywords",
+				content: page.keywords || ""
+			},
+			{
+				property: "og:title",
+				content: page.metaTitle
+			},
+			{
+				property: "og:description",
+				content: page.metaDescription
+			}
+		] };
+		return { meta: [{ title: `${params.slug} | Maxalena` }] };
+	},
 	component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-var $$splitComponentImporter = () => import("../_site.books._slug.preview-DFgeiLGN.mjs");
+var $$splitComponentImporter = () => import("../_site.books._slug.preview-CJGOJu6q.mjs");
 var Route = createFileRoute("/_site/books/$slug/preview")({
 	loader: ({ params }) => getBookPreview({ data: { slug: params.slug } }),
 	head: ({ params }) => ({ meta: [{ title: `Sample · ${params.slug} | Maxalena L.` }, {

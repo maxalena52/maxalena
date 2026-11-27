@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { shelfBooks } from "@/lib/book-copy";
+import { shelfBooks, storyPage } from "@/lib/book-copy";
 import { warningsList } from "@/lib/content";
 import { coverSrc } from "@/lib/covers";
 import { characterDisplayName, characterPublicCopy, cleanText, inferGenre } from "@/lib/copy";
@@ -8,9 +8,21 @@ import { useLibrary } from "@/lib/use-library";
 import type { Book } from "@/lib/types";
 
 export const Route = createFileRoute("/_site/books/$slug/")({
-  head: ({ params }) => ({
-    meta: [{ title: `${params.slug} | Maxalena` }],
-  }),
+  head: ({ params }) => {
+    const page = storyPage(params.slug);
+    if (page) {
+      return {
+        meta: [
+          { title: page.metaTitle },
+          { name: "description", content: page.metaDescription },
+          { name: "keywords", content: page.keywords || "" },
+          { property: "og:title", content: page.metaTitle },
+          { property: "og:description", content: page.metaDescription },
+        ],
+      };
+    }
+    return { meta: [{ title: `${params.slug} | Maxalena` }] };
+  },
   component: BookDetailPage,
 });
 
@@ -43,20 +55,22 @@ function BookLoaded({
   characters: ReturnType<typeof useLibrary>["characters"];
   books: Book[];
 }) {
+  const page = storyPage(book.slug);
   const relatedChars = characters.filter((c) => c.book_id === book.id);
   const related = books.filter((b) => b.slug !== book.slug).slice(0, 2);
   const warnings = warningsList(book);
-  const mature = warnings.some((w) => /18\+|smut|explicit|mature/i.test(w));
-  const synopsis = cleanText(book.synopsis).split(/\n\n+/).filter(Boolean);
+  const mature = page ? true : warnings.some((w) => /18\+|smut|explicit|mature/i.test(w));
+  const synopsis = page ? cleanText(book.synopsis).split(/\n\n+/).filter(Boolean) : cleanText(book.synopsis).split(/\n\n+/).filter(Boolean);
   const genre = inferGenre(book.title, book.tropes, book.status);
-  const tropes = (book.tropes || []).filter(Boolean);
-  const tags = [genre, ...tropes].filter((v, i, a) => v && a.indexOf(v) === i).slice(0, 4);
-  const excerpt = cleanText(book.sample_chapter) || synopsis[0] || book.blurb || "";
+  const tropes = page?.genres ? [] : (book.tropes || []).filter(Boolean);
+  const tags = page ? page.genres : [genre, ...(book.tropes || [])].filter((v, i, a) => v && a.indexOf(v) === i).slice(0, 4);
+  const tropeList = page ? book.tropes || [] : tropes.length ? tropes : tags;
+  const excerpt = page ? "" : cleanText(book.sample_chapter) || synopsis[0] || book.blurb || "";
   const [saved, setSaved] = useState(false);
   const [shared, setShared] = useState(false);
 
   useEffect(() => {
-    document.title = `${book.title} | Maxalena`;
+    document.title = page?.metaTitle || `${book.title} | Maxalena`;
     try {
       const raw = localStorage.getItem("maxalena-library");
       const list = raw ? (JSON.parse(raw) as string[]) : [];
@@ -64,7 +78,7 @@ function BookLoaded({
     } catch {
       setSaved(false);
     }
-  }, [book.slug, book.title]);
+  }, [book.slug, book.title, page]);
 
   function toggleSaved() {
     const next = !saved;
@@ -113,7 +127,7 @@ function BookLoaded({
         </div>
         <div>
           <h1 className="font-display text-5xl text-[#ffe7a8] md:text-6xl">{book.title}</h1>
-          <p className="mt-1 text-sm tracking-[0.2em] text-pink-100/80 uppercase">Maxalena</p>
+          <p className="mt-1 text-sm tracking-[0.2em] text-pink-100/80 uppercase">Maxalena L.</p>
           <div className="mt-3 flex flex-wrap gap-2">
             {tags.map((t) => (
               <span key={t} className="chip">
@@ -121,8 +135,14 @@ function BookLoaded({
               </span>
             ))}
           </div>
-          {book.blurb && <p className="mt-4 text-lg italic text-[#ffe7a8]">{book.blurb}</p>}
-          {synopsis[0] && <p className="mt-3 leading-7 text-pink-50/90">{synopsis[0]}</p>}
+          {(page?.tagline || book.blurb) && (
+            <p className="mt-4 text-lg italic text-[#ffe7a8]">{page?.tagline || book.blurb}</p>
+          )}
+          {(page ? page.short : synopsis.slice(0, 1)).map((p) => (
+            <p key={p.slice(0, 40)} className="mt-3 leading-7 text-pink-50/90">
+              {p}
+            </p>
+          ))}
           <div className="mt-5 flex flex-wrap items-center gap-2">
             <Link to="/books/$slug/preview" params={{ slug: book.slug }} className="gold-pill">
               Read sample
@@ -140,6 +160,17 @@ function BookLoaded({
         </div>
       </section>
 
+      {page && (
+        <section className="glass-panel mt-4 grid gap-3 p-5 sm:grid-cols-2 lg:grid-cols-4">
+          {page.facts.map((fact) => (
+            <p key={fact.label} className="text-sm text-pink-50/90">
+              <span className="block text-xs tracking-[0.16em] text-[#ffe7a8] uppercase">{fact.label}</span>
+              {fact.value}
+            </p>
+          ))}
+        </section>
+      )}
+
       <div className="mt-4 grid gap-4 lg:grid-cols-3">
         <section className="glass-panel p-5 lg:col-span-1">
           <h2 className="font-display text-3xl text-[#ffe7a8]">Synopsis</h2>
@@ -152,7 +183,7 @@ function BookLoaded({
         <section className="glass-panel p-5">
           <h2 className="font-display text-3xl text-[#ffe7a8]">Tropes</h2>
           <ul className="mt-3 space-y-2 text-sm text-pink-50/90">
-            {(tropes.length ? tropes : tags).map((t) => (
+            {(tropeList || []).map((t) => (
               <li key={t}>♡ {t}</li>
             ))}
           </ul>
@@ -163,36 +194,74 @@ function BookLoaded({
             {mature && <span className="chip">18+</span>}
           </div>
           <p className="mt-3 text-sm leading-6 text-pink-50/90">
-            {warnings.length
-              ? `This story contains mature themes, including ${warnings.join(", ")}.`
-              : "Content notes will be listed here when they are added."}
+            {page
+              ? page.notes
+              : warnings.length
+                ? `This story contains mature themes, including ${warnings.join(", ")}.`
+                : "Content notes will be listed here when they are added."}
           </p>
         </section>
       </div>
 
       <div className="mt-4 grid gap-4 lg:grid-cols-2">
-        {relatedChars.length > 0 && (
+        {(page?.leads?.length || relatedChars.length > 0) && (
           <section className="glass-panel p-5">
             <h2 className="font-display text-3xl text-[#ffe7a8]">Character spotlight</h2>
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              {relatedChars.slice(0, 2).map((c) => (
-                <article key={c.id}>
-                  <h3 className="font-display text-2xl">{characterDisplayName(c.name)}</h3>
-                  <p className="text-xs uppercase tracking-widest text-[#ffe7a8]">{c.role || "Character"}</p>
-                  <p className="mt-2 text-sm leading-6 text-pink-50/90">{characterPublicCopy(c.name, c.description).slice(0, 220)}</p>
-                </article>
-              ))}
+              {page
+                ? page.leads.map((c) => (
+                    <article key={c.name}>
+                      <h3 className="font-display text-2xl">{c.name}</h3>
+                      <p className="text-xs uppercase tracking-widest text-[#ffe7a8]">{c.role}</p>
+                      <p className="mt-2 text-sm leading-6 text-pink-50/90">{c.bio}</p>
+                    </article>
+                  ))
+                : relatedChars.slice(0, 2).map((c) => (
+                    <article key={c.id}>
+                      <h3 className="font-display text-2xl">{characterDisplayName(c.name)}</h3>
+                      <p className="text-xs uppercase tracking-widest text-[#ffe7a8]">{c.role || "Character"}</p>
+                      <p className="mt-2 text-sm leading-6 text-pink-50/90">{characterPublicCopy(c.name, c.description).slice(0, 220)}</p>
+                    </article>
+                  ))}
             </div>
           </section>
         )}
         <section className="glass-panel p-5">
           <h2 className="font-display text-3xl text-[#ffe7a8]">Excerpt preview</h2>
-          <blockquote className="mt-3 text-sm italic leading-7 text-pink-50/90">“{excerpt.slice(0, 280)}{excerpt.length > 280 ? "…" : ""}”</blockquote>
+          {page ? (
+            <div className="mt-3 space-y-3 text-sm leading-7 text-pink-50/90">
+              {page.excerpt.map((line) => (
+                <p key={line.slice(0, 24)} className={line.startsWith("“") ? "italic" : ""}>
+                  {line}
+                </p>
+              ))}
+            </div>
+          ) : (
+            <blockquote className="mt-3 text-sm italic leading-7 text-pink-50/90">
+              “{excerpt.slice(0, 280)}
+              {excerpt.length > 280 ? "…" : ""}”
+            </blockquote>
+          )}
           <Link to="/books/$slug/preview" params={{ slug: book.slug }} className="ghost-pill mt-4">
             Read sample
           </Link>
         </section>
       </div>
+
+      {page && (
+        <section className="glass-panel mt-4 p-5">
+          <h2 className="font-display text-3xl text-[#ffe7a8]">For readers who want</h2>
+          <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {page.ratings.map((item) => (
+              <p key={item.label} className="text-sm text-pink-50/90">
+                <span className="block text-xs tracking-[0.16em] text-[#ffe7a8] uppercase">{item.label}</span>
+                {item.value}
+              </p>
+            ))}
+          </div>
+          <p className="mt-4 text-sm leading-6 text-pink-50/90">Recommended for {page.recommended}</p>
+        </section>
+      )}
 
       {related.length > 0 && (
         <section className="glass-panel mt-4 p-5">

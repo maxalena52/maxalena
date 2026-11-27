@@ -23,7 +23,7 @@ const TAGS: Record<string, string[]> = {
   "ceo-s-hostile-take-over": ["Dark Romance", "Completed"],
   "grim-reaper-chaos": ["Fantasy", "Paranormal", "Completed"],
   "the-dragon-commanders-captive": ["Fantasy", "Dark Romance", "Completed"],
-  "the-emperors-black-widow": ["Dark Romance", "Fantasy", "Completed"],
+  "the-emperors-black-widow": ["Dark Romance", "Romantasy", "Completed"],
   "the-algorithm-of-vengeance": ["Dark Romance", "Completed"],
 };
 

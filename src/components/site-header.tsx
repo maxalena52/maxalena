@@ -40,7 +40,7 @@ export function SiteHeader() {
           <img
             src="/author-portrait.jpg"
             alt=""
-            className="h-9 w-9 rounded-full border border-[#ffe27a]/70 object-cover object-[30%_12%]"
+            className="h-9 w-9 rounded-full border border-[#ffe27a]/70 object-cover object-center"
           />
           <span className="font-display text-xl font-semibold tracking-wide text-[#ffe27a]">maxalena.com</span>
         </Link>

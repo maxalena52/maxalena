@@ -24,7 +24,7 @@ var getBookPreviewForAdmin = createServerFn({ method: "POST" }).validator((input
 	slug: string().min(1)
 }).parse(input)).handler(createSsrRpc("3e9c412529332624378b47a398a3837b8fb6a9cd5cedee984e2fe75d30f864fc"));
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-BGM-rNqD.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-Dz72wVUl.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var FALLBACK_MESSAGE = "An unexpected error occurred. Try reloading the page.";
@@ -114,7 +114,7 @@ function SiteHeader() {
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 						src: "/author-portrait.jpg",
 						alt: "",
-						className: "h-9 w-9 rounded-full border border-[#ffe27a]/70 object-cover object-[30%_12%]"
+						className: "h-9 w-9 rounded-full border border-[#ffe27a]/70 object-cover object-center"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 						className: "font-display text-xl font-semibold tracking-wide text-[#ffe27a]",
 						children: "maxalena.com"
@@ -513,7 +513,7 @@ function QueryProvider({ children }) {
 		children
 	});
 }
-var styles_default = "/assets/styles-DqfjTP47.css";
+var styles_default = "/assets/styles-z3m9tcDY.css";
 var APP_NAME = "Maxalena L.";
 var DESCRIPTION = "Official site of Maxalena L., author of dark romance, romantasy, gothic fiction, and emotionally intense serialised stories.";
 var Route$19 = createRootRoute({
@@ -642,7 +642,7 @@ function RootDocument() {
 		})]
 	});
 }
-var $$splitComponentImporter$18 = () => import("../_site-C5x4_JHV.mjs");
+var $$splitComponentImporter$18 = () => import("../_site-D9MahdSD.mjs");
 var Route$18 = createFileRoute("/_site")({ component: lazyRouteComponent($$splitComponentImporter$18, "component") });
 var $$splitComponentImporter$17 = () => import("./admin-rRckGftk.mjs");
 var Route$17 = createFileRoute("/admin")({ component: lazyRouteComponent($$splitComponentImporter$17, "component") });
@@ -754,12 +754,12 @@ var Route$3 = createFileRoute("/_site/books/")({
 });
 var $$splitComponentImporter$2 = () => import("../_site.books._slug-BQveVWWv.mjs");
 var Route$2 = createFileRoute("/_site/books/$slug")({ component: lazyRouteComponent($$splitComponentImporter$2, "component") });
-var $$splitComponentImporter$1 = () => import("../_site.books._slug.index-NiAkP23z.mjs");
+var $$splitComponentImporter$1 = () => import("../_site.books._slug.index-s-s7KpX9.mjs");
 var Route$1 = createFileRoute("/_site/books/$slug/")({
 	head: ({ params }) => ({ meta: [{ title: `${params.slug} | Maxalena` }] }),
 	component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-var $$splitComponentImporter = () => import("../_site.books._slug.preview-DfPgM5Rv.mjs");
+var $$splitComponentImporter = () => import("../_site.books._slug.preview-DFgeiLGN.mjs");
 var Route = createFileRoute("/_site/books/$slug/preview")({
 	loader: ({ params }) => getBookPreview({ data: { slug: params.slug } }),
 	head: ({ params }) => ({ meta: [{ title: `Sample · ${params.slug} | Maxalena L.` }, {
